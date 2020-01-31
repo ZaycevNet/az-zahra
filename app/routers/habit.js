@@ -1,10 +1,10 @@
 // const { HabitAdabAlat } = require("@/pages")
 
-const HabitAdab = resolve => {
+const PageHabitAdab = resolve => {
     require.ensure(
-        ['@/pages/habit-adab'],
+        ['@/pages/page-habit-adab'],
         () => {
-            resolve(require('@/pages/habit-adab'))
+            resolve(require('@/pages/page-habit-adab'))
         }, 'page-habit-adab'
     )
 }
@@ -13,7 +13,7 @@ module.exports = [
   {
     path: '/habit-adab',
 		name: 'habit-adab',
-    component: HabitAdab,
+    component: PageHabitAdab,
     // meta: { auth: true, acl }
   },
 ]

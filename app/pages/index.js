@@ -1,22 +1,32 @@
 import Vue from 'nativescript-vue'
 
-const HabitAdab = resolve => {
+const PageHabitAdab = resolve => {
     require.ensure(
-        ['./habit-adab'],
+        ['./page-habit-adab'],
         () => {
-            resolve(require('./habit-adab'))
+            resolve(require('./page-habit-adab'))
         }, 'page-habit-adab'
     )
 }
 
-const HabitSholat = resolve => {
+const PageHabitSholat = resolve => {
     require.ensure(
-        ['./habit-sholat'],
+        ['./page-habit-sholat'],
         () => {
-            resolve(require('./habit-sholat'))
+            resolve(require('./page-habit-sholat'))
         }, 'page-habit-sholat'
     )
 }
 
-Vue.component('HabitAdab', HabitAdab)
-Vue.component('HabitSholat', HabitSholat)
+const PageHabitOrganisasiNew = resolve => {
+    require.ensure(
+        ['./page-habit-organisasi-new'],
+        () => {
+            resolve(require('./page-habit-organisasi-new'))
+        }, 'page-habit-organisasi-new'
+    )
+}
+
+Vue.component('PageHabitAdab', PageHabitAdab)
+Vue.component('PageHabitSholat', PageHabitSholat)
+Vue.component('PageHabitOrganisasiNew', PageHabitOrganisasiNew)

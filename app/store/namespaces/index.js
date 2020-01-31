@@ -4,7 +4,7 @@
 // const notification = require('./notification')
 
 const habit_adab = require('./habit-adab')
-
+const habit_organisasi = require('./habit-organisasi')
 
 module.exports = {
     // auth,
@@ -13,6 +13,7 @@ module.exports = {
     // notification,
 
     habit_adab,
+    habit_organisasi,
 
 }
 

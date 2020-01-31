@@ -6,6 +6,7 @@ import indicator from "./modules/indicator";
 import sideDrawer from "./modules/sideDrawer";
 
 import habit_adab from "./modules/habit-adab";
+import habit_organisasi from "./modules/habit-organisasi";
 
 
 
@@ -19,6 +20,7 @@ let store = new Vuex.Store({
 
     // sideDrawer,
     habit_adab,
+    habit_organisasi,
   },
   strict: debug
 });
