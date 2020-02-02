@@ -89,13 +89,13 @@ import { Statusbar } from "nativescript-plugin-statusbar";
 let status = new Statusbar();
 
 export default {
-  props: {
-    routeProps: {
-      default: () => ({
-          origin: "before route", // pada dasarnya data inspeksi masih invalid (belum divalidasi oleh
-      })
-    }
-  },
+  // props: {
+  //   routeProps: {
+  //     default: () => ({
+  //         origin: "before route", // pada dasarnya data inspeksi masih invalid (belum divalidasi oleh
+  //     })
+  //   }
+  // },
   data() {
     return {
       rendering: true,
@@ -126,8 +126,6 @@ export default {
      },
   },
   mounted(){
-    console.log(this.routeProps.origin, this.$route.path);
-
     const application = require('tns-core-modules/application');
     application.android.on('activityBackPressed', args => {
       this.rendering = true;

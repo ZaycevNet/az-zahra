@@ -11,11 +11,20 @@ Button {
 		<StackLayout>
 			<Button
 				v-for="(page, i) in pages"
-				@tap="goToPage(page.name)"
+				@tap="goToPage(page)"
 				class="drawer-item"
 				:text="page.name"
 				:key="i"
 			/>
+
+			<Button
+				v-for="(page, i) in pagesRoute"
+				@tap="goToPageRoute(page)"
+				class="drawer-item"
+				:text="page.name"
+				:key="i"
+			/>
+
 			<KeepAlive>
 				<!-- <Frame> -->
 					<router-view></router-view>
@@ -45,6 +54,20 @@ export default {
           name: "ViewHabitOrganisasi",
           component: "habit-organisasi", //this.$views.ViewHabitOrganisasi
         },
+			],
+			pagesRoute: [
+        {
+          name: "RouterViewHabitAdab",
+          component: "habit-adab", //this.$views.ViewHabitAdab
+        },
+				{
+          name: "RouterViewHabitOrganisasiNew",
+          component: "habit-organisasi-new", //this.$views.ViewHabitOrganisasiNew
+        },
+				{
+          name: "RouterViewHabitOrganisasi",
+          component: "habit-organisasi", //this.$views.ViewHabitOrganisasi
+        },
 			]
 		}
 	},
@@ -61,13 +84,23 @@ export default {
 		// console.log(this.$views);
 	},
 	methods: {
-    goToPage(pageComponent) {
-			// alert(pageComponent);
-			// this.$showModal(this.$views[pageComponent], {
-			// 	fullscreen: true,
-			// });
+		goToPageRoute(pageComponent){
 
-			this.$showModal(this.$views[pageComponent], {
+			console.log(pageComponent.component)
+			this.$router.push({ name:pageComponent.component });
+
+			// this.$router.push({
+			// 	path:"/"+pageComponent,
+			// 	query: {
+			// 		// dynamic props
+			// 		routeProps: {
+			// 			origin: this.$route.path,
+			// 		}
+			// 	}
+			// });
+		},
+    goToPage(pageComponent) {
+			this.$showModal(this.$views[pageComponent.name], {
 					fullscreen: true,
 					clearHistory: true,
 					transition: {
@@ -84,18 +117,9 @@ export default {
 					console.log(data)
 					// this.$store.commit("gotoRoute", false)
 			});
-      // this.$navigateTo(this.$views[pageComponent]);
+      // this.$navigateTo(this.$views[pageComponent.name]);
 			return
-			// this.$router.push({ path:"/"+pageComponent });
-			// this.$router.push({
-			// 	path:"/"+pageComponent,
-			// 	query: {
-			// 		// dynamic props
-			// 		routeProps: {
-			// 			origin: this.$route.path,
-			// 		}
-			// 	}
-			// });
+
     }
   }
 }

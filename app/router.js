@@ -6,15 +6,18 @@ Vue.use(VueRouter)
 import Home from '@/views/view';
 // import SideDrawerApp from '@/components/SideDrawerApp.vue'
 
-const habit = require("@/routers/habit");
+// const habit = require("@/routers/habit");
+import habit from "@/routers/habit";
 
 export default new VueRouter({
+  mode: "abstract",
   routes: [
     ...habit,
-    // {
-    //   path: '/',
-    //   component: Home,
-    // },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home,
+    },
     // {
     //   path: '/',
     //   name: 'home',

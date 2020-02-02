@@ -107,7 +107,7 @@ Vue.filter("fonticon", fonticon);
 
 import * as application from 'tns-core-modules/application'
 
-// router.replace('/habit-organisasi');
+router.replace('/home');
 const app = new Vue({
   name:"THIRD COMMIT",
 

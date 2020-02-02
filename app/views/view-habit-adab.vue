@@ -148,13 +148,13 @@ import { Statusbar } from "nativescript-plugin-statusbar";
 let status = new Statusbar();
 
 export default {
-    props: {
-      routeProps: {
-        default: () => ({
-            origin: "before route", // pada dasarnya data inspeksi masih invalid (belum divalidasi oleh
-        })
-      }
-    },
+    // props: {
+    //   routeProps: {
+    //     default: () => ({
+    //         origin: "before route", // pada dasarnya data inspeksi masih invalid (belum divalidasi oleh
+    //     })
+    //   }
+    // },
     data() {
             return {
               rendering: true,
