@@ -2,50 +2,6 @@ const {
     habit_adab
 } = require("@/store/namespaces/index");
 
-// const {
-//     config: {
-//         static: {
-//             columns,
-//             selectedColumns,
-//             displayColumns,
-//         },
-//         dynamic: {
-//             separator,
-//             visibleColumns,
-//             selected,
-//             loading,
-//         }
-//     },
-//     data: {
-//         pagination,
-//         payload: {
-//             data,
-//             replace,
-//             last_page,
-//             current_page,
-//         },
-//     },
-//     action,
-// } = karyawan_biodata
-
-function capitalize(str) {
-    if (str == undefined)
-        return str
-    if (str == null)
-        return str
-
-    var splitStr = str.toLowerCase().split(" ");
-    for (var i = 0; i < splitStr.length; i++) {
-        // You do not need to check if i is larger than splitStr length, as your for does that for you
-        // Assign it back to the array
-        splitStr[i] =
-            splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-    }
-    // Directly return the joined string
-    return splitStr.join(" ");
-}
-
-
 const dataAdab = require("@/data/adab.json");
 console.log(dataAdab);
 
@@ -91,16 +47,9 @@ const getters = {
     return payload_description_checked;
 
   }
-    // [current_page]: (state) => {
-    //     return state.data.payload.current_page
-    // },
 };
 
 const mutations = {
-    // [separator]: (state, data) => {
-    //     state.config.dynamic.separator = data
-    // },
-
     set_item_checked_counter(state, payload) {
       const { payload_title } = state.data.items;
 
@@ -126,19 +75,6 @@ const mutations = {
 
     }
 
-    // [replace]: (state, params) => {
-    //     // me-replace data di payload.data[] setelah berhasil update oleh axios
-    //     const data = state.data.payload.data;
-    //     if (data.length > 0) {
-    //         for (let i = 0; i < data.length; i++) {
-    //             const element = data[i];
-    //             if (params.uuid == element.uuid) {
-    //                 data[i] = params;
-    //                 // state.data.payload.data[i] = params;
-    //             }
-    //         }
-    //     }
-    // },
 };
 
 const actions = {

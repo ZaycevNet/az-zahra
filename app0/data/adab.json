@@ -1,0 +1,338 @@
+{
+	"habit": "Adab Islami",
+	"payload_title": [
+		{
+			"id":"1",
+			"code":"E-TI-1",
+			"parent_id": null,
+			"parent_code": null,
+			"title":"Diri Sendiri",
+			"payload_subtitle":[
+				{
+					"id":"1",
+					"code":"E-SB-1",
+					"parent_id": "1",
+					"parent_code":"E-TI-1",
+					"subtitle":"Lisan",
+					"payload_description":[
+						{
+							"id":"1",
+							"code":"E-IT-1",
+							"parent_id": "1",
+							"parent_code":"E-SB-1",
+							"description":"Berdoa sebelum beraktivitas",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":true
+						},
+						{
+							"id":"2",
+							"code":"E-IT-2",
+							"parent_id": "1",
+							"parent_code":"E-SB-1",
+							"description":"Berdoa selesai beraktivitas",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"3",
+							"code":"E-IT-3",
+							"parent_id": "1",
+							"parent_code":"E-SB-1",
+							"description":"Tidak berbicara kasar dan kotor",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"4",
+							"code":"E-IT-4",
+							"parent_id": "1",
+							"parent_code":"E-SB-1",
+							"description":"Tidak memfitnah orang lain",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"5",
+							"code":"E-IT-5",
+							"parent_id": "1",
+							"parent_code":"E-SB-1",
+							"description":"Murah senyum dan ramah",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"6",
+							"code":"E-IT-6",
+							"parent_id": "1",
+							"parent_code":"E-SB-1",
+							"description":"Memberi salam ke orang lain",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						}
+					]
+				},
+				{
+					"id":"2",
+					"code":"E-SB-2",
+					"parent_id": "1",
+					"parent_code":"E-TI-1",
+					"subtitle":"Pendengaran",
+					"payload_description":[
+						{
+							"id":"7",
+							"code":"E-IT-7",
+							"parent_id": "2",
+							"parent_code":"E-SB-2",
+							"description":"Mau mendengarkan nasehat",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"8",
+							"code":"E-IT-8",
+							"parent_id": "2",
+							"parent_code":"E-SB-2",
+							"description":"Menolak ajakan berbuat keji",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"9",
+							"code":"E-IT-9",
+							"parent_id": "2",
+							"parent_code":"E-SB-2",
+							"description":"Menjauh dari gosip dan gibah",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						}
+					]
+				},
+				{
+					"id":"3",
+					"code":"E-SB-3",
+					"parent_id": "1",
+					"parent_code":"E-TI-1",
+					"subtitle":"Penglihatan",
+					"payload_description":[
+						{
+							"id":"10",
+							"code":"E-IT-10",
+							"parent_id": "3",
+							"parent_code":"E-SB-3",
+							"description":"Tidak suka iri dan dengki",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"11",
+							"code":"E-IT-11",
+							"parent_id": "3",
+							"parent_code":"E-SB-3",
+							"description":"Belas kasihan dengan orang lain",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"12",
+							"code":"E-IT-12",
+							"parent_id": "3",
+							"parent_code":"E-SB-3",
+							"description":"Tidak ikut-ikutan berbuat negatif",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"13",
+							"code":"E-IT-13",
+							"parent_id": "3",
+							"parent_code":"E-SB-3",
+							"description":"Memakai baju sopan (menutup aurat bagi perempuan)",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						}
+					]
+				},
+				{
+					"id":"4",
+					"code":"E-SB-4",
+					"parent_id": "1",
+					"parent_code":"E-TI-1",
+					"subtitle":"Gerakan",
+					"payload_description":[
+						{
+							"id":"14",
+							"code":"E-IT-14",
+							"parent_id": "4",
+							"parent_code":"E-SB-4",
+							"description":"Tidur dan bangun tepat waktu",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"15",
+							"code":"E-IT-15",
+							"parent_id": "4",
+							"parent_code":"E-SB-4",
+							"description":"Tidak malas-malasan",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"16",
+							"code":"E-IT-16",
+							"parent_id": "4",
+							"parent_code":"E-SB-4",
+							"description":"Izin orangtua jika pergi",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"17",
+							"code":"E-IT-17",
+							"parent_id": "4",
+							"parent_code":"E-SB-4",
+							"description":"Bersih dari hadats dan najis",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"18",
+							"code":"E-IT-18",
+							"parent_id": "4",
+							"parent_code":"E-SB-4",
+							"description":"Tidak mengambil hak orang lain tanpa izin",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"19",
+							"code":"E-IT-19",
+							"parent_id": "4",
+							"parent_code":"E-SB-4",
+							"description":"Mencium tangan orang yang dewasa (lebih tua)",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":false
+						},
+						{
+							"id":"20",
+							"code":"E-IT-20",
+							"parent_id": "4",
+							"parent_code":"E-SB-4",
+							"description":"Kasih sayang dengan binatang dan tumbuhan",
+							"type":"0",
+							"interval":"harian",
+							"max_point":"5",
+							"countable":"1",
+							"selected":true
+						}
+					]
+				}
+			]
+		},
+		{
+			"id":"21",
+			"code":"E-TI-2",
+			"parent_id": null,
+			"parent_code": null,
+			"title":"Ayah & Ibu",
+			"payload_subtitle":[]
+		},
+		{
+			"id":"22",
+			"code":"E-TI-3",
+			"parent_id": null,
+			"parent_code": null,
+			"title":"Saudara",
+			"payload_subtitle":[]
+		},
+		{
+			"id":"23",
+			"code":"E-TI-4",
+			"parent_id": null,
+			"parent_code": null,
+			"title":"Kerabat",
+			"payload_subtitle":[]
+		},
+		{
+			"id":"24",
+			"code":"E-TI-5",
+			"parent_id": null,
+			"parent_code": null,
+			"title":"Guru",
+			"payload_subtitle":[]
+		},
+		{
+			"id":"25",
+			"code":"E-TI-6",
+			"parent_id": null,
+			"parent_code": null,
+			"title":"Orang Lain",
+			"payload_subtitle":[]
+		},
+		{
+			"id":"26",
+			"code":"E-TI-7",
+			"parent_id": null,
+			"parent_code": null,
+			"title":"Alat & Tempat",
+			"payload_subtitle":[]
+		}
+	]
+}

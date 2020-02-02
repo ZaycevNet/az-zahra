@@ -35,40 +35,86 @@
     border-bottom-width: 0;
 }
 
+.btn-next {
+    width: 100%;
+    border-radius: 5%;
+    color: white;
+    font-weight: bold;
+    padding: 25px;
+    background-color: #28BAAA;
+    text-align: center;
+    /* margin-top: 20px; */
+    /* margin-bottom: 20px; */
+}
+
 </style>
 
-
 <template>
-	<StackLayout padding="10 10 0 10">
+
+<StackLayout padding="10 10 0 10" marginBottom="75">
 
     <OrganisasiNewSubtitle ref="subtitle" class="full-border" />
 
-    <StackLayout class="off-bottom-border" padding="10 10 0 10">
-      <OrganisasiNewTextfield placeholder="Tempat"/>
-      <!-- <OrganisasiNewDropdown /> -->
-      <OrganisasiNewDropdownFloatLabel />
-      <OrganisasiNewTextview placeholder="Rangkuman Kegiatan"/>
+    <StackLayout v-if="delayRender" class="off-bottom-border" padding="10 15 0 15">
+        <GridLayout columns="*,*" rows="*">
+            <OrganisasiNewTimepicker col="0" width="45%" horizontalAlignment="left" placeholder="Waktu Mulai" />
+            <OrganisasiNewTimepicker col="1" width="50%" placeholder="Waktu Selesai" />
+        </GridLayout>
+        <OrganisasiNewDatepicker placeholder="Tanggal" />
+        <OrganisasiNewTextfield placeholder="Tempat" />
+        <OrganisasiNewDropdownFloatLabel />
+        <OrganisasiNewTextview placeholder="Rangkuman Kegiatan" />
     </StackLayout>
 
-		<StackLayout
-      v-for="(item, index) in items"
-      :key="index"
-      slot="item">
-				<OrganisasiItemCheckbox
-          :description="item.description"
-          :checked="item.selected"
-          :items="item"
-          :class="index+1 >= items.length ? 'full-border-last-item' : 'off-bottom-border'" />
-		</StackLayout>
-	</StackLayout>
+    <StackLayout v-if="delayRender1" v-for="(item, index) in items" :key="index" slot="item">
+        <OrganisasiItemCheckboxBasic :description="item.description" :checked="item.selected" :items="item" :class="index+1 >= items.length ? 'full-border-last-item' : 'off-bottom-border'" />
+    </StackLayout>
+
+</StackLayout>
+
 </template>
 
 <script>
-  export default {
-    computed: {
-      items(){
-        return this.$store.getters.get_habit_organisasi_payload_description;
-      }
-    }
-  }
+
+import Vue from 'nativescript-vue'
+
+export default {
+    data() {
+            return {
+                delayRender: false, // optimasi agar rendering cepat, jadi di v-if=true nunggu
+                delayRender1: false, // optimasi agar rendering cepat, jadi di v-if=true nunggu
+
+                // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                // untuk mengakses event onSubmit() dari parent->child perlu mengirim bus.$event
+                // untuk mengetahui jika parent sedang memanggil event
+                bus: new Vue(),
+                // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            }
+        },
+        mounted() {
+            setTimeout(() => {
+                this.delayRender = true;
+            }, 100);
+            setTimeout(() => {
+                this.delayRender1 = true;
+            }, 200);
+        },
+        computed: {
+            items() {
+                return this.$store.getters.get_habit_organisasi_payload_description;
+            }
+        },
+        methods: {
+            onNext() {
+                // console.log(this.$refs.dataform.nativeView)
+                console.log('onSubmit')
+                    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    // untuk mengakses event onSubmit() dari parent->child perlu mengirim bus.$event
+                    // untuk mengetahui jika parent sedang memanggil event
+                this.bus.$emit('onSubmitParent')
+                    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            },
+        }
+}
+
 </script>

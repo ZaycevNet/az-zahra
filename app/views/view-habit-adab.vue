@@ -1,36 +1,10 @@
 <style scoped>
 
-/* .full-border-last-item {
-    border-width: 1;
-    border-color: #28BAAA;
-    border-bottom-left-radius: 5;
-    border-bottom-right-radius: 5;
-}
-
-.off-top-border {
-    border-width: 1;
-    border-color: #28BAAA;
-    border-top-width: 0;
-}
-
-.off-bottom-border {
-    border-width: 1;
-    border-color: #28BAAA;
-    border-bottom-width: 0;
-}
-
-.off-top-bottom-border {
-    border-width: 1;
-    border-color: #28BAAA;
-    border-top-width: 0;
-    border-bottom-width: 0;
-} */
-
 .tabviewitem-container {
   padding-bottom: 10;
 }
 
-ActionBar {
+ActionBar, .action-bar {
     background-color: #28ADAA;
     padding-left: 0px;
     android-elevation: 0;
@@ -72,21 +46,33 @@ TabView {
 
 <template>
 
-<Page @loaded="onNavigatingTo">
-
+<Page>
     <ActionBar color="white">
         <GridLayout width="100%" columns="auto, *, 60%">
-            <!-- <Ripple rippleColor="orange" @tap="onNavigationButtonTap"> -->
+            <Ripple rippleColor="#28ADAA" @tap="onBack">
             <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
-            <!-- </Ripple> -->
+            </Ripple>
             <Label class="action-bar-title" text="Kebiasaan" col="1" />
             <!-- <Label class="action-bar-right" text="1/2" col="2" /> -->
         </GridLayout>
     </ActionBar>
 
-    <StackLayout>
+    <StackLayout >
+
+        <!-- jika menggunakan showModal, ini pengganti ActionBar -->
+        <StackLayout height="50" class="action-bar" color="white">
+            <GridLayout width="100%" columns="auto, *, 60%">
+                <Ripple rippleColor="#28ADAA" @tap="onBack">
+                  <Label verticalAlignment="middle" marginLeft="12.5" :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
+                </Ripple>
+                <Label class="action-bar-title" text="Kebiasaan" col="1" />
+            </GridLayout>
+        </StackLayout>
+
         <HabitHeadline :habit="$store.getters.get_habit_adab" />
+        <StackLayout   v-if="!rendering">
         <TabView
+
             ref="tabview"
             id="tabview"
             :selectedIndex="selectedIndex"
@@ -148,6 +134,7 @@ TabView {
               </ScrollView>
             </TabViewItem> -->
         </TabView>
+      </StackLayout>
     </StackLayout>
 </Page>
 
@@ -161,25 +148,49 @@ import { Statusbar } from "nativescript-plugin-statusbar";
 let status = new Statusbar();
 
 export default {
+    props: {
+      routeProps: {
+        default: () => ({
+            origin: "before route", // pada dasarnya data inspeksi masih invalid (belum divalidasi oleh
+        })
+      }
+    },
     data() {
             return {
+              rendering: true,
                 selectedIndex: 0,
-
             }
         },
         mounted(){
+          const application = require('tns-core-modules/application');
+          application.android.on('activityBackPressed', args => {
+
+            // this.rendering = true; // jika v-if gunakan pada tabview yang sudah ke render, akan error
+            args.cancel = true //
+
+            this.$modal.close("Aku Pulang")
+            // this.$navigateBack();
+
+            console.log("this.rendering", this.rendering)
+          })
+
+          setTimeout(() => {
+            this.rendering = false;
+          }, 500);
           // console.log(this.$store)
           // alert(this.$refs.tabviewitem.nativeView.fontSize)
+
+          status.setNavigationBarColor("white");
+          status.setStatusBarColor("#28ADAA");
         },
         methods: {
-            onNavigatingTo(args) {
-                const page = args.object;
+          onBack(){
+            // alert(this.routeProps.origin);
+            // this.$router.replace('/');
 
-                // status.enableFullScreen.leanBack();
-                status.setNavigationBarColor("#28ADAA");
-                status.setStatusBarColor("#28ADAA");
-            },
-
+            this.$modal.close("Aku Pulang")
+            // this.$navigateBack();
+          },
             // TABVIEW
             onSelectedIndexChanged: function(args) {
 
@@ -191,6 +202,8 @@ export default {
             // BADGE UNTUK TABVIEW
             // CSS yang diimplementasikan ada di app.scss
             onTabViewLoaded(args) {
+              if(args.object == undefined) return;
+
                 const tabView = args.object;
                 if (isIOS) {
                     tabView.items.forEach((item) => {
@@ -225,6 +238,8 @@ export default {
                 }
             },
             onTabViewUnloaded(args) {
+                if(args.object == undefined) return;
+
                 const tabView = args.object;
                 if (isAndroid) {
                     const nativeTabView = tabView._tabLayout.getChildAt(0);

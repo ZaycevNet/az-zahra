@@ -9,15 +9,6 @@ const PageHabitAdab = resolve => {
     )
 }
 
-const PageHabitSholat = resolve => {
-    require.ensure(
-        ['./page-habit-sholat'],
-        () => {
-            resolve(require('./page-habit-sholat'))
-        }, 'page-habit-sholat'
-    )
-}
-
 const PageHabitOrganisasiNew = resolve => {
     require.ensure(
         ['./page-habit-organisasi-new'],
@@ -27,6 +18,15 @@ const PageHabitOrganisasiNew = resolve => {
     )
 }
 
+const PageHabitOrganisasi = resolve => {
+    require.ensure(
+        ['./page-habit-organisasi'],
+        () => {
+            resolve(require('./page-habit-organisasi'))
+        }, 'page-habit-organisasi'
+    )
+}
+
 Vue.component('PageHabitAdab', PageHabitAdab)
-Vue.component('PageHabitSholat', PageHabitSholat)
 Vue.component('PageHabitOrganisasiNew', PageHabitOrganisasiNew)
+Vue.component('PageHabitOrganisasi', PageHabitOrganisasi)
