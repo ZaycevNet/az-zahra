@@ -1,10 +1,7 @@
 <style scoped>
 
-.tabviewitem-container {
-  padding-bottom: 10;
-}
-
-ActionBar, .action-bar {
+ActionBar,
+.action-bar {
     background-color: #28ADAA;
     padding-left: 0px;
     android-elevation: 0;
@@ -31,123 +28,123 @@ ActionBar, .action-bar {
     width: 30;
 }
 
+.tabviewitem-container {
+    padding-bottom: 10;
+}
+
 TabView > * {
-  text-transform: none;
+    text-transform: none;
 }
 
 TabView {
-  /* selected-tab-text-color: $theme-primary-color;
+    /* selected-tab-text-color: $theme-primary-color;
   border-bottom-color: $theme-primary-color;
   android-selected-tab-highlight-color: $theme-primary-color; */
-  font-size: 15;
+    font-size: 15;
 }
 
 </style>
 
 <template>
 
-<Page>
+<Page actionBarHidden="false">
+
     <ActionBar color="white">
         <GridLayout width="100%" columns="auto, *, 60%">
             <Ripple rippleColor="#28ADAA" @tap="onBack">
-            <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
+                <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
             </Ripple>
             <Label class="action-bar-title" text="Kebiasaan" col="1" />
             <!-- <Label class="action-bar-right" text="1/2" col="2" /> -->
         </GridLayout>
     </ActionBar>
 
-    <StackLayout >
+
+    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
-        <StackLayout height="50" class="action-bar" color="white">
-            <GridLayout width="100%" columns="auto, *, 60%">
-                <Ripple rippleColor="#28ADAA" @tap="onBack">
-                  <Label verticalAlignment="middle" marginLeft="12.5" :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
-                </Ripple>
-                <Label class="action-bar-title" text="Kebiasaan" col="1" />
-            </GridLayout>
-        </StackLayout>
+        <!-- <ModalActionbar @onBack="onBack" /> -->
 
-        <HabitHeadline :habit="$store.getters.get_habit_adab" />
-        <StackLayout   v-if="!rendering">
-        <TabView
+        <AdabHeadline habit="Adab Islami" />
+        <StackLayout v-if="!rendering0">
 
-            ref="tabview"
-            id="tabview"
-            :selectedIndex="selectedIndex"
-            @selectedIndexChange="onSelectedIndexChanged"
-            @loaded="onTabViewLoaded"
-            @unloaded="onTabViewUnloaded"
-            height="100%"
-            tabTextFontSize="15"
-            selectedTabTextColor="white"
-            androidSelectedTabHighlightColor="white"
-            tabTextColor="rgb(255,255,255,0.5)"
-            tabBackgroundColor="#28BAAA"
-            iosIconRenderingMode="alwaysOriginal">
+            <TabView ref="tabview" id="tabview" :selectedIndex="selectedIndex" @selectedIndexChange="onSelectedIndexChanged" @loaded="onTabViewLoaded" @unloaded="onTabViewUnloaded" height="100%" tabTextFontSize="15" selectedTabTextColor="white" androidSelectedTabHighlightColor="white"
+            tabTextColor="rgb(255,255,255,0.5)" tabBackgroundColor="#28BAAA" iosIconRenderingMode="alwaysOriginal">
 
-            <TabViewItem
+                <!-- <TabViewItem
               v-for="(item, index) in $store.getters.items_payload_habit.payload_title"
               :key="index"
               :title="item.title" bageValue="" wrapContent="false">
               <ScrollView height="100%" scrollBarIndicatorVisible="false">
                   <PageHabitAdab :items="item.payload_subtitle" class="tabviewitem-container"/>
               </ScrollView>
-            </TabViewItem>
-
-
-
-            <!-- <TabViewItem title="Diri Sendiri" bageValue="" wrapContent="false">
-              <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                  <HabitAdabAlat class="tabviewitem-container"/>
-              </ScrollView>
-            </TabViewItem>
-            <TabViewItem title="Ayah/Ibu" bageValue="" wrapContent="false">
-              <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                  <HabitAdabAlat class="tabviewitem-container"/>
-              </ScrollView>
-            </TabViewItem>
-            <TabViewItem title="Saudara" bageValue="" wrapContent="false">
-              <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                  <HabitAdabAlat class="tabviewitem-container"/>
-              </ScrollView>
-            </TabViewItem>
-            <TabViewItem title="Kerabat" bageValue="" wrapContent="false">
-              <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                  <HabitAdabAlat class="tabviewitem-container"/>
-              </ScrollView>
-            </TabViewItem>
-            <TabViewItem title="Guru" bageValue="" wrapContent="false">
-              <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                  <HabitAdabAlat class="tabviewitem-container"/>
-              </ScrollView>
-            </TabViewItem>
-            <TabViewItem title="Orang Lain" bageValue="" wrapContent="false">
-              <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                  <HabitAdabAlat class="tabviewitem-container"/>
-              </ScrollView>
-            </TabViewItem>
-            <TabViewItem title="Alat/Tempat" bageValue="" wrapContent="false">
-              <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                  <HabitAdabAlat class="tabviewitem-container"/>
-              </ScrollView>
             </TabViewItem> -->
-        </TabView>
-      </StackLayout>
+
+
+
+                <TabViewItem title="Diri Sendiri" bageValue="" wrapContent="false">
+                    <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                        <PageHabitAdab v-if="tab0" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                    </ScrollView>
+                </TabViewItem>
+                <TabViewItem title="Ayah/Ibu" bageValue="" wrapContent="false">
+                    <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                        <PageHabitAdab v-if="tab1" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                    </ScrollView>
+                </TabViewItem>
+                <TabViewItem title="Saudara" bageValue="" wrapContent="false">
+                    <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                        <PageHabitAdab v-if="tab2" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                    </ScrollView>
+                </TabViewItem>
+                <TabViewItem title="Kerabat" bageValue="" wrapContent="false">
+                    <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                        <PageHabitAdab v-if="tab3" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                    </ScrollView>
+                </TabViewItem>
+                <TabViewItem title="Guru" bageValue="" wrapContent="false">
+                    <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                        <PageHabitAdab v-if="tab4" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                    </ScrollView>
+                </TabViewItem>
+                <TabViewItem title="Orang Lain" bageValue="" wrapContent="false">
+                    <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                        <PageHabitAdab v-if="tab5" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                    </ScrollView>
+                </TabViewItem>
+                <TabViewItem title="Alat/Tempat" bageValue="" wrapContent="false">
+                    <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                        <PageHabitAdab v-if="tab6" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                    </ScrollView>
+                </TabViewItem>
+            </TabView>
+        </StackLayout>
     </StackLayout>
 </Page>
 
 </template>
 
 <script>
-import { Label } from 'ui/label';
-import { isIOS, isAndroid } from 'platform';
-import { ContentView } from 'ui/content-view';
-import { Statusbar } from "nativescript-plugin-statusbar";
-let status = new Statusbar();
+
+import {
+    Label
+}
+from 'ui/label';
+import {
+    isIOS, isAndroid
+}
+from 'platform';
+import {
+    ContentView
+}
+from 'ui/content-view';
+// import { Statusbar } from "nativescript-plugin-statusbar";
+// let status = new Statusbar();
+
+const delayrendering = require("@/mixins/delayrendering");
 
 export default {
+    mixins: [delayrendering],
     // props: {
     //   routeProps: {
     //     default: () => ({
@@ -156,41 +153,54 @@ export default {
     //   }
     // },
     data() {
-            return {
-              rendering: true,
-                selectedIndex: 0,
-            }
-        },
-        mounted(){
-          const application = require('tns-core-modules/application');
-          application.android.on('activityBackPressed', args => {
+        return {
+            selectedIndex: 0,
 
-            // this.rendering = true; // jika v-if gunakan pada tabview yang sudah ke render, akan error
+            tab0: false,
+            tab1: false,
+            tab2: false,
+            tab3: false,
+            tab4: false,
+            tab5: false,
+            tab6: false,
+        }
+    },
+    mounted() {
+        const application = require('tns-core-modules/application');
+        application.android.on('activityBackPressed', args => {
+
+            new Promise(resolve => {
+                this.rendering0 = true;
+                resolve();
+            }).then(result => {
+                this.$navigateBack();
+                // this.$modal.close("Aku Pulang")
+            });
+
             args.cancel = true //
+        })
 
-            this.$modal.close("Aku Pulang")
-            // this.$navigateBack();
+        // setTimeout(() => {
+        //   this.rendering = false;
+        // }, 500);
+        // console.log(this.$store)
+        // alert(this.$refs.tabviewitem.nativeView.fontSize)
 
-            console.log("this.rendering", this.rendering)
-          })
-
-          setTimeout(() => {
-            this.rendering = false;
-          }, 500);
-          // console.log(this.$store)
-          // alert(this.$refs.tabviewitem.nativeView.fontSize)
-
-          status.setNavigationBarColor("white");
-          status.setStatusBarColor("#28ADAA");
-        },
-        methods: {
-          onBack(){
-            // alert(this.routeProps.origin);
-            // this.$router.replace('/');
-
-            this.$modal.close("Aku Pulang")
-            // this.$navigateBack();
-          },
+        // this.statusbar.setNavigationBarColor("white");
+        // this.statusbar.setStatusBarColor("#28ADAA");
+    },
+    methods: {
+        onBack() {
+                // alert(this.routeProps.origin);
+                // this.$router.replace('/');
+                new Promise(resolve => {
+                    this.rendering0 = true;
+                    resolve();
+                }).then(result => {
+                    this.$navigateBack();
+                    // this.$modal.close("Aku Pulang")
+                });
+            },
             // TABVIEW
             onSelectedIndexChanged: function(args) {
 
@@ -198,11 +208,23 @@ export default {
                 this.selectedIndex = newIndex;
                 console.log('Current tab index: ' + newIndex, this.selectedIndex);
 
+                // this.tab0 = false;
+                // this.tab1 = false;
+                // this.tab2 = false;
+                // this.tab3 = false;
+                // this.tab4 = false;
+                // this.tab5 = false;
+                // this.tab6 = false;
+
+                setTimeout(() => {
+                    this['tab' + newIndex] = true
+                }, 100)
+
             },
             // BADGE UNTUK TABVIEW
             // CSS yang diimplementasikan ada di app.scss
             onTabViewLoaded(args) {
-              if(args.object == undefined) return;
+                if (args.object == undefined) return;
 
                 const tabView = args.object;
                 if (isIOS) {
@@ -238,7 +260,7 @@ export default {
                 }
             },
             onTabViewUnloaded(args) {
-                if(args.object == undefined) return;
+                if (args.object == undefined) return;
 
                 const tabView = args.object;
                 if (isAndroid) {
@@ -278,7 +300,7 @@ export default {
                 }
             },
 
-        }
+    }
 }
 
 </script>

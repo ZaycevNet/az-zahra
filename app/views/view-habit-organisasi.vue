@@ -1,5 +1,7 @@
 <style scoped>
-ActionBar, .action-bar {
+
+ActionBar,
+.action-bar {
     background-color: #28ADAA;
     padding-left: 0px;
     android-elevation: 0;
@@ -27,127 +29,113 @@ ActionBar, .action-bar {
 }
 
 .fab-button {
-  height: 50;
-  /* width: 70; /// this is required on iOS - Android does not require width so you might need to adjust styles */
-  width: 50;
-  margin: 15;
-  background-color: #ff4081;
-  horizontal-align: right;
-  vertical-align: bottom;
+    height: 50;
+    /* width: 70; /// this is required on iOS - Android does not require width so you might need to adjust styles */
+    width: 50;
+    margin: 15;
+    background-color: #ff4081;
+    horizontal-align: right;
+    vertical-align: bottom;
 }
+
 </style>
 
 <template>
-</Frame>
 
-	<Page>
+<Page actionBarHidden="false">
     <ActionBar color="white">
         <GridLayout width="100%" columns="auto, *, 60%">
             <Ripple rippleColor="#28ADAA" @tap="onBack">
-              <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
+                <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
             </Ripple>
             <Label class="action-bar-title" text="Kebiasaan" col="1" />
             <!-- <Label class="action-bar-right" text="1/2" col="2" /> -->
         </GridLayout>
     </ActionBar>
 
-    <StackLayout >
-      <!-- jika menggunakan showModal, ini pengganti ActionBar -->
-      <StackLayout height="50" class="action-bar" color="white">
-          <GridLayout width="100%" columns="auto, *, 60%">
-              <Ripple rippleColor="#28ADAA" @tap="onBack">
-                <Label verticalAlignment="middle" marginLeft="12.5" :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
-              </Ripple>
-              <Label class="action-bar-title" text="Kebiasaan" col="1" />
-          </GridLayout>
-      </StackLayout>
+    <StackLayout @loaded="onLoaded_Rendering(0, 250)">
+        <!-- jika menggunakan showModal, ini pengganti ActionBar -->
+        <!-- <ModalActionbar @onBack="onBack" /> -->
 
 
-      <HabitHeadlineNonTab habit="Dakwah & Berorganisasi" />
-      <GridLayout rows="*,auto" v-if="!rendering">
+        <HabitHeadlineNonTab habit="Dakwah & Berorganisasi" />
+        <GridLayout rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 500)">
 
-    		<ScrollView height="100%" paddingBottom="75" v-if="!rendering1">
-          <StackLayout >
-            <PageHabitOrganisasi v-for="(i, index) in itemList" :key="index" v-if="index <= renderingLimit"  :renderingTime="index*renderingChild" class="tabviewitem-container"/>
-          </StackLayout>
-    		</ScrollView>
-        <Fab
-          @tap=""
-          rowSpan="2"
-          icon="~/assets/icons/baseline_add_white.png"
-          rippleColor="#f1f1f1"
-          class="fab-button"
-        ></Fab>
-      </GridLayout>
+            <ScrollView height="100%" v-if="!rendering1">
+                <StackLayout  paddingBottom="75">
+                    <PageHabitOrganisasi v-for="(i, index) in itemList" :key="index" :index="index" :renderingTime="index*renderingChild" class="tabviewitem-container" />
+                </StackLayout>
+            </ScrollView>
+            <Fab @tap="" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
+        </GridLayout>
     </StackLayout>
-	</Page>
-</Frame>
+</Page>
+
 </template>
 
 <script>
-import { Statusbar } from "nativescript-plugin-statusbar";
-let status = new Statusbar();
+
+// import { Statusbar } from "nativescript-plugin-statusbar";
+// let status = new Statusbar();
+
+const delayrendering = require("@/mixins/delayrendering");
 
 export default {
-  // props: {
-  //   routeProps: {
-  //     default: () => ({
-  //         origin: "before route", // pada dasarnya data inspeksi masih invalid (belum divalidasi oleh
-  //     })
-  //   }
-  // },
-  data() {
-    return {
-      rendering: true,
-      rendering1: true,
-      renderingChild: 5,
-      renderingLimit: 25,
+    mixins: [delayrendering],
+    // props: {
+    //   routeProps: {
+    //     default: () => ({
+    //         origin: "before route", // pada dasarnya data inspeksi masih invalid (belum divalidasi oleh
+    //     })
+    //   }
+    // },
+    data() {
+        return {
+            renderingChild: 5,
 
-      itemList: function(){
-          let n = [];
-          for (var i = 0; i < 100; i++) {
-            n.push(i+1);
-          }
-          return n;
-      }(),
-    }
-  },
-  methods: {
-    onBack(){
-      this.rendering = true;
-      // alert(this.routeProps.origin);
-      // this.$router.replace('/');
-
-      this.$modal.close("Aku Pulang")
-      // this.$navigateBack();
+            itemList: function() {
+                let n = [];
+                for (var i = 0; i < 30; i++) {
+                    n.push(i + 1);
+                }
+                return n;
+            }(),
+        }
     },
-    onItemTap({ item }) {
-       console.log(`Tapped on ${item.name}`);
-     },
-  },
-  mounted(){
-    const application = require('tns-core-modules/application');
-    application.android.on('activityBackPressed', args => {
-      this.rendering = true;
-      args.cancel = true //
+    methods: {
+        onBack() {
+              new Promise(resolve => {
+                  this.rendering0 = true;
+                  this.rendering1 = true;
+                  resolve();
+              }).then(result => {
+                  this.$navigateBack();
+                  // this.$modal.close("Aku Pulang")
+              });
+            },
+            onItemTap({
+                item
+            }) {
+                console.log(`Tapped on ${item.name}`);
+            },
+    },
+    mounted() {
+        const application = require('tns-core-modules/application');
+        application.android.on('activityBackPressed', args => {
+            new Promise(resolve => {
+                this.rendering0 = true;
+                this.rendering1 = true;
+                resolve();
+            }).then(result => {
+                this.$navigateBack();
+                // this.$modal.close("Aku Pulang")
+            });
 
-      this.$modal.close("Aku Pulang")
-      // this.$navigateBack();
+            args.cancel = true //
+        })
 
-      console.log("this.rendering", this.rendering)
-    })
-
-    setTimeout(() => {
-      this.rendering = false
-    }, 250);
-
-    setTimeout(() => {
-      this.rendering1 = false
-    }, 500);
-
-    status.setNavigationBarColor("white");
-    status.setStatusBarColor("#28ADAA");
-  },
+        // this.statusbar.setStatusBarColor("#28ADAA");
+    },
 }
 
 </script>

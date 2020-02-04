@@ -4,32 +4,21 @@ Button {
 	background-color: blue;
 	color: white;
 }
+
 </style>
 
 <template>
 	<Page actionBarHidden="true">
 		<StackLayout>
-			<Button
-				v-for="(page, i) in pages"
-				@tap="goToPage(page)"
-				class="drawer-item"
-				:text="page.name"
-				:key="i"
-			/>
 
-			<Button
-				v-for="(page, i) in pagesRoute"
-				@tap="goToPageRoute(page)"
-				class="drawer-item"
-				:text="page.name"
-				:key="i"
-			/>
+				<Button
+					v-for="(page, i) in pages"
+					@tap="goToPage(page)"
+					class="drawer-item"
+					:text="page.component"
+					:key="i"
+				/>
 
-			<KeepAlive>
-				<!-- <Frame> -->
-					<router-view></router-view>
-				<!-- </Frame> -->
-			</KeepAlive>
 		</StackLayout>
 	</Page>
 </template>
@@ -39,7 +28,7 @@ Button {
 export default {
 	data() {
     return {
-			berandaPage: true,
+			// berandaPage: true,
       // define our pages, making sure the component matches that defined in /app/router/index.js
       pages: [
         {
@@ -54,70 +43,51 @@ export default {
           name: "ViewHabitOrganisasi",
           component: "habit-organisasi", //this.$views.ViewHabitOrganisasi
         },
+				{
+          name: "ViewHabitMejelis",
+          component: "habit-majelis", //this.$views.ViewHabitOrganisasi
+        },
 			],
-			pagesRoute: [
-        {
-          name: "RouterViewHabitAdab",
-          component: "habit-adab", //this.$views.ViewHabitAdab
-        },
-				{
-          name: "RouterViewHabitOrganisasiNew",
-          component: "habit-organisasi-new", //this.$views.ViewHabitOrganisasiNew
-        },
-				{
-          name: "RouterViewHabitOrganisasi",
-          component: "habit-organisasi", //this.$views.ViewHabitOrganisasi
-        },
-			]
 		}
-	},
-	watch: {
-		"$route.path":function(val){
-			this.berandaPage = false;
-			if(val == "/") {
-				this.berandaPage = true
-			}
-		}
-	},
-	mounted(){
-		// alert(this.$views);
-		// console.log(this.$views);
 	},
 	methods: {
-		goToPageRoute(pageComponent){
-
-			console.log(pageComponent.component)
-			this.$router.push({ name:pageComponent.component });
-
-			// this.$router.push({
-			// 	path:"/"+pageComponent,
-			// 	query: {
-			// 		// dynamic props
-			// 		routeProps: {
-			// 			origin: this.$route.path,
-			// 		}
-			// 	}
-			// });
-		},
     goToPage(pageComponent) {
-			this.$showModal(this.$views[pageComponent.name], {
-					fullscreen: true,
-					clearHistory: true,
-					transition: {
-						name: 'flipRight',
-						duration: 100,
-					},
-					props: {
-							parentPayload: {
-									// title,
-									// color,
-							}
-					}
-			}).then(data => {
-					console.log(data)
-					// this.$store.commit("gotoRoute", false)
+			// this.$showModal(this.$views[pageComponent.name], {
+			// 		fullscreen: false,
+			// 		transition: 'flipRight',
+			// 		// clearHistory: true,
+			// 		// transition: {
+			// 		// 	name: 'flipRight',
+			// 		// 	duration: 100,
+			// 		// },
+			// 		props: {
+			// 				parentPayload: {
+			// 						// title,
+			// 						// color,
+			// 				}
+			// 		}
+			// }).then(data => {
+			// 		console.log(data)
+			// 		// this.$store.commit("gotoRoute", false)
+			// });
+
+      this.$navigateTo(this.$views[pageComponent.name], {
+					transition: 'slideLeft'
+
+					// curl (same as curlUp) (iOS only)
+					// curlUp (iOS only)
+					// curlDown (iOS only)
+					// explode (Android Lollipop(21) and up only)
+					// fade
+					// flip (same as flipRight)
+					// flipRight
+					// flipLeft
+					// slide (same as slideLeft)
+					// slideLeft
+					// slideRight
+					// slideTop
+					// slideBottom
 			});
-      // this.$navigateTo(this.$views[pageComponent.name]);
 			return
 
     }

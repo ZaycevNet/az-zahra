@@ -1,0 +1,118 @@
+.fa {
+	/*
+    font-size: 14;
+    color: green;
+	*/
+    font-family: 'FontAwesome', 'fontawesome-webfont';
+}
+.ion {
+	/*
+    font-size: 14;
+    color: green;
+	*/
+    font-family: 'ionicons';
+}
+.ico {
+	/*
+    font-size: 14;
+    color: green;
+	*/
+    font-family: 'icomoon';
+}
+
+.camera-take {
+    background-color: white;
+    border-radius: 50%;
+	border-width: 2;
+	border-color: #33CCCC;
+    color: #33CCCC;
+    font-size: 24;
+    vertical-align: middle;
+    width: auto;
+}
+.camera-take:active {
+	background-color: #33CCCC;
+	color: white;
+}
+
+.confirmation-toolbar {
+	color:white;
+	font-size: 15;
+	background-color: rgb(0,102,203);
+}
+
+.coverImage {
+    background-image: url('~/assets/patterns/01.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.beranda-grid-layout-border {
+  border-color: #33CCCC;
+  border-width: 1;
+  border-radius: 5;
+}  
+
+.beranda-thumbnail {
+    background-image: url('~/ui/assets/images/menu-1.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.franklin {
+	font-family: "Franklin Gothic Book";
+}
+
+.onclick:active {
+    background-color: white;
+    color: #009AAA;
+    border-color: rgba(0, 153, 170, 0.925);
+}
+
+ActionBar {
+    background-color: #53ba82;
+    color: #ffffff;
+}
+
+.listview-hightlight:active {
+	background-color:black;
+}
+
+.title {
+    text-align: left;
+    padding-left: 16;
+}
+
+.message {
+    vertical-align: center;
+    text-align: center;
+    font-size: 20;
+    color: #333333;
+}
+
+.drawer-close-button {
+  margin-top: 20;
+  padding: 10 10 10 10;
+  background-color: #53ba82;
+  color: #ffffff;
+}
+
+.drawer-header {
+    padding: 50 16 16 16;
+    margin-bottom: 16;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 24;
+}
+
+.drawer-item {
+    padding: 8 16;
+    color: #333333;
+    font-size: 16;
+}
+
+#confirmation-bottom-toolbar {
+    opacity: 1;
+}
