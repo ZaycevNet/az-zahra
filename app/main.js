@@ -1,9 +1,9 @@
 require('@/ui/components')
 require('@/ui/widgets')
 require('@/pages')
-require('@/mixins/fontawesome')
 require("@/store/maps");
 require('@/mixins')
+require('@/filters')
 
 import Vue from 'nativescript-vue'
 import VueDevtools from 'nativescript-vue-devtools'
@@ -28,7 +28,7 @@ Vue.use(RadListView);
 // import PickerField from "nativescript-picker/vue";
 // Vue.use(PickerField);
 
-import router from './router';
+// import router from './router';
 import store from "./store/index";
 
 // import SideDrawerApp from '@/components/SideDrawerApp.vue'
@@ -46,6 +46,7 @@ import store from "./store/index";
 // import Main from "@/views/research/dropdown";
 
 // import Main from "@/organisasi-new-raddataform";
+// import Main from "@/views/radiobutton";
 
 import views from "./view";
 Vue.prototype.$views = views;
@@ -73,7 +74,8 @@ if(TNS_ENV !== 'production') {
   //Vue.use(VueDevtools)
 }
 // Prints Vue logs when --env.production is *NOT* set while building
-//Vue.config.silent = (TNS_ENV === 'production')
+Vue.config.silent = (TNS_ENV === 'production')
+
 Vue.registerElement("DropDown", () => require("nativescript-drop-down/drop-down").DropDown);
 Vue.registerElement('RadSideDrawer', () => require('nativescript-ui-sidedrawer').RadSideDrawer);
 Vue.registerElement('Gradient', () => require('nativescript-gradient').Gradient);
@@ -107,10 +109,10 @@ Vue.filter("fonticon", fonticon);
 
 import * as application from 'tns-core-modules/application'
 
-router.push('/home');
+// router.push('/home');
 const app = new Vue({
-  name:"THIRD COMMIT",
-
+  name:"THIRD COMMIT 24635",
+  store,
   data(){
     return {
     }
@@ -130,12 +132,12 @@ const app = new Vue({
       // args.cancel = false //
     })
   },
-  watch: {
-    "$route.path":function(val) {
-      console.log(val)
-      // console.log(router.history)
-    }
-  },
+  // watch: {
+  //   "$route.path":function(val) {
+  //     console.log(val)
+  //     // console.log(router.history)
+  //   }
+  // },
 
   // store,
   // router,
@@ -152,6 +154,6 @@ const app = new Vue({
 //   else next()
 // })
 
-router.afterEach((to, from) => {
-  // ...
-})
+// router.afterEach((to, from) => {
+//   // ...
+// })

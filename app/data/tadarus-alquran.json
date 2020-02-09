@@ -1,0 +1,152 @@
+[
+	{
+		"id":"1",
+		"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+		"initial": "HABIT-ADAB-TADARUS",
+
+		"tempat":"Rumah",
+		"waktu":"Siang",
+		"surat":"Pengetahuan",
+		"juz":0,
+		"ayat":"Rumah",
+		"keterangan": "Kesan pesan",
+
+		"type":"0",
+		"interval":"bulanan",
+		"max_point":"5",
+		"countable":"1",
+
+		"payload_description":[
+			{
+				"id":"1",
+				"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+
+				"initial": "HABIT-ADAB-TADARUS",
+				"description":"Saya Tilawah?",
+
+				"max_point":"1",
+				"countable":"1",
+				"selected":false
+			},
+			{
+				"id":"1",
+				"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+
+				"initial": "HABIT-ADAB-TADARUS",
+				"description":"Saya Tadabur?",
+
+				"max_point":"1",
+				"countable":"1",
+				"selected":false
+			},
+			{
+				"id":"1",
+				"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+
+				"initial": "HABIT-ADAB-TADARUS",
+				"description":"Saya Tahqiq?",
+
+				"max_point":"1",
+				"countable":"1",
+				"selected":false
+			},
+			{
+				"id":"1",
+				"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+
+				"initial": "HABIT-ADAB-TADARUS",
+				"description":"Saya Tartil?",
+
+				"max_point":"1",
+				"countable":"1",
+				"selected":false
+			},
+			{
+				"id":"1",
+				"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+
+				"initial": "HABIT-ADAB-TADARUS",
+				"description":"Saya Tadwir?",
+
+				"max_point":"1",
+				"countable":"1",
+				"selected":false
+			}
+		]
+	},
+	{
+		"id":"1",
+		"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+		"initial": "HABIT-ADAB-TADARUS",
+
+		"tempat":"Rumah",
+		"waktu":"Siang",
+		"surat":"Pengetahuan",
+		"juz":0,
+		"ayat":"Rumah",
+		"keterangan": "Kesan pesan",
+
+		"type":"0",
+		"interval":"bulanan",
+		"max_point":"5",
+		"countable":"1",
+
+		"payload_description":[
+			{
+				"id":"1",
+				"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+
+				"initial": "HABIT-ADAB-TADARUS",
+				"description":"Saya Tilawah?",
+
+				"max_point":"1",
+				"countable":"1",
+				"selected":false
+			},
+			{
+				"id":"1",
+				"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+
+				"initial": "HABIT-ADAB-TADARUS",
+				"description":"Saya Tadabur?",
+
+				"max_point":"1",
+				"countable":"1",
+				"selected":false
+			},
+			{
+				"id":"1",
+				"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+
+				"initial": "HABIT-ADAB-TADARUS",
+				"description":"Saya Tahqiq?",
+
+				"max_point":"1",
+				"countable":"1",
+				"selected":false
+			},
+			{
+				"id":"1",
+				"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+
+				"initial": "HABIT-ADAB-TADARUS",
+				"description":"Saya Tartil?",
+
+				"max_point":"1",
+				"countable":"1",
+				"selected":false
+			},
+			{
+				"id":"1",
+				"code":"729ca0eb-0000-388e-95bb-120ffea77000",
+
+				"initial": "HABIT-ADAB-TADARUS",
+				"description":"Saya Tadwir?",
+
+				"max_point":"1",
+				"countable":"1",
+				"selected":false
+			}
+		]
+	}
+]

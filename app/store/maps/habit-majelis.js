@@ -1,5 +1,6 @@
 const {
     mapActions,
+    mapMutations,
     mapGetters
 } = require('vuex')
 
@@ -25,15 +26,16 @@ const map_habit_majelis = {
 					get_habit_majelis_payload,
 				  get_habit_majelis_payload_length,
 				  get_habit_majelis_payload_checked,
-
-				  set_habit_majelis_payload,
-				  set_habit_majelis_payload_checked,
         }),
     },
     methods: {
         ...mapActions({
 				  action_habit_majelis_payload
         }),
+        ...mapMutations({
+          set_habit_majelis_payload,
+				  set_habit_majelis_payload_checked,
+        })
     },
 }
 

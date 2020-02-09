@@ -1,0 +1,36 @@
+[
+	{
+		"id":"1",
+		"code":"729ca0eb-2422-388e-95bb-120ffea771e1",
+		"initial": "HABIT-MEMBACA-UMUM",
+
+		"tempat":"Rumah",
+		"waktu":"Siang",
+		"topik":"Pengetahuan",
+		"durasi":0,
+		"rangkuman":"Rumah",
+
+		"type":"0",
+		"interval":"bulanan",
+		"max_point":"5",
+		"countable":"1",
+		"selected":true
+	},
+	{
+		"id":"1",
+		"code":"729ca0eb-2422-388e-95bb-120ffea771e1",
+		"initial": "HABIT-MEMBACA-UMUM",
+
+		"tempat":"Rumah",
+		"waktu":"Siang",
+		"topik":"Pengetahuan",
+		"durasi":0,
+		"rangkuman":"Rumah",
+
+		"type":"0",
+		"interval":"bulanan",
+		"max_point":"5",
+		"countable":"1",
+		"selected":true
+	}
+]

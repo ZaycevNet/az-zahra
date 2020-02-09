@@ -1,0 +1,12 @@
+const habit_adab_alat_tempat = {
+  get_habit_adab_alat_tempat_payload:"get_habit_adab_alat_tempat_payload",
+  get_habit_adab_alat_tempat_payload_length:"get_habit_adab_alat_tempat_payload_length",
+  get_habit_adab_alat_tempat_payload_checked:"get_habit_adab_alat_tempat_payload_checked",
+
+  set_habit_adab_alat_tempat_payload:"set_habit_adab_alat_tempat_payload",
+  set_habit_adab_alat_tempat_payload_checked:"set_habit_adab_alat_tempat_payload_checked",
+
+  action_habit_adab_alat_tempat_payload:"action_habit_adab_alat_tempat_payload"
+}
+
+module.exports = habit_adab_alat_tempat

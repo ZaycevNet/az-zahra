@@ -30,10 +30,10 @@
 
 <template>
 
-<StackLayout @loaded="onLoaded_Rendering(0, renderingTime)">
-    <AdabAccordion v-if="!rendering0" v-for="(item, index) in items" :key="index" :index="index" :subtitle="item.subtitle" >
+<StackLayout @loaded="onLoaded_Rendering(0, 250)">
+    <AdabAccordion v-if="!rendering0" v-for="(item, index) in items" :key="index" :index="index" :vuex="vuex" :subtitle="item.subtitle" >
         <StackLayout v-for="(_item, _index) in item.payload_description" :key="_index+'a'" slot="item">
-            <AdabItemCheckbox :description="_item.description" :checked="_item.selected" :items="_item" :class="_index+1 >= item.payload_description.length ? 'full-border-last-item' : 'off-bottom-border'" />
+            <AdabItemCheckbox :description="_item.description" :checked="_item.selected" :items="_item" :vuex="vuex" :class="_index+1 >= item.payload_description.length ? 'full-border-last-item' : 'off-bottom-border'" />
         </StackLayout>
     </AdabAccordion>
 </StackLayout>
@@ -45,7 +45,7 @@ const delayrendering = require("@/mixins/delayrendering");
 
 export default {
     mixins: [delayrendering],
-    props: ["items", "renderingTime"],
+    props: ["items", "vuex"],
     data() {
         return {
             // rendering: true,

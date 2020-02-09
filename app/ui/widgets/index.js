@@ -1,6 +1,10 @@
 require("./habit-adab");
+require("./habit-berpikir");
 require("./habit-organisasi");
 require("./habit-majelis");
+require("./habit-membaca");
+require("./habit-tadarus");
+require("./habit-zis");
 
 import Vue from 'nativescript-vue'
 

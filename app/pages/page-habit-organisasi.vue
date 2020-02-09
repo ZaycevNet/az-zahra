@@ -44,20 +44,24 @@
 <template>
 
 <StackLayout @loaded="onLoaded_Rendering(0, 250)">
-    <OrganisasiAccordion v-if="!rendering0" :index="index">
+    <OrganisasiAccordion v-if="!rendering0" v-for="(item, index) in items" :key="index" :index="index">
         <StackLayout slot="item">
             <Gradient direction="top down" colors="#28ADAA, #28BAAA">
                 <StackLayout padding="0 0 10 0">
-                    <OrganisasiItemTextbox title="Tempat" description="..." />
-                    <OrganisasiItemTextbox title="Waktu Mulai" description="..." />
-                    <OrganisasiItemTextbox title="Waktu Selesai" description="..." />
-                    <OrganisasiItemTextbox title="Kegiatan" description="..." />
-                    <OrganisasiItemTextbox title="Rangkuman" description="..." />
+
+                    <OrganisasiItemTextbox title="Tempat" :description="item.tempat" />
+                    <OrganisasiItemTextbox title="Waktu Mulai" :description="item.waktu" />
+                    <OrganisasiItemTextbox title="Waktu Selesai" :description="item.waktu" />
+                    <OrganisasiItemTextbox title="Kegiatan" :description="item.kegiatan" />
+                    <OrganisasiItemTextbox title="Rangkuman" :description="item.rangkuman" />
+
                 </StackLayout>
             </Gradient>
 
             <StackLayout padding="10 0" class="left-right-border">
-                <OrganisasiItemCheckboxReadonly v-for="(item, index) in items" :key="index" :description="item.description" :checked="item.selected"  />
+                <!-- <OrganisasiItemCheckboxReadonly v-for="(item, index) in items" :key="index" :description="item.description" :checked="item.selected"  /> -->
+
+                <OrganisasiItemCheckboxReadonly v-for="(_item, _index) in item.payload_description" :key="_index" :description="_item.description" :checked="_item.selected"/>
             </StackLayout>
 
             <Ripple rippleColor="white">
@@ -85,14 +89,15 @@ const delayrendering = require("@/mixins/delayrendering");
 
 export default {
     mixins: [delayrendering],
-    props: {
-        renderingTime: {
-            default: 10,
-        },
-        index: {
-            type: Number
-        }
-    },
+    props: ["items"],
+    // props: {
+    //     renderingTime: {
+    //         default: 10,
+    //     },
+    //     index: {
+    //         type: Number
+    //     }
+    // },
     data() {
         return {
             rendering: true,
@@ -103,18 +108,12 @@ export default {
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         }
     },
-    computed: {
-        items() {
-            return this.get_habit_organisasi_payload;
-        }
-    },
+    // computed: {
+    //     items() {
+    //         return this.get_habit_organisasi_payload;
+    //     }
+    // },
     methods: {
-        onRendering(args) {
-                console.log(this.renderingTime)
-                setTimeout(() => {
-                    this.rendering = false;
-                }, this.renderingTime)
-            },
             onNext() {
                 // console.log(this.$refs.dataform.nativeView)
                 console.log('onSubmit')

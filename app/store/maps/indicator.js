@@ -1,40 +1,42 @@
 const {
     mapActions,
+    mapMutations,
     mapGetters
 } = require('vuex')
 
 const {
-    habit_majelis
+    indicator
 } = require("@/store/namespaces/index");
 
 const {
-  get_habit_majelis_payload,
-  get_habit_majelis_payload_length,
-  get_habit_majelis_payload_checked,
+  get_indicator_loading,
+	set_indicator_loading,
+	action_indicator_loading,
 
-  set_habit_majelis_payload,
-  set_habit_majelis_payload_checked,
+  get_accordion_first_open,
+	set_accordion_first_open,
+	action_accordion_first_open
 
-  action_habit_majelis_payload
-} = habit_majelis;
+} = indicator;
 
 
-const map_habit_majelis = {
+const map_indicator = {
     computed: {
         ...mapGetters({
-					get_habit_majelis_payload,
-				  get_habit_majelis_payload_length,
-				  get_habit_majelis_payload_checked,
-
-				  set_habit_majelis_payload,
-				  set_habit_majelis_payload_checked,
+          get_indicator_loading,
+          get_accordion_first_open,
         }),
     },
     methods: {
         ...mapActions({
-				  action_habit_majelis_payload
+        	action_indicator_loading,
+          action_accordion_first_open
         }),
+        ...mapMutations({
+          set_accordion_first_open,
+          set_indicator_loading,
+        })
     },
 }
 
-export default map_habit_majelis
+export default map_indicator

@@ -54,19 +54,19 @@ TabView {
             <Ripple rippleColor="#28ADAA" @tap="onBack">
                 <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
             </Ripple>
-            <Label class="action-bar-title" text="Kebiasaan" col="1" />
+            <Label @tap="onBack" class="action-bar-title" text="Kebiasaan" col="1" />
             <!-- <Label class="action-bar-right" text="1/2" col="2" /> -->
         </GridLayout>
     </ActionBar>
 
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
 
         <AdabHeadline habit="Adab Islami" />
-        <StackLayout v-if="!rendering0">
+        <StackLayout v-if="!rendering0" @loaded="onLoad">
 
             <TabView ref="tabview" id="tabview" :selectedIndex="selectedIndex" @selectedIndexChange="onSelectedIndexChanged" @loaded="onTabViewLoaded" @unloaded="onTabViewUnloaded" height="100%" tabTextFontSize="15" selectedTabTextColor="white" androidSelectedTabHighlightColor="white"
             tabTextColor="rgb(255,255,255,0.5)" tabBackgroundColor="#28BAAA" iosIconRenderingMode="alwaysOriginal">
@@ -84,37 +84,41 @@ TabView {
 
                 <TabViewItem title="Diri Sendiri" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                        <PageHabitAdab v-if="tab0" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                      <StackLayout>
+                        <PageHabitAdab v-if="tab0" :items="get_habit_adab_diri_sendiri_payload" vuex="adab_diri_sendiri" class="tabviewitem-container" />
+
+                        <ActivityIndicator v-if="busy" ref="indicator" color="#28ADAA" :busy="busy" @busyChange="onBusyChange" />
+                      </StackLayout>
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Ayah/Ibu" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                        <PageHabitAdab v-if="tab1" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab1" :items="get_habit_adab_orangtua_payload" vuex="adab_orangtua" class="tabviewitem-container" />
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Saudara" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                        <PageHabitAdab v-if="tab2" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab2" :items="get_habit_adab_saudara_payload" vuex="adab_saudara" class="tabviewitem-container" />
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Kerabat" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                        <PageHabitAdab v-if="tab3" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab3" :items="get_habit_adab_kerabat_payload" vuex="adab_kerabat" class="tabviewitem-container" />
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Guru" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                        <PageHabitAdab v-if="tab4" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab4" :items="get_habit_adab_guru_payload" vuex="adab_guru" class="tabviewitem-container" />
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Orang Lain" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                        <PageHabitAdab v-if="tab5" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab5" :items="get_habit_adab_oranglain_payload" vuex="adab_oranglain" class="tabviewitem-container" />
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Alat/Tempat" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                        <PageHabitAdab v-if="tab6" :items="get_habit_adab_diri_sendiri_payload" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab6" :items="get_habit_adab_alat_tempat_payload" vuex="adab_alat_tempat" class="tabviewitem-container" />
                     </ScrollView>
                 </TabViewItem>
             </TabView>
@@ -154,6 +158,8 @@ export default {
     // },
     data() {
         return {
+            busy: true,
+
             selectedIndex: 0,
 
             tab0: false,
@@ -190,6 +196,14 @@ export default {
         // this.statusbar.setStatusBarColor("#28ADAA");
     },
     methods: {
+        onLoad(){
+          setTimeout(() => {
+            this.busy = false;
+          }, 1000)
+        },
+        onBusyChange(event) {
+          console.log(event.value)
+        },
         onBack() {
                 // alert(this.routeProps.origin);
                 // this.$router.replace('/');

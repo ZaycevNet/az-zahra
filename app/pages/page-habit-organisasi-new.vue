@@ -42,11 +42,11 @@
 
 <template>
 
-<StackLayout padding="10 10 10 10" marginBottom="75" @loaded="onLoaded_Rendering(0, 100)">
+<StackLayout padding="10 10 10 10" marginBottom="75" @loaded="onLoaded_Rendering(0, 250)">
 
     <OrganisasiNewSubtitle ref="subtitle" class="subtitle-border" />
 
-    <StackLayout v-if="!rendering0" @loaded="onLoaded_Rendering(1, 100)" class="off-bottom-border" padding="10 15 0 15">
+    <StackLayout v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" class="off-bottom-border" padding="10 15 0 15">
         <GridLayout columns="*,*" rows="*">
             <OrganisasiNewTimepicker col="0" width="45%" horizontalAlignment="left" placeholder="Waktu Mulai" />
             <OrganisasiNewTimepicker col="1" width="50%" placeholder="Waktu Selesai" />
@@ -73,6 +73,7 @@ const delayrendering = require("@/mixins/delayrendering");
 
 export default {
     mixins: [delayrendering],
+    props: ["items"],
     data() {
         return {
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -82,11 +83,11 @@ export default {
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         }
     },
-    computed: {
-        items() {
-            return this.get_habit_organisasi_payload;
-        }
-    },
+    // computed: {
+    //     items() {
+    //         return this.get_habit_organisasi_payload;
+    //     }
+    // },
     methods: {
         onNext() {
             // console.log(this.$refs.dataform.nativeView)

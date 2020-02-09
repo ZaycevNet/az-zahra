@@ -17,8 +17,11 @@
 
 <script>
 
+const accordionItemFirstLoad = require("@/mixins/toast-accordion-item-first-load");
+
 export default {
-	props: ['visibility', 'subtitle','index'],
+  mixins: [accordionItemFirstLoad],
+	props: ['visibility', 'subtitle', 'index', 'vuex', 'bus'],
 	data(){
 		return {
 			iconDown: this.visibility,
@@ -26,56 +29,71 @@ export default {
 	},
 	computed: {
 		counter(){
-			return this.get_habit_adab_diri_sendiri_payload_checked+'/'+this.get_habit_adab_diri_sendiri_payload_length(this.index);
+			return this['get_habit_'+this.vuex+'_payload_checked'](this.index)+'/'+this['get_habit_'+this.vuex+'_payload_length'](this.index);
 			// return this.get_item_only_checked(this.subtitle)+'/'+this.description_length;
 		}
 	},
+	mounted(){
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // untuk meng-trigger onSubmit() dari parent->child perlu mendengar bus.$event
+    // this.bus.$on('autoOpenFirstItem', this.onTapBubble)
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  },
 	methods:{
 		onTapBubble(){
-			this.iconDown = !this.iconDown;
-			this.$emit('onBubbleTriggered', this.iconDown)
 
-			if(this.$refs.icon == undefined) return;
-      if(this.$refs.iconContainer == undefined) return;
+			new Promise(resolve => {
+        this.showToastAccordionChild();
+        setTimeout(() => {
+          resolve();
+        }, 100);
+      }).then(result => {
 
-			// non-reusable
-			// this.$refs.icon.nativeView.animate({
-			//     rotate: this.iconDown ? 180 : 0,
-			//     duration: 250
-			// });
+				this.iconDown = !this.iconDown;
+				this.$emit('onBubbleTriggered', this.iconDown)
 
-			// reusable
-			const rotation = this.$refs.icon.nativeView.createAnimation({
-			    rotate: this.iconDown ? 0 : 180,
-			    duration: 250
-			});
+				if(this.$refs.icon == undefined) return;
+	      if(this.$refs.iconContainer == undefined) return;
 
-			rotation.play()
-			    .then(function () {
-			    console.log("Animation finished");
+				// non-reusable
+				// this.$refs.icon.nativeView.animate({
+				//     rotate: this.iconDown ? 180 : 0,
+				//     duration: 250
+				// });
+
+				// reusable
+				const rotation = this.$refs.icon.nativeView.createAnimation({
+				    rotate: this.iconDown ? 0 : 180,
+				    duration: 250
+				});
+
+				rotation.play()
+				    .then(function () {
+				    console.log("Animation finished");
+				})
+				    .catch(function (e) {
+				    console.log(e.message);
+				});
+
+				const zoomIn = this.$refs.iconContainer.nativeView.createAnimation({
+				    scale: { x: 1.5, y: 1.5},
+				    duration: 100
+				});
+				const zoomOut = this.$refs.iconContainer.nativeView.createAnimation({
+				    scale: { x: 1, y: 1},
+				    duration: 100
+				});
+
+				zoomIn.play()
+						.then(function () { return zoomOut.play(); })
+				    .then(function () {
+				    console.log("Animation finished");
+				})
+				    .catch(function (e) {
+				    console.log(e.message);
+				});
+
 			})
-			    .catch(function (e) {
-			    console.log(e.message);
-			});
-
-			const zoomIn = this.$refs.iconContainer.nativeView.createAnimation({
-			    scale: { x: 1.5, y: 1.5},
-			    duration: 100
-			});
-			const zoomOut = this.$refs.iconContainer.nativeView.createAnimation({
-			    scale: { x: 1, y: 1},
-			    duration: 100
-			});
-
-			zoomIn.play()
-					.then(function () { return zoomOut.play(); })
-			    .then(function () {
-			    console.log("Animation finished");
-			})
-			    .catch(function (e) {
-			    console.log(e.message);
-			});
-
 		}
 	}
 }

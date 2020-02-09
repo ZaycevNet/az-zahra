@@ -48,22 +48,27 @@ ActionBar,
             <Ripple rippleColor="#28ADAA" @tap="onBack">
                 <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
             </Ripple>
-            <Label class="action-bar-title" text="Kebiasaan" col="1" />
+            <Label @tap="onBack" class="action-bar-title" text="Kebiasaan" col="1" />
             <!-- <Label class="action-bar-right" text="1/2" col="2" /> -->
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 250)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
 
 
         <HabitHeadlineNonTab habit="Dakwah & Berorganisasi" />
-        <GridLayout rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 500)">
+        <GridLayout rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)">
 
-            <ScrollView height="100%" v-if="!rendering1">
-                <StackLayout  paddingBottom="75">
-                    <PageHabitOrganisasi v-for="(i, index) in itemList" :key="index" :index="index" :renderingTime="index*renderingChild" class="tabviewitem-container" />
+            <ScrollView ref="scroll" @scroll="onScroll" height="100%" v-if="!rendering1">
+                <StackLayout id="stackList" ref="stackList" paddingBottom="75">
+
+                    <PageHabitOrganisasi :items="get_habit_organisasi_payload" class="tabviewitem-container" />
+
+                    <!-- <PageHabitOrganisasi v-for="(i, index) in itemList" :key="index" :index="index" :renderingTime="index*renderingChild" class="tabviewitem-container" /> -->
+
+                    <ActivityIndicator ref="indicator" color="#28ADAA" :busy="busy" @busyChange="onBusyChange" />
                 </StackLayout>
             </ScrollView>
             <Fab @tap="" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
@@ -91,33 +96,61 @@ export default {
     // },
     data() {
         return {
-            renderingChild: 5,
-
-            itemList: function() {
-                let n = [];
-                for (var i = 0; i < 30; i++) {
-                    n.push(i + 1);
-                }
-                return n;
-            }(),
+            busy: true,
+            // renderingChild: 5,
+            //
+            // itemList: function() {
+            //     let n = [];
+            //     for (var i = 0; i < 30; i++) {
+            //         n.push(i + 1);
+            //     }
+            //     return n;
+            // }(),
         }
     },
+    watch: {
+      busy(val) {
+        if(val) {
+          this.$refs.stackList.nativeView.paddingBottom = 75;
+          return
+        }
+        this.$refs.stackList.nativeView.paddingBottom = 0;
+      },
+    },
     methods: {
+        onBusyChange(event) {
+          console.log(event.value)
+        },
+        onScroll(args) {
+            if (args.scrollY >= (args.object.getViewById("stackList").getActualSize().height - args.object.getActualSize().height)) {
+                this.busy = true;
+                setTimeout(() => {
+                    this.busy = false;
+
+                    // let n = [];
+                    // for (var i = 0; i < 30; i++) {
+                    //     n.push(i + 1);
+                    // }
+                    // this.itemList.push(n);
+
+                }, 1000);
+            }
+        },
         onBack() {
-              new Promise(resolve => {
-                  this.rendering0 = true;
-                  this.rendering1 = true;
-                  resolve();
-              }).then(result => {
-                  this.$navigateBack();
-                  // this.$modal.close("Aku Pulang")
-              });
-            },
-            onItemTap({
-                item
-            }) {
-                console.log(`Tapped on ${item.name}`);
-            },
+            new Promise(resolve => {
+                this.rendering0 = true;
+                this.rendering1 = true;
+                resolve();
+            }).then(result => {
+                this.$navigateBack();
+                // this.$modal.close("Aku Pulang")
+            });
+        },
+        onItemTap({
+            item
+        }) {
+            console.log(`Tapped on ${item.name}`);
+        },
     },
     mounted() {
         const application = require('tns-core-modules/application');

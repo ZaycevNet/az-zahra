@@ -14,19 +14,21 @@
 
 
 <script>
+const accordionItemFirstLoad = require("@/mixins/toast-accordion-item-first-load");
 
 export default {
+  mixins: [accordionItemFirstLoad],
 	props: ['visibility','bus'],
 	data(){
 		return {
 			iconDown: this.visibility,
 		}
 	},
-	computed: {
-		counter(){
-			return this.get_habit_majelis_payload_checked+'/'+this.get_habit_majelispayload_length;
-		}
-	},
+	// computed: {
+	// 	counter(){
+	// 		return this.get_habit_majelis_payload_checked+'/'+this.get_habit_majelis_payload_length;
+	// 	}
+	// },
   mounted(){
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // untuk meng-trigger onSubmit() dari parent->child perlu mendengar bus.$event
@@ -35,50 +37,64 @@ export default {
   },
 	methods:{
 		onTapBubble(){
-			this.iconDown = !this.iconDown;
 
-      if(this.$refs.icon == undefined) return;
-      if(this.$refs.iconContainer == undefined) return;
+      new Promise(resolve => {
+        this.showToastAccordionChild();
+        setTimeout(() => {
+          resolve();
+        }, 100);
+      }).then(result => {
 
-			// non-reusable
-			// this.$refs.icon.nativeView.animate({
-			//     rotate: this.iconDown ? 180 : 0,
-			//     duration: 250
-			// });
+  			this.iconDown = !this.iconDown;
 
-			// reusable
-			const rotation = this.$refs.icon.nativeView.createAnimation({
-			    rotate: this.iconDown ? 0 : 180,
-			    duration: 250
-			});
+        // this.action_accordion_first_open(true);
 
-			rotation.play()
-			    .then(function () {
-			    console.log("Animation finished");
-			})
-			    .catch(function (e) {
-			    console.log(e.message);
-			});
+        if(this.$refs.icon == undefined) return;
+        if(this.$refs.iconContainer == undefined) return;
 
-			const zoomIn = this.$refs.iconContainer.nativeView.createAnimation({
-			    scale: { x: 1.5, y: 1.5},
-			    duration: 100
-			});
-			const zoomOut = this.$refs.iconContainer.nativeView.createAnimation({
-			    scale: { x: 1, y: 1},
-			    duration: 100
-			});
+  			// non-reusable
+  			// this.$refs.icon.nativeView.animate({
+  			//     rotate: this.iconDown ? 180 : 0,
+  			//     duration: 250
+  			// });
 
-			zoomIn.play()
-					.then(function () { return zoomOut.play(); })
-			    .then(function () {
-			    console.log("Animation finished");
-			})
-			    .catch(function (e) {
-			    console.log(e.message);
-			});
+  			// reusable
+  			const rotation = this.$refs.icon.nativeView.createAnimation({
+  			    rotate: this.iconDown ? 0 : 180,
+  			    duration: 250
+  			});
 
-      this.$emit('onBubbleTriggered', this.iconDown)
+  			rotation.play()
+  			    .then(function () {
+  			    console.log("Animation finished");
+  			})
+  			    .catch(function (e) {
+  			    console.log(e.message);
+  			});
+
+  			const zoomIn = this.$refs.iconContainer.nativeView.createAnimation({
+  			    scale: { x: 1.5, y: 1.5},
+  			    duration: 100
+  			});
+  			const zoomOut = this.$refs.iconContainer.nativeView.createAnimation({
+  			    scale: { x: 1, y: 1},
+  			    duration: 100
+  			});
+
+  			zoomIn.play()
+  					.then(function () { return zoomOut.play(); })
+  			    .then(function () {
+
+            console.log("Animation finished");
+
+  			})
+  			    .catch(function (e) {
+  			    console.log(e.message);
+  			});
+
+        this.$emit('onBubbleTriggered', this.iconDown)
+
+      })
 
 		}
 	}

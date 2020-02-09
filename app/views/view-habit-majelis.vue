@@ -48,62 +48,154 @@ ActionBar,
             <Ripple rippleColor="#28ADAA" @tap="onBack">
                 <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
             </Ripple>
-            <Label class="action-bar-title" text="Kebiasaan" col="1" />
+            <Label @tap="onBack" class="action-bar-title" text="Kebiasaan" col="1" />
             <!-- <Label class="action-bar-right" text="1/2" col="2" /> -->
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 250)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
 
 
         <HabitHeadlineNonTab habit="Majelis Ilmu" />
-        <GridLayout rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 500)" >
 
-            <ScrollView height="100%" v-if="!rendering1">
-                <StackLayout  paddingBottom="75">
-                    <PageHabitMajelis v-for="(i, index) in itemList" :key="index" :index="index" :renderingTime="index*renderingChild" class="tabviewitem-container" />
+        <GridLayout ref="container" rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" >
+
+            <ScrollView ref="scroll" @scroll="onScroll" height="100%" v-if="!rendering1">
+                <StackLayout  id="stackList" ref="stackList" paddingBottom="75">
+                    <!-- <PageHabitMajelis v-for="(i, index) in itemList" id="item" :key="index" :index="index" :renderingTime="index*renderingChild" class="tabviewitem-container" /> -->
+
+                    <PageHabitMajelis :items="get_habit_majelis_payload" class="tabviewitem-container" />
+
+                    <ActivityIndicator ref="indicator" color="#28ADAA" :busy="busy" @busyChange="onBusyChange" />
                 </StackLayout>
             </ScrollView>
+
             <Fab @tap="" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
+
         </GridLayout>
+
     </StackLayout>
 </Page>
 
 </template>
 
 <script>
-
-// import { Statusbar } from "nativescript-plugin-statusbar";
-// let status = new Statusbar();
-
 const delayrendering = require("@/mixins/delayrendering");
+import {
+    Color
+}
+from 'tns-core-modules/color';
 
 export default {
     mixins: [delayrendering],
-    // props: {
-    //   routeProps: {
-    //     default: () => ({
-    //         origin: "before route", // pada dasarnya data inspeksi masih invalid (belum divalidasi oleh
-    //     })
-    //   }
-    // },
     data() {
         return {
-          alive: true,
-            renderingChild: 5,
+            busy: true,
+            // renderingChild: 5,
 
-            itemList: function() {
-                let n = [];
-                for (var i = 0; i < 30; i++) {
-                    n.push(i + 1);
-                }
-                return n;
-            }(),
+            // itemList: function() {
+            //     let n = [];
+            //     for (var i = 0; i < 30; i++) {
+            //         n.push(i + 1);
+            //     }
+            //     return n;
+            // }(),
         }
     },
+    watch: {
+      busy(val) {
+        if(val) {
+          this.$refs.stackList.nativeView.paddingBottom = 75;
+          return
+        }
+        this.$refs.stackList.nativeView.paddingBottom = 0;
+      },
+    },
+    // mounted(){
+    //   console.log("get_accordion_first_open", this.get_accordion_first_open);
+    // },
     methods: {
+        onBusyChange(event) {
+          console.log(event.value)
+        },
+        onScroll(args) {
+
+              // console.log("scrollView.height: " + args.object.getActualSize().height);
+              // console.log("scrollView.stackList.height: " + (args.object.getViewById("stackList").getActualSize().height - args.object.getActualSize().height));
+
+              // console.log("scrollX: " + args.scrollX);
+              // console.log("scrollY: " + args.scrollY);
+              // console.log("scrollY 2: " + args.object.getViewById("stackList").getLocationRelativeTo(args.object).y )
+
+              if(args.scrollY >= (args.object.getViewById("stackList").getActualSize().height - args.object.getActualSize().height)) {
+                this.busy = true;
+                setTimeout(() => {
+                  this.busy = false;
+
+                  // let n = [];
+                  // for (var i = 0; i < 30; i++) {
+                  //     n.push(i + 1);
+                  // }
+                  // this.itemList.push(n);
+
+                }, 1000);
+              }
+
+              // this.afterScroll(args.object, args.object.getViewById("stackList"))
+
+        },
+
+        afterScroll(scroll, stack) {
+            console.log("Scrolling Done");
+
+            // Get size of the scrollview
+            // tinggi viewport dari ScrolLView
+            let scrollHeight = scroll.getActualSize().height;
+            console.log("Scroll Height: " + scrollHeight);
+
+            // mengukur tinggi semua kontent di dalam ScrolLView
+            // bisa menyebabkan error kode dibawah ini klu tidak salah
+
+            // let inside_scrollview_content_height = this.scroll.scrollableHeight
+            // let a = this.page.getViewById("scrollList");
+            // setTimeout(() => {
+            //   console.log("--->" + a.scrollableHeight + " " + a.effectiveHeight + " " + a.verticalOffset+" "+a);
+            // }, 500)
+
+
+            // Check each item in the ScrollView and see if it's in the visible bounds
+            stack.eachChildView((c) => {
+                let l = (c);
+
+                // Get the height of the UI elements in the scrollview
+                let halfHeight = l.getActualSize().height / 2;
+
+                // Get the UI element location RELATIVE TO the scrollview
+                let relativeY = c.getLocationRelativeTo(scroll).y;
+
+                // console.log(`X ${ l.text }: ${relativeY}`, halfHeight);
+
+                // Here's the logic for "shown"/"not shown"
+                // In this example...
+                // Element is considered "shown" if at least HALF of element is visible (on top or bottom of scrollview)
+                if (relativeY > (halfHeight * -1) && relativeY < (scrollHeight - halfHeight)) {
+                    // We'll change color when item is shown/not shown, but here is
+                    // where you could do other things like play/pause video
+
+                    // di dalam viewport ScrollView
+                    l.backgroundColor = new Color("green");
+                } else {
+                    // di luar viewport ScrollView
+                    l.backgroundColor = new Color("blue");
+                }
+
+                return true;
+            });
+        },
+
+
         onBack() {
               new Promise(resolve => {
                   this.rendering0 = true;

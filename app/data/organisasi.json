@@ -1,134 +1,152 @@
 [
 	{
 		"id":"1",
-		"code":"729ca0eb-2422-388e-95bb-120ffea771e1",
+		"code":"729ca0eb-0000-388e-95bb-120ffea77000",
 		"initial": "HABIT-ORGANISASI",
-		"description":"Mengajak sholat awal waktu",
+
+		"tempat":"Rumah",
+		"waktu":"Siang",
+		"kegiatan":"Pengetahuan",
+		"rangkuman": "Rangkuman/Keterangan",
+
 		"type":"0",
-		"interval":"harian",
+		"interval":"bulanan",
 		"max_point":"5",
 		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"2",
-		"code":"729ca0eb-2422-388e-95bb-120ffea771e2",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Mengajak berbagi meski sedikit",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"3",
-		"code":"729ca0eb-2422-388e-95bb-120ffea771e3",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Mengajak berprilaku terpuji",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"4",
-		"code":"729ca0eb-2422-388e-95bb-120ffea771e4",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Saling memaafkan antar sesama",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"5",
-		"code":"729ca0eb-2422-388e-95bb-120ffea771e5",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Menghindari pergaulan bebas",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"6",
-		"code":"729ca0eb-2422-388e-95bb-120ffea771e6",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Mengingatkan agar tidak berbuat keji",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"7",
-		"code":"729ca0eb-2422-388e-95bb-120ffea771e7",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Mengingatkan agar tidak gibah & fitnah",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"8",
-		"code":"729ca0eb-2422-388e-95bb-120ffea771e8",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Mengingatkan agar tidak berbohong",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"9",
-		"code":"729ca0eb-2422-388e-95bb-120ffea771e9",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Mengajak agar selalu bersyukur",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"10",
-		"code":"729ca0eb-2422-388e-95bb-120ffea77110",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Mengajak tetap ikhtiar & berdoa",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"11",
-		"code":"729ca0eb-2422-388e-95bb-120ffea77111",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Mengajak agar bersabar & bertawakal",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
-	},
-	{
-		"id":"12",
-		"code":"729ca0eb-2422-388e-95bb-120ffea77112",
-		"initial": "HABIT-ORGANISASI",
-		"description":"Mengajak disiplin & bertanggungjawab",
-		"type":"0",
-		"interval":"harian",
-		"max_point":"5",
-		"countable":"1",
-		"selected":true
+
+		"payload_description":[
+			{
+				"id":"1",
+				"code":"729ca0eb-2422-388e-95bb-120ffea771e1",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Mengajak sholat awal waktu",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"2",
+				"code":"729ca0eb-2422-388e-95bb-120ffea771e2",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Mengajak berbagi meski sedikit",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"3",
+				"code":"729ca0eb-2422-388e-95bb-120ffea771e3",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Mengajak berprilaku terpuji",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"4",
+				"code":"729ca0eb-2422-388e-95bb-120ffea771e4",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Saling memaafkan antar sesama",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"5",
+				"code":"729ca0eb-2422-388e-95bb-120ffea771e5",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Menghindari pergaulan bebas",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"6",
+				"code":"729ca0eb-2422-388e-95bb-120ffea771e6",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Mengingatkan agar tidak berbuat keji",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"7",
+				"code":"729ca0eb-2422-388e-95bb-120ffea771e7",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Mengingatkan agar tidak gibah & fitnah",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"8",
+				"code":"729ca0eb-2422-388e-95bb-120ffea771e8",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Mengingatkan agar tidak berbohong",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"9",
+				"code":"729ca0eb-2422-388e-95bb-120ffea771e9",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Mengajak agar selalu bersyukur",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"10",
+				"code":"729ca0eb-2422-388e-95bb-120ffea77110",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Mengajak tetap ikhtiar & berdoa",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"11",
+				"code":"729ca0eb-2422-388e-95bb-120ffea77111",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Mengajak agar bersabar & bertawakal",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			},
+			{
+				"id":"12",
+				"code":"729ca0eb-2422-388e-95bb-120ffea77112",
+				"initial": "HABIT-ORGANISASI",
+				"description":"Mengajak disiplin & bertanggungjawab",
+				"type":"0",
+				"interval":"harian",
+				"max_point":"5",
+				"countable":"1",
+				"selected":true
+			}
+		]
 	}
 ]

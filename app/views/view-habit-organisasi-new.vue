@@ -50,12 +50,12 @@ ActionBar,
             <Ripple rippleColor="#28ADAA" @tap="onBack">
                 <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
             </Ripple>
-            <Label class="action-bar-title" text="Kebiasaan" col="1" />
+            <Label @tap="onBack" class="action-bar-title" text="Kebiasaan" col="1" />
             <!-- <Label class="action-bar-right" text="1/2" col="2" /> -->
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 250)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack()" /> -->
@@ -64,7 +64,7 @@ ActionBar,
         <GridLayout rows="*,auto" columns="*">
             <ScrollView height="100%" v-if="!rendering0">
                 <StackLayout>
-                    <PageHabitOrganisasiNew class="tabviewitem-container" />
+                    <PageHabitOrganisasiNew :items="get_habit_organisasi_payload[0].payload_description" class="tabviewitem-container" />
                 </StackLayout>
             </ScrollView>
 

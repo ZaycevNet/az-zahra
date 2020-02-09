@@ -1,0 +1,12 @@
+const habit_berpikir_kedelapan = {
+  get_habit_berpikir_kedelapan_payload:"get_habit_berpikir_kedelapan_payload",
+  get_habit_berpikir_kedelapan_payload_length:"get_habit_berpikir_kedelapan_payload_length",
+  get_habit_berpikir_kedelapan_payload_checked:"get_habit_berpikir_kedelapan_payload_checked",
+
+  set_habit_berpikir_kedelapan_payload:"set_habit_berpikir_kedelapan_payload",
+  set_habit_berpikir_kedelapan_payload_checked:"set_habit_berpikir_kedelapan_payload_checked",
+
+  action_habit_berpikir_kedelapan_payload:"action_habit_berpikir_kedelapan_payload"
+}
+
+module.exports = habit_berpikir_kedelapan

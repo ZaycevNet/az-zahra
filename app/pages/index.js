@@ -9,6 +9,16 @@ const PageHabitAdab = resolve => {
     )
 }
 
+const PageHabitBerpikir = resolve => {
+    require.ensure(
+        ['./page-habit-berpikir'],
+        () => {
+            resolve(require('./page-habit-berpikir'))
+        }, 'page-habit-berpikir'
+    )
+}
+
+
 const PageHabitOrganisasiNew = resolve => {
     require.ensure(
         ['./page-habit-organisasi-new'],
@@ -36,7 +46,138 @@ const PageHabitMajelis = resolve => {
     )
 }
 
-Vue.component('PageHabitAdab', PageHabitAdab)
-Vue.component('PageHabitOrganisasiNew', PageHabitOrganisasiNew)
-Vue.component('PageHabitOrganisasi', PageHabitOrganisasi)
-Vue.component('PageHabitMajelis', PageHabitMajelis)
+const PageHabitMajelisNew = resolve => {
+    require.ensure(
+        ['./page-habit-majelis-new'],
+        () => {
+            resolve(require('./page-habit-majelis-new'))
+        }, 'page-habit-majelis-new'
+    )
+}
+
+const PageHabitMembaca = resolve => {
+    require.ensure(
+        ['./page-habit-membaca'],
+        () => {
+            resolve(require('./page-habit-membaca'))
+        }, 'page-habit-membaca'
+    )
+}
+
+const PageHabitMembacaNew = resolve => {
+    require.ensure(
+        ['./page-habit-membaca-new'],
+        () => {
+            resolve(require('./page-habit-membaca-new'))
+        }, 'page-habit-membaca-new'
+    )
+}
+
+const PageHabitTadarusAlquran = resolve => {
+    require.ensure(
+        ['./page-habit-tadarus-alquran'],
+        () => {
+            resolve(require('./page-habit-tadarus-alquran'))
+        }, 'page-habit-tadarus-alquran'
+    )
+}
+
+const PageHabitTadarusIqra = resolve => {
+    require.ensure(
+        ['./page-habit-tadarus-iqra'],
+        () => {
+            resolve(require('./page-habit-tadarus-iqra'))
+        }, 'page-habit-tadarus-iqra'
+    )
+}
+
+const PageHabitTadarusNew = resolve => {
+    require.ensure(
+        ['./page-habit-tadarus-new'],
+        () => {
+            resolve(require('./page-habit-tadarus-new'))
+        }, 'page-habit-tadarus-new'
+    )
+}
+
+const PageHabitTadarusModal = resolve => {
+    require.ensure(
+        ['./page-habit-tadarus-modal'],
+        () => {
+            resolve(require('./page-habit-tadarus-modal'))
+        }, 'page-habit-tadarus-modal'
+    )
+}
+
+const PageHabitZisSedekah = resolve => {
+    require.ensure(
+        ['./habit-zis/page-habit-zis-sedekah'],
+        () => {
+            resolve(require('./habit-zis/page-habit-zis-sedekah'))
+        }, 'habit-zis/page-habit-zis-sedekah'
+    )
+}
+
+const PageHabitZisInfaq = resolve => {
+    require.ensure(
+        ['./habit-zis/page-habit-zis-infaq'],
+        () => {
+            resolve(require('./habit-zis/page-habit-zis-infaq'))
+        }, 'habit-zis/page-habit-zis-infaq'
+    )
+}
+
+const PageHabitZisWaqaf = resolve => {
+    require.ensure(
+        ['./habit-zis/page-habit-zis-waqaf'],
+        () => {
+            resolve(require('./habit-zis/page-habit-zis-waqaf'))
+        }, 'habit-zis/page-habit-zis-waqaf'
+    )
+}
+
+const PageHabitZisZakatFitri = resolve => {
+    require.ensure(
+        ['./habit-zis/page-habit-zis-zakat-fitri'],
+        () => {
+            resolve(require('./habit-zis/page-habit-zis-zakat-fitri'))
+        }, 'habit-zis/page-habit-zis-zakat-fitri'
+    )
+}
+
+const PageHabitZisZakatMal = resolve => {
+    require.ensure(
+        ['./habit-zis/page-habit-zis-zakat-mal'],
+        () => {
+            resolve(require('./habit-zis/page-habit-zis-zakat-mal'))
+        }, 'habit-zis/page-habit-zis-zakat-mal'
+    )
+}
+
+const PageHabitZisZakatMalNew = resolve => {
+    require.ensure(
+        ['./habit-zis/page-habit-zis-zakat-mal-new'],
+        () => {
+            resolve(require('./habit-zis/page-habit-zis-zakat-mal-new'))
+        }, 'habit-zis/page-habit-zis-zakat-mal-new'
+    )
+}
+Vue.component('PageHabitTadarusModal', PageHabitTadarusModal);
+Vue.component('PageHabitAdab', PageHabitAdab);
+Vue.component('PageHabitBerpikir', PageHabitBerpikir);
+Vue.component('PageHabitOrganisasiNew', PageHabitOrganisasiNew);
+Vue.component('PageHabitOrganisasi', PageHabitOrganisasi);
+Vue.component('PageHabitMajelis', PageHabitMajelis);
+Vue.component('PageHabitMajelisNew', PageHabitMajelisNew);
+Vue.component('PageHabitMembaca', PageHabitMembaca);
+Vue.component('PageHabitMembacaNew', PageHabitMembacaNew);
+Vue.component('PageHabitTadarusAlquran', PageHabitTadarusAlquran);
+Vue.component('PageHabitTadarusIqra', PageHabitTadarusIqra);
+Vue.component('PageHabitTadarusNew', PageHabitTadarusNew);
+
+Vue.component('PageHabitZisSedekah', PageHabitZisSedekah);
+Vue.component('PageHabitZisInfaq', PageHabitZisInfaq);
+Vue.component('PageHabitZisWaqaf', PageHabitZisWaqaf);
+Vue.component('PageHabitZisZakatFitri', PageHabitZisZakatFitri);
+Vue.component('PageHabitZisZakatMal', PageHabitZisZakatMal);
+Vue.component('PageHabitZisZakatMalNew', PageHabitZisZakatMalNew);

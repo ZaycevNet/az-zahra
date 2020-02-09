@@ -1,5 +1,6 @@
 const {
     mapActions,
+    mapMutations,
     mapGetters
 } = require('vuex')
 
@@ -25,15 +26,16 @@ const map_habit_organisasi = {
 					get_habit_organisasi_payload,
 				  get_habit_organisasi_payload_length,
 				  get_habit_organisasi_payload_checked,
-
-				  set_habit_organisasi_payload,
-				  set_habit_organisasi_payload_checked,
         }),
     },
     methods: {
         ...mapActions({
 				  action_habit_organisasi_payload
         }),
+        ...mapMutations({
+          set_habit_organisasi_payload,
+				  set_habit_organisasi_payload_checked,
+        })
     },
 }
 
