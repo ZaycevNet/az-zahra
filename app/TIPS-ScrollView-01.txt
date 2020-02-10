@@ -1,0 +1,131 @@
+
+module.exports = {
+    template: `
+        <StackLayout>
+            <TabView
+                @selectedIndexChanged="onSelectedIndexChanged($event)"
+                androidTabsPosition="top"
+                :selectedIndex="selectedIndex"
+                class="icon"
+                selectedTabTextColor="white"
+                tabBackgroundColor="#009AAA"
+                androidSelectedTabHighlightColor="white"
+                tabTextColor="rgb(255,255,255,0.5)"
+                backgroundColor="">
+                <TabViewItem
+                    :title="HORE"
+                    style="text-transform: uppercase; font-size: 13">
+                    <ScrollView scrollBarIndicatorVisible="false" height="*">
+											...
+                    </ScrollView>
+                </TabViewItem>
+                <TabViewItem
+                    :title="ico_pencil2 + ' Bantuan '"
+                    style="text-transform: uppercase; font-size: 13">
+
+                    <ScrollView
+                        @loaded="onLoaded"
+												@scroll="onScroll"
+                        ref="myScroller"
+                        scrollBarIndicatorVisible="false"
+                        height="*">
+
+                        <DockLayout stretchLastChild="true" backgroundColor="">
+
+                            <!-- tombol untuk scroll down -->
+                            <Button
+                                visibility="collapsed"
+                                dock="top"
+                                ref="btn"
+                                text="scrollTo"
+                                @tap="onScrollBottom"></Button>
+
+                            <Bantuan dock="top"
+                                @onBubble="onBubble($event)"
+                                v-if="renderElement2" />
+
+                            <!-- tombol untuk scroll top & target dari scroll down (MODE 2) -->
+                            <Button
+                                visibility="collapsed"
+                                dock="top"
+                                ref="bottomScroll"
+                                text="onScrollTop"
+                                @tap="onScrollTop"></Button>
+
+                        </DockLayout>
+
+                    </ScrollView>
+                </TabViewItem>
+            </TabView>
+        </StackLayout>
+    `,
+    data() {
+        return {
+            selectedIndex: 0,
+            nativeView: [], // menyimpan native args.object dari child
+            nativeViewLength: 0,
+            scrollLayout: null,
+            button: null,
+            bottomScroll: null,
+        }
+    },
+    // watch: {
+    //     // SideDrawer is closed (ini event)
+    //     "GETTER_1": function(val) { // lazy render mode 3
+    //         this.renderFirstTab = true
+
+    //         // this.toast( "First Generate")
+    //         // this.toast( "TabSnippet GETTER_1", val)
+    //         // console.log('TabSnippet GETTER_1', val)
+    //     },
+    // },
+    methods: {
+        onBubble(params) {
+            this.nativeView.push(params)
+            this.nativeViewLength += 1
+        },
+        onLoaded() {
+            this.scrollLayout = this.$refs.myScroller.nativeView
+            this.button = this.$refs.btn.nativeView
+            this.bottomScroll = this.$refs.bottomScroll.nativeView
+        },
+				onScroll: function() {
+            //access to the native event
+            const scrollView = this.$refs.myScroller.nativeView;
+
+            console.log('verticalOffset', scrollView.verticalOffset)
+            console.log('getActualSize', scrollView.getActualSize().height)
+            console.log('getMeasuredHeight', scrollView.getMeasuredHeight())
+            console.log('scrollableHeight', scrollView.scrollableHeight)
+
+        },
+        onScrollBottom() {
+            // MODE 3
+            // scroll via child index di dalam component
+            // const index = this.nativeViewLength - 1
+            // this.scrollLayout.scrollToVerticalOffset(this.nativeView[index].getLocationRelativeTo(this.button).y, true);
+
+            // MODE 1
+            // scroll via ScrollView height
+            this.scrollLayout.scrollToVerticalOffset(this.scrollLayout.scrollableHeight, true)
+
+            // MODE 2
+            // scroll via target element ref="bottomScroll"
+            // this.scrollLayout.scrollToVerticalOffset(this.bottomScroll.getLocationRelativeTo(this.button).y, true);
+        },
+        onScrollTop() {
+            this.scrollLayout.scrollToVerticalOffset(0, true)
+        },
+        onSelectedIndexChanged(args) {
+            if (args.oldIndex !== -1) {
+                const newIndex = args.newIndex;
+                if (newIndex === 0) {
+                    this.renderElement1 = true
+                } else if (newIndex === 1) {
+                    this.renderElement2 = true
+                    console.log('renderElement2', this.renderElement2)
+                }
+            }
+        },
+    },
+}

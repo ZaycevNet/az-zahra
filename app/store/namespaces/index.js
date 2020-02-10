@@ -8,11 +8,11 @@ const indicator = require('./indicator');
 const habit_organisasi = require('./habit-organisasi');
 const habit_majelis = require('./habit-majelis');
 
-const habit_membaca_islami = require('./habit-membaca-islami');
-const habit_membaca_umum = require('./habit-membaca-umum');
+const habit_membaca_islami = require('./habit-membaca/habit-membaca-islami');
+const habit_membaca_umum = require('./habit-membaca/habit-membaca-umum');
 
-const habit_tadarus_alquran = require('./habit-tadarus-alquran');
-const habit_tadarus_iqra = require('./habit-tadarus-iqra');
+const habit_tadarus_alquran = require('./habit-tadarus/habit-tadarus-alquran');
+const habit_tadarus_iqra = require('./habit-tadarus/habit-tadarus-iqra');
 
 const habit_adab_alat_tempat = require('./habit-adab/habit-adab-alat-tempat');
 const habit_adab_diri_sendiri = require('./habit-adab/habit-adab-diri-sendiri');
@@ -38,6 +38,21 @@ const habit_zis_zakat_mal = require('./habit-zis/habit-zis-zakat-mal');
 const habit_zis_infaq = require('./habit-zis/habit-zis-infaq');
 const habit_zis_sedekah = require('./habit-zis/habit-zis-sedekah');
 const habit_zis_waqaf = require('./habit-zis/habit-zis-waqaf');
+
+const habit_puasa_rutin = require('./habit-puasa/habit-puasa-rutin');
+const habit_puasa_khusus = require('./habit-puasa/habit-puasa-khusus');
+const habit_puasa_ramadhan = require('./habit-puasa/habit-puasa-ramadhan');
+const habit_puasa_nazar = require('./habit-puasa/habit-puasa-nazar');
+const habit_puasa_kafarat = require('./habit-puasa/habit-puasa-kafarat');
+const habit_puasa_new = require('./habit-puasa/habit-puasa-new');
+
+const habit_sholat_pagi = require('./habit-sholat/habit-sholat-pagi');
+const habit_sholat_tambahan = require('./habit-sholat/habit-sholat-tambahan');
+const habit_sholat_malam = require('./habit-sholat/habit-sholat-malam');
+const habit_sholat_jumat = require('./habit-sholat/habit-sholat-jumat');
+const habit_sholat_hari_raya = require('./habit-sholat/habit-sholat-hari-raya');
+const habit_sholat_fardhu = require('./habit-sholat/habit-sholat-fardhu');
+
 
 module.exports = {
     indicator,
@@ -70,12 +85,27 @@ module.exports = {
     habit_berpikir_kesembilan,
     habit_berpikir_kesepuluh,
 
+    habit_puasa_rutin,
+    habit_puasa_khusus,
+    habit_puasa_ramadhan,
+    habit_puasa_nazar,
+    habit_puasa_kafarat,
+    habit_puasa_new,
 
     habit_tadarus_alquran,
     habit_tadarus_iqra,
 
     habit_membaca_islami,
     habit_membaca_umum,
+
+    habit_sholat_pagi,
+    habit_sholat_tambahan,
+    habit_sholat_malam,
+    habit_sholat_jumat,
+    habit_sholat_hari_raya,
+    habit_sholat_fardhu,
+
+
 
     // auth,
     // tab,

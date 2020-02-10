@@ -67,9 +67,6 @@
                 </StackLayout>
             </Gradient>
 
-            <StackLayout padding="10 0" class="left-right-border">
-                <MajelisItemCheckboxReadonly v-for="(_item, _index) in item.payload_description" :key="_index" :description="_item.description" :checked="_item.selected"/>
-            </StackLayout>
 
             <Ripple rippleColor="white">
                 <StackLayout backgroundColor="#28BAAA" width="100%" class="button-last-item" horizontalAlignment="right" padding="10 15">

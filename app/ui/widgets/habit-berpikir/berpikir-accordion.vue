@@ -11,7 +11,7 @@
 
 <template>
     <StackLayout padding="10 10 0 10" @loaded="onLoaded_Rendering(0, 250)">
-        <AdabItemSubtitle ref="subtitle"
+        <BerpikirItemSubtitle ref="subtitle"
           borderBottomLeftRadius="0"
           borderBottomRightRadius="0"
           :visibility="visibility.status"

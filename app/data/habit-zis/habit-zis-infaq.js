@@ -7,6 +7,7 @@ module.exports = [
 		"perantara":"Langsung/Amil/Oranglain",
 		"penerima":"Amat",
 		"jenis":"sunnah",
+		"judul":"Infaq Sunnah",
 		"materi":"400000",
 		"tempat": "Masjid At-Taqwa",
 		"tujuan": "Membantu uang susu kerabat",
@@ -25,6 +26,7 @@ module.exports = [
 		"perantara":"Langsung/Amil/Oranglain",
 		"penerima":"Amat",
 		"jenis":"sunnah",
+		"judul":"Infaq Sunnah",
 		"materi":"400000",
 		"tempat": "Masjid At-Taqwa",
 		"tujuan": "Membantu uang susu kerabat",
@@ -43,6 +45,7 @@ module.exports = [
 		"perantara":"Langsung/Amil/Oranglain",
 		"penerima":"Amat",
 		"jenis":"wajib",
+		"judul":"Infaq Wajib",
 		"materi":"400000",
 		"tempat": "Masjid At-Taqwa",
 		"tujuan": "Membantu uang susu kerabat",
@@ -61,6 +64,7 @@ module.exports = [
 		"perantara":"Langsung/Amil/Oranglain",
 		"penerima":"Amat",
 		"jenis":"wajib",
+		"judul":"Infaq Wajib",
 		"materi":"400000",
 		"tempat": "Masjid At-Taqwa",
 		"tujuan": "Membantu uang susu kerabat",
@@ -70,5 +74,5 @@ module.exports = [
 		"max_point":"5",
 		"countable":"1",
 		"selected":true
-	}	
+	}
 ]

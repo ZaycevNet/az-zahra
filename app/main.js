@@ -48,11 +48,17 @@ import store from "./store/index";
 // import Main from "@/organisasi-new-raddataform";
 // import Main from "@/views/radiobutton";
 
+
+import Navigator from 'nativescript-vue-navigator'
+import { routes } from '@/routers'
+Vue.use(Navigator, { routes })
+
 import views from "./view";
 Vue.prototype.$views = views;
 
 import Main from '@/views/view';
 
+import App from '@/views/app';
 /*
 import RadAutoComplete from 'nativescript-ui-autocomplete/vue';
 Vue.use(RadAutoComplete);
@@ -111,7 +117,7 @@ import * as application from 'tns-core-modules/application'
 
 // router.push('/home');
 const app = new Vue({
-  name:"THIRD COMMIT 24635",
+  name:"THIRD COMMIT 246389",
   store,
   data(){
     return {
@@ -144,7 +150,8 @@ const app = new Vue({
 
   // render: h => h(Main)
   // template: `<Frame><router-view/></Frame>`,
-  render: h => h('frame', [h(Main)])
+  // render: h => h('frame', [h(Main)]) // without nativescript-vue-navigator
+  render: h => h(App),// nativescript-vue-navigator
 }).$start()
 
 

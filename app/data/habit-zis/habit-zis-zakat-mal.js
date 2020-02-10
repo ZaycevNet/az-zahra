@@ -7,12 +7,14 @@ module.exports = [
 		"perantara":"Langsung/Amil",
 		"penerima":"Amil",
 		"jenis":"mal",
-		"penghasilan":"1000000",
+		"judul":"Zakat Mal (Harta)",
+		"materi":"1000000",
 		"presentase":"4%",
 		"tempat":"Masjid At-Taqwa",
+		"tujuan": "Mensucikan harta",
 
 		"type":"0",
-		"interval":"bulanan", 
+		"interval":"bulanan",
 		"max_point":"5",
 		"countable":"1",
 		"selected":true

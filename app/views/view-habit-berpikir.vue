@@ -60,7 +60,7 @@ TabView {
     </ActionBar>
 
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
@@ -74,7 +74,9 @@ TabView {
                 <TabViewItem title="Pertama" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitBerpikir v-if="tab1" :items="get_habit_berpikir_pertama_payload" vuex="berpikir_pertama" class="tabviewitem-container" />
+                        <ContentPreloader v-if="!tab0" />
+
+                        <PageHabitBerpikir v-if="tab0" :items="get_habit_berpikir_pertama_payload" vuex="berpikir_pertama" class="tabviewitem-container" />
 
                         <ActivityIndicator v-if="busy" ref="indicator" color="#28ADAA" :busy="busy" @busyChange="onBusyChange" />
                       </StackLayout>
@@ -84,7 +86,9 @@ TabView {
                 <TabViewItem title="Kedua" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitBerpikir v-if="tab2" :items="get_habit_berpikir_kedua_payload" vuex="berpikir_kedua" class="tabviewitem-container" />
+                        <ContentPreloader v-if="!tab1" />
+
+                        <PageHabitBerpikir v-if="tab1" :items="get_habit_berpikir_kedua_payload" vuex="berpikir_kedua" class="tabviewitem-container" />
 
                       </StackLayout>
                     </ScrollView>
@@ -92,7 +96,9 @@ TabView {
                 <TabViewItem title="Ketiga" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitBerpikir v-if="tab3" :items="get_habit_berpikir_ketiga_payload" vuex="berpikir_ketiga" class="tabviewitem-container" />
+                        <ContentPreloader v-if="!tab2" />
+
+                        <PageHabitBerpikir v-if="tab2" :items="get_habit_berpikir_ketiga_payload" vuex="berpikir_ketiga" class="tabviewitem-container" />
 
                       </StackLayout>
                     </ScrollView>
@@ -101,7 +107,9 @@ TabView {
                 <TabViewItem title="Keempat" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitBerpikir v-if="tab4" :items="get_habit_berpikir_keempat_payload" vuex="berpikir_keempat" class="tabviewitem-container" />
+                        <ContentPreloader v-if="!tab3" />
+
+                        <PageHabitBerpikir v-if="tab3" :items="get_habit_berpikir_keempat_payload" vuex="berpikir_keempat" class="tabviewitem-container" />
 
                       </StackLayout>
                     </ScrollView>
@@ -110,7 +118,9 @@ TabView {
                 <TabViewItem title="Kelima" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitBerpikir v-if="tab5" :items="get_habit_berpikir_kelima_payload" vuex="berpikir_kelima" class="tabviewitem-container" />
+                        <ContentPreloader v-if="!tab4" />
+
+                        <PageHabitBerpikir v-if="tab4" :items="get_habit_berpikir_kelima_payload" vuex="berpikir_kelima" class="tabviewitem-container" />
 
                       </StackLayout>
                     </ScrollView>
@@ -119,7 +129,9 @@ TabView {
                 <TabViewItem title="Keenam" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitBerpikir v-if="tab6" :items="get_habit_berpikir_keenam_payload" vuex="berpikir_keenam" class="tabviewitem-container" />
+                        <ContentPreloader v-if="!tab5" />
+
+                        <PageHabitBerpikir v-if="tab5" :items="get_habit_berpikir_keenam_payload" vuex="berpikir_keenam" class="tabviewitem-container" />
 
                       </StackLayout>
                     </ScrollView>
@@ -128,7 +140,9 @@ TabView {
                 <TabViewItem title="Ketujuh" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitBerpikir v-if="tab7" :items="get_habit_berpikir_ketujuh_payload" vuex="berpikir_ketujuh" class="tabviewitem-container" />
+                        <ContentPreloader v-if="!tab6" />
+
+                        <PageHabitBerpikir v-if="tab6" :items="get_habit_berpikir_ketujuh_payload" vuex="berpikir_ketujuh" class="tabviewitem-container" />
 
                       </StackLayout>
                     </ScrollView>
@@ -137,7 +151,9 @@ TabView {
                 <TabViewItem title="Kedelapan" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitBerpikir :items="get_habit_berpikir_kedelapan_payload" vuex="berpikir_kedelapan" class="tabviewitem-container" />
+                        <ContentPreloader v-if="!tab7" />
+
+                        <PageHabitBerpikir v-if="tab7" :items="get_habit_berpikir_kedelapan_payload" vuex="berpikir_kedelapan" class="tabviewitem-container" />
 
                       </StackLayout>
                     </ScrollView>
@@ -146,7 +162,9 @@ TabView {
                 <TabViewItem title="Kesembilan" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitBerpikir v-if="tab9" :items="get_habit_berpikir_kesembilan_payload" vuex="berpikir_kesembilan" class="tabviewitem-container" />
+                        <ContentPreloader v-if="!tab8" />
+
+                        <PageHabitBerpikir v-if="tab8" :items="get_habit_berpikir_kesembilan_payload" vuex="berpikir_kesembilan" class="tabviewitem-container" />
 
                       </StackLayout>
                     </ScrollView>
@@ -155,7 +173,9 @@ TabView {
                 <TabViewItem title="Kesepuluh" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitBerpikir v-if="tab10" :items="get_habit_berpikir_kesepuluh_payload" vuex="berpikir_kesepuluh" class="tabviewitem-container" />
+                        <ContentPreloader v-if="!tab9" />
+
+                        <PageHabitBerpikir v-if="tab9" :items="get_habit_berpikir_kesepuluh_payload" vuex="berpikir_kesepuluh" class="tabviewitem-container" />
 
                       </StackLayout>
                     </ScrollView>
@@ -164,6 +184,9 @@ TabView {
 
             </TabView>
         </StackLayout>
+
+        <ContentPreloader v-if="rendering0 && initContentPreloader" />
+
     </StackLayout>
 </Page>
 
@@ -190,20 +213,20 @@ export default {
     mixins: [delayrendering],
     data() {
         return {
-          busy: true,
+          busy: false,
 
             selectedIndex: 0,
 
-            tab1: true,
-            tab2: true,
-            tab3: true,
-            tab4: true,
-            tab5: true,
-            tab6: true,
-            tab7: true,
-            tab8: true,
-            tab9: true,
-            tab10: true,
+            tab0: false,
+            tab1: false,
+            tab2: false,
+            tab3: false,
+            tab4: false,
+            tab5: false,
+            tab6: false,
+            tab7: false,
+            tab8: false,
+            tab9: false,
         }
     },
     mounted() {
@@ -245,21 +268,13 @@ export default {
             // TABVIEW
             onSelectedIndexChanged: function(args) {
 
-                let newIndex = args.value;
-                this.selectedIndex = newIndex;
-                console.log('Current tab index: ' + newIndex, this.selectedIndex);
+              let newIndex = args.value;
+              this.selectedIndex = newIndex;
+              console.log('Current tab index: ' + newIndex, this.selectedIndex);
 
-                // this.tab0 = false;
-                // this.tab1 = false;
-                // this.tab2 = false;
-                // this.tab3 = false;
-                // this.tab4 = false;
-                // this.tab5 = false;
-                // this.tab6 = false;
-
-                setTimeout(() => {
-                    this['tab' + newIndex] = true
-                }, 100)
+              setTimeout(() => {
+                  this['tab' + newIndex] = true
+              }, 100)
 
             },
             // BADGE UNTUK TABVIEW

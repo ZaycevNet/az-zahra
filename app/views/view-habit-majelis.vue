@@ -28,16 +28,14 @@ ActionBar,
     width: 30;
 }
 
-.fab-button {
-    height: 50;
-    /* width: 70; /// this is required on iOS - Android does not require width so you might need to adjust styles */
-    width: 50;
-    margin: 15;
-    background-color: #ff4081;
-    horizontal-align: right;
-    vertical-align: bottom;
-}
-
+/* .fab-button {
+  height: 50;
+  width: 50;
+  margin: 15;
+  background-color: #ff4081;
+  horizontal-align: right;
+  vertical-align: bottom;
+} */
 </style>
 
 <template>
@@ -53,17 +51,17 @@ ActionBar,
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
 
 
-        <HabitHeadlineNonTab habit="Majelis Ilmu" />
+        <HabitHeadlineNonTab habit="Majelis Ilmu" v-shadow="5" />
 
         <GridLayout ref="container" rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" >
 
             <ScrollView ref="scroll" @scroll="onScroll" height="100%" v-if="!rendering1">
-                <StackLayout  id="stackList" ref="stackList" paddingBottom="75">
+                <StackLayout  id="stackList" ref="stackList" paddingBottom="30">
                     <!-- <PageHabitMajelis v-for="(i, index) in itemList" id="item" :key="index" :index="index" :renderingTime="index*renderingChild" class="tabviewitem-container" /> -->
 
                     <PageHabitMajelis :items="get_habit_majelis_payload" class="tabviewitem-container" />
@@ -75,7 +73,7 @@ ActionBar,
             <Fab @tap="" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
 
         </GridLayout>
-
+        <ContentPreloader v-if="rendering0 && initContentPreloader" />
     </StackLayout>
 </Page>
 
@@ -92,7 +90,7 @@ export default {
     mixins: [delayrendering],
     data() {
         return {
-            busy: true,
+            busy: false,
             // renderingChild: 5,
 
             // itemList: function() {
@@ -103,15 +101,6 @@ export default {
             //     return n;
             // }(),
         }
-    },
-    watch: {
-      busy(val) {
-        if(val) {
-          this.$refs.stackList.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList.nativeView.paddingBottom = 0;
-      },
     },
     // mounted(){
     //   console.log("get_accordion_first_open", this.get_accordion_first_open);
@@ -162,7 +151,7 @@ export default {
             // let a = this.page.getViewById("scrollList");
             // setTimeout(() => {
             //   console.log("--->" + a.scrollableHeight + " " + a.effectiveHeight + " " + a.verticalOffset+" "+a);
-            // }, 500)
+            // }, 400)
 
 
             // Check each item in the ScrollView and see if it's in the visible bounds

@@ -11,8 +11,8 @@ import habit_adab_oranglain from './modules/habit-adab/habit-adab-oranglain';
 import habit_adab_orangtua from './modules/habit-adab/habit-adab-orangtua';
 import habit_adab_saudara from './modules/habit-adab/habit-adab-saudara';
 
-import habit_tadarus_alquran from './modules/habit-tadarus-alquran';
-import habit_tadarus_iqra from './modules/habit-tadarus-iqra';
+import habit_tadarus_alquran from './modules/habit-tadarus/habit-tadarus-alquran';
+import habit_tadarus_iqra from './modules/habit-tadarus/habit-tadarus-iqra';
 
 import habit_berpikir_pertama from './modules/habit-berpikir/habit-berpikir-1';
 import habit_berpikir_kedua from './modules/habit-berpikir/habit-berpikir-2';
@@ -31,11 +31,26 @@ import habit_zis_waqaf from './modules/habit-zis/habit-zis-waqaf';
 import habit_zis_zakat_mal from './modules/habit-zis/habit-zis-zakat-mal';
 import habit_zis_zakat_fitri from './modules/habit-zis/habit-zis-zakat-fitri';
 
+import habit_puasa_rutin from './modules/habit-puasa/habit-puasa-rutin';
+import habit_puasa_khusus from './modules/habit-puasa/habit-puasa-khusus';
+import habit_puasa_ramadhan from './modules/habit-puasa/habit-puasa-ramadhan';
+import habit_puasa_nazar from './modules/habit-puasa/habit-puasa-nazar';
+import habit_puasa_kafarat from './modules/habit-puasa/habit-puasa-kafarat';
+import habit_puasa_new from './modules/habit-puasa/habit-puasa-new';
+
 import habit_organisasi from "./modules/habit-organisasi";
 import habit_majelis from "./modules/habit-majelis";
 
-import habit_membaca_islami from "./modules/habit-membaca-islami";
-import habit_membaca_umum from "./modules/habit-membaca-umum";
+import habit_membaca_islami from "./modules/habit-membaca/habit-membaca-islami";
+import habit_membaca_umum from "./modules/habit-membaca/habit-membaca-umum";
+
+import habit_sholat_pagi from "./modules/habit-sholat/habit-sholat-pagi";
+import habit_sholat_tambahan from "./modules/habit-sholat/habit-sholat-tambahan";
+import habit_sholat_malam from "./modules/habit-sholat/habit-sholat-malam";
+import habit_sholat_jumat from "./modules/habit-sholat/habit-sholat-jumat";
+import habit_sholat_hari_raya from "./modules/habit-sholat/habit-sholat-hari-raya";
+import habit_sholat_fardhu from "./modules/habit-sholat/habit-sholat-fardhu";
+
 
 Vue.use(Vuex);
 
@@ -73,6 +88,13 @@ let store = new Vuex.Store({
     habit_berpikir_kesembilan,
     habit_berpikir_kesepuluh,
 
+    habit_puasa_rutin,
+    habit_puasa_khusus,
+    habit_puasa_ramadhan,
+    habit_puasa_nazar,
+    habit_puasa_kafarat,
+    habit_puasa_new,
+
     habit_tadarus_alquran,
     habit_tadarus_iqra,
 
@@ -82,6 +104,12 @@ let store = new Vuex.Store({
     habit_membaca_islami,
     habit_membaca_umum,
 
+    habit_sholat_pagi,
+    habit_sholat_tambahan,
+    habit_sholat_malam,
+    habit_sholat_jumat,
+    habit_sholat_hari_raya,
+    habit_sholat_fardhu,
   },
   strict: debug
 });

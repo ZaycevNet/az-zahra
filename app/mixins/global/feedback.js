@@ -13,6 +13,7 @@ module.exports = {
   },
 	methods: {
 		showFeedback() {
+			return
 	    this.feedback.show({
 	      title: "Sukses",
 	      titleColor: new Color("rgba(255,255,255,0.85)"),
@@ -27,6 +28,7 @@ module.exports = {
 
 
 	  showSuccessFeedback() {
+			return
 	    this.feedback.success({
 	      title: "Successfully shown myself!",
 	      message: "I'm configured to hide after 2.5 seconds.",

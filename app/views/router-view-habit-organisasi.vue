@@ -26,15 +26,14 @@ ActionBar, .action-bar {
     width: 30;
 }
 
-.fab-button {
+/* .fab-button {
   height: 50;
-  /* width: 70; /// this is required on iOS - Android does not require width so you might need to adjust styles */
   width: 50;
   margin: 15;
   background-color: #ff4081;
   horizontal-align: right;
   vertical-align: bottom;
-}
+} */
 </style>
 
 <template>

@@ -9,6 +9,7 @@ Button {
 
 <template>
 	<Page actionBarHidden="true">
+		<ScrollView>
 		<StackLayout>
 
 				<Button
@@ -20,6 +21,7 @@ Button {
 				/>
 
 		</StackLayout>
+	</ScrollView>
 	</Page>
 </template>
 
@@ -80,9 +82,22 @@ export default {
           component: "habit-zis", //this.$views.ViewHabitOrganisasi
 				},
 				{
-          name: "ViewHabitZisZakatMalNew",
-          component: "habit-zis-zakat-mal-new", //this.$views.ViewHabitOrganisasi
+          name: "ViewHabitZisNew",
+          component: "habit-zis-new", //this.$views.ViewHabitOrganisasi
         },
+				{
+          name: "ViewHabitPuasa",
+          component: "habit-puasa", //this.$views.ViewHabitOrganisasi
+				},
+				{
+          name: "ViewHabitPuasaNew",
+          component: "habit-puasa-new", //this.$views.ViewHabitOrganisasi
+        },
+				{
+          name: "ViewHabitSholat",
+          component: "habit-sholat", //this.$views.ViewHabitOrganisasi
+        },
+
 			],
 		}
 	},
@@ -107,6 +122,11 @@ export default {
 			// 		// this.$store.commit("gotoRoute", false)
 			// });
 
+			this.$navigator.navigate('/view-'+pageComponent.component,
+				// { clearHistory: true }
+			)
+
+			return
       this.$navigateTo(this.$views[pageComponent.name], {
 					transition: 'slideBottom'
 

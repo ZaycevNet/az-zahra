@@ -13,7 +13,7 @@ const {
   action_habit_adab_diri_sendiri_payload
 } = habit_adab_diri_sendiri;
 
-const JSON = require("@/data/adab-diri-sendiri.js");
+const JSON = require("@/data/habit-adab/adab-diri-sendiri.js");
 // console.log(adabDiriSendiriJSON);
 
 const state = {

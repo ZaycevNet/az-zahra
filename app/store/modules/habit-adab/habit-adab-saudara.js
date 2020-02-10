@@ -13,7 +13,7 @@ const {
   action_habit_adab_saudara_payload
 } = habit_adab_saudara;
 
-const JSON = require("@/data/adab-saudara.js");
+const JSON = require("@/data/habit-adab/adab-saudara.js");
 // console.log(adabDiriSendiriJSON);
 
 const state = {

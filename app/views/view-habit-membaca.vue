@@ -43,17 +43,14 @@ TabView {
     font-size: 15;
 }
 
-.fab-button {
-    height: 50;
-    /* width: 70; /// this is required on iOS - Android does not require width so you might need to adjust styles */
-    width: 50;
-    margin: 15;
-    background-color: #ff4081;
-    horizontal-align: right;
-    vertical-align: bottom;
-}
-
-
+/* .fab-button {
+  height: 50;
+  width: 50;
+  margin: 15;
+  background-color: #ff4081;
+  horizontal-align: right;
+  vertical-align: bottom;
+} */
 </style>
 
 <template>
@@ -71,7 +68,7 @@ TabView {
     </ActionBar>
 
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
@@ -81,7 +78,7 @@ TabView {
         <!-- <GridLayout ref="container" rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" >
 
             <ScrollView ref="scroll" @scroll="onScroll" height="100%" v-if="!rendering1">
-                <StackLayout  id="stackList" paddingBottom="75">
+                <StackLayout  id="stackList" paddingBottom="30">
                     <PageHabitMajelis v-for="(i, index) in itemList" id="item" :key="index" :index="index" :renderingTime="index*renderingChild" class="tabviewitem-container" />
 
                     <ActivityIndicator color="#28ADAA" marginTop="15" :busy="busy" @busyChange="" />
@@ -112,7 +109,9 @@ TabView {
 
                 <TabViewItem title="Bacaan Islami" bageValue="" wrapContent="false">
                     <ScrollView ref="scroll0" @scroll="onScroll($event, 0)" height="100%" scrollBarIndicatorVisible="false">
-                      <StackLayout id="stackList0" ref="stackList0" paddingBottom="75" >
+                        <ContentPreloader v-if="!tab0" />
+
+                      <StackLayout id="stackList0" ref="stackList0" paddingBottom="30" >
                         <PageHabitMembaca v-if="tab0" :items="get_habit_membaca_islami_payload" class="tabviewitem-container" />
 
                         <ActivityIndicator ref="indicator0" color="#28ADAA" :busy="busy0" @busyChange="onBusyChange($event, 0)" />
@@ -121,7 +120,9 @@ TabView {
                 </TabViewItem>
                 <TabViewItem title="Bacaan Umum" bageValue="" wrapContent="false">
                   <ScrollView ref="scroll1" @scroll="onScroll($event, 1)" height="100%" scrollBarIndicatorVisible="false">
-                    <StackLayout id="stackList1" ref="stackList1" paddingBottom="75" >
+                    <ContentPreloader v-if="!tab1" />
+
+                    <StackLayout id="stackList1" ref="stackList1" paddingBottom="30" >
                       <PageHabitMembaca v-if="tab1" :items="get_habit_membaca_umum_payload" class="tabviewitem-container" />
 
                       <ActivityIndicator v-if="tab1" ref="indicator0" color="#28ADAA" :busy="busy1" @busyChange="onBusyChange($event, 1)" />
@@ -134,7 +135,7 @@ TabView {
 
         <!-- </StackLayout> -->
         </GridLayout>
-
+        <ContentPreloader v-if="rendering0 && initContentPreloader" />
     </StackLayout>
 </Page>
 
@@ -172,30 +173,14 @@ export default {
         return {
             // itemList: [],
 
-            busy0: true,
-            busy1: true,
+            busy0: false,
+            busy1: false,
 
             selectedIndex: 0,
 
             tab0: false,
             tab1: false,
         }
-    },
-    watch: {
-      busy0(val) {
-        if(val) {
-          this.$refs.stackList0.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList0.nativeView.paddingBottom = 0;
-      },
-      busy1(val) {
-        if(val) {
-          this.$refs.stackList1.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList1.nativeView.paddingBottom = 0;
-      }
     },
     mounted() {
 
@@ -217,7 +202,7 @@ export default {
 
         // setTimeout(() => {
         //   this.rendering = false;
-        // }, 500);
+        // }, 400);
         // console.log(this.$store)
         // alert(this.$refs.tabviewitem.nativeView.fontSize)
 

@@ -31,14 +31,29 @@ import habit_zis_waqaf from './habit-zis/habit-zis-waqaf';
 import habit_zis_zakat_mal from './habit-zis/habit-zis-zakat-mal';
 import habit_zis_zakat_fitri from './habit-zis/habit-zis-zakat-fitri';
 
-import habit_tadarus_alquran from './habit-tadarus-alquran';
-import habit_tadarus_iqra from './habit-tadarus-iqra';
+import habit_puasa_rutin from './habit-puasa/habit-puasa-rutin';
+import habit_puasa_khusus from './habit-puasa/habit-puasa-khusus';
+import habit_puasa_ramadhan from './habit-puasa/habit-puasa-ramadhan';
+import habit_puasa_nazar from './habit-puasa/habit-puasa-nazar';
+import habit_puasa_kafarat from './habit-puasa/habit-puasa-kafarat';
+import habit_puasa_new from './habit-puasa/habit-puasa-new';
+
+import habit_tadarus_alquran from './habit-tadarus/habit-tadarus-alquran';
+import habit_tadarus_iqra from './habit-tadarus/habit-tadarus-iqra';
 
 import habit_majelis from './habit-majelis';
 import habit_organisasi from './habit-organisasi';
 
-import habit_membaca_islami from './habit-membaca-islami';
-import habit_membaca_umum from './habit-membaca-umum';
+import habit_membaca_islami from './habit-membaca/habit-membaca-islami';
+import habit_membaca_umum from './habit-membaca/habit-membaca-umum';
+
+import habit_sholat_pagi from "./habit-sholat/habit-sholat-pagi";
+import habit_sholat_tambahan from "./habit-sholat/habit-sholat-tambahan";
+import habit_sholat_malam from "./habit-sholat/habit-sholat-malam";
+import habit_sholat_jumat from "./habit-sholat/habit-sholat-jumat";
+import habit_sholat_hari_raya from "./habit-sholat/habit-sholat-hari-raya";
+import habit_sholat_fardhu from "./habit-sholat/habit-sholat-fardhu";
+
 
 // const map_habit_adab_diri_sendiri = require('./habit-adab-diri-sendiri')
 // Vue.mixin(auth)
@@ -71,6 +86,20 @@ Vue.mixin(habit_zis_zakat_mal);
 Vue.mixin(habit_zis_infaq);
 Vue.mixin(habit_zis_sedekah);
 Vue.mixin(habit_zis_waqaf);
+
+Vue.mixin(habit_puasa_rutin);
+Vue.mixin(habit_puasa_khusus);
+Vue.mixin(habit_puasa_ramadhan);
+Vue.mixin(habit_puasa_nazar);
+Vue.mixin(habit_puasa_kafarat);
+Vue.mixin(habit_puasa_new);
+
+Vue.mixin(habit_sholat_pagi);
+Vue.mixin(habit_sholat_tambahan);
+Vue.mixin(habit_sholat_malam);
+Vue.mixin(habit_sholat_jumat);
+Vue.mixin(habit_sholat_hari_raya);
+Vue.mixin(habit_sholat_fardhu);
 
 Vue.mixin(habit_tadarus_alquran);
 Vue.mixin(habit_tadarus_iqra);

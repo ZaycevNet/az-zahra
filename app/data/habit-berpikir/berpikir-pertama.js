@@ -70,17 +70,6 @@ module.exports = [
 				"max_point":"5",
 				"countable":"1",
 				"selected":true
-			},
-			{
-				"id":"1",
-				"code":Math.random()*99999999999,
-				"initial": "HABIT-BERFIKIR-PERTAMA",
-				"description":"",
-				"type":"0",
-				"interval":"harian",
-				"max_point":"5",
-				"countable":"1",
-				"selected":true
 			}
 		]
 	}

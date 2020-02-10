@@ -54,6 +54,7 @@ module.exports = {
 					message: "Sedang diproses... ", //param+'Sedang diproses... '
 				});
 			},
+
 			hideLoadingIndicator(){
 				this.indicator.hide();
 			},

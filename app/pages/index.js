@@ -18,6 +18,15 @@ const PageHabitBerpikir = resolve => {
     )
 }
 
+const PageHabitSholat = resolve => {
+    require.ensure(
+        ['./page-habit-sholat'],
+        () => {
+            resolve(require('./page-habit-sholat'))
+        }, 'page-habit-sholat'
+    )
+}
+
 
 const PageHabitOrganisasiNew = resolve => {
     require.ensure(
@@ -109,62 +118,101 @@ const PageHabitTadarusModal = resolve => {
     )
 }
 
-const PageHabitZisSedekah = resolve => {
+// const PageHabitZisSedekah = resolve => {
+//     require.ensure(
+//         ['./habit-zis/page-habit-zis-sedekah'],
+//         () => {
+//             resolve(require('./habit-zis/page-habit-zis-sedekah'))
+//         }, 'habit-zis/page-habit-zis-sedekah'
+//     )
+// }
+//
+// const PageHabitZisInfaq = resolve => {
+//     require.ensure(
+//         ['./habit-zis/page-habit-zis-infaq'],
+//         () => {
+//             resolve(require('./habit-zis/page-habit-zis-infaq'))
+//         }, 'habit-zis/page-habit-zis-infaq'
+//     )
+// }
+//
+// const PageHabitZisWaqaf = resolve => {
+//     require.ensure(
+//         ['./habit-zis/page-habit-zis-waqaf'],
+//         () => {
+//             resolve(require('./habit-zis/page-habit-zis-waqaf'))
+//         }, 'habit-zis/page-habit-zis-waqaf'
+//     )
+// }
+//
+// const PageHabitZisZakatFitri = resolve => {
+//     require.ensure(
+//         ['./habit-zis/page-habit-zis-zakat-fitri'],
+//         () => {
+//             resolve(require('./habit-zis/page-habit-zis-zakat-fitri'))
+//         }, 'habit-zis/page-habit-zis-zakat-fitri'
+//     )
+// }
+//
+// const PageHabitZisZakatMal = resolve => {
+//     require.ensure(
+//         ['./habit-zis/page-habit-zis-zakat-mal'],
+//         () => {
+//             resolve(require('./habit-zis/page-habit-zis-zakat-mal'))
+//         }, 'habit-zis/page-habit-zis-zakat-mal'
+//     )
+// }
+
+const PageHabitZisMal = resolve => {
     require.ensure(
-        ['./habit-zis/page-habit-zis-sedekah'],
+        ['./page-habit-zis-mal'],
         () => {
-            resolve(require('./habit-zis/page-habit-zis-sedekah'))
-        }, 'habit-zis/page-habit-zis-sedekah'
+            resolve(require('./page-habit-zis-mal'))
+        }, 'page-habit-zis-mal'
     )
 }
 
-const PageHabitZisInfaq = resolve => {
+const PageHabitZisNonMal = resolve => {
     require.ensure(
-        ['./habit-zis/page-habit-zis-infaq'],
+        ['./page-habit-zis-non-mal'],
         () => {
-            resolve(require('./habit-zis/page-habit-zis-infaq'))
-        }, 'habit-zis/page-habit-zis-infaq'
+            resolve(require('./page-habit-zis-non-mal'))
+        }, 'page-habit-zis-non-mal'
     )
 }
 
-const PageHabitZisWaqaf = resolve => {
+const PageHabitZisNew = resolve => {
     require.ensure(
-        ['./habit-zis/page-habit-zis-waqaf'],
+        ['./page-habit-zis-new'],
         () => {
-            resolve(require('./habit-zis/page-habit-zis-waqaf'))
-        }, 'habit-zis/page-habit-zis-waqaf'
+            resolve(require('./page-habit-zis-new'))
+        }, 'page-habit-zis-new'
     )
 }
 
-const PageHabitZisZakatFitri = resolve => {
+const PageHabitPuasa = resolve => {
     require.ensure(
-        ['./habit-zis/page-habit-zis-zakat-fitri'],
+        ['./page-habit-puasa'],
         () => {
-            resolve(require('./habit-zis/page-habit-zis-zakat-fitri'))
-        }, 'habit-zis/page-habit-zis-zakat-fitri'
+            resolve(require('./page-habit-puasa'))
+        }, 'page-habit-puasa'
     )
 }
 
-const PageHabitZisZakatMal = resolve => {
+const PageHabitPuasaNew = resolve => {
     require.ensure(
-        ['./habit-zis/page-habit-zis-zakat-mal'],
+        ['./page-habit-puasa-new'],
         () => {
-            resolve(require('./habit-zis/page-habit-zis-zakat-mal'))
-        }, 'habit-zis/page-habit-zis-zakat-mal'
+            resolve(require('./page-habit-puasa-new'))
+        }, 'page-habit-puasa-new'
     )
 }
 
-const PageHabitZisZakatMalNew = resolve => {
-    require.ensure(
-        ['./habit-zis/page-habit-zis-zakat-mal-new'],
-        () => {
-            resolve(require('./habit-zis/page-habit-zis-zakat-mal-new'))
-        }, 'habit-zis/page-habit-zis-zakat-mal-new'
-    )
-}
 Vue.component('PageHabitTadarusModal', PageHabitTadarusModal);
 Vue.component('PageHabitAdab', PageHabitAdab);
 Vue.component('PageHabitBerpikir', PageHabitBerpikir);
+Vue.component('PageHabitSholat', PageHabitSholat);
+
 Vue.component('PageHabitOrganisasiNew', PageHabitOrganisasiNew);
 Vue.component('PageHabitOrganisasi', PageHabitOrganisasi);
 Vue.component('PageHabitMajelis', PageHabitMajelis);
@@ -175,9 +223,16 @@ Vue.component('PageHabitTadarusAlquran', PageHabitTadarusAlquran);
 Vue.component('PageHabitTadarusIqra', PageHabitTadarusIqra);
 Vue.component('PageHabitTadarusNew', PageHabitTadarusNew);
 
-Vue.component('PageHabitZisSedekah', PageHabitZisSedekah);
-Vue.component('PageHabitZisInfaq', PageHabitZisInfaq);
-Vue.component('PageHabitZisWaqaf', PageHabitZisWaqaf);
-Vue.component('PageHabitZisZakatFitri', PageHabitZisZakatFitri);
-Vue.component('PageHabitZisZakatMal', PageHabitZisZakatMal);
-Vue.component('PageHabitZisZakatMalNew', PageHabitZisZakatMalNew);
+Vue.component('PageHabitZisMal', PageHabitZisMal);
+Vue.component('PageHabitZisNonMal', PageHabitZisNonMal);
+Vue.component('PageHabitZisNew', PageHabitZisNew);
+
+Vue.component('PageHabitPuasa', PageHabitPuasa);
+Vue.component('PageHabitPuasaNew', PageHabitPuasaNew);
+
+// Vue.component('PageHabitZisSedekah', PageHabitZisSedekah);
+// Vue.component('PageHabitZisInfaq', PageHabitZisInfaq);
+// Vue.component('PageHabitZisWaqaf', PageHabitZisWaqaf);
+// Vue.component('PageHabitZisZakatFitri', PageHabitZisZakatFitri);
+// Vue.component('PageHabitZisZakatMal', PageHabitZisZakatMal);
+// Vue.component('PageHabitZisNew', PageHabitZisNew);

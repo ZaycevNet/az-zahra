@@ -43,15 +43,14 @@ TabView {
     font-size: 15;
 }
 
-.fab-button {
-    height: 50;
-    /* width: 70; /// this is required on iOS - Android does not require width so you might need to adjust styles */
-    width: 50;
-    margin: 15;
-    background-color: #ff4081;
-    horizontal-align: right;
-    vertical-align: bottom;
-}
+/* .fab-button {
+  height: 50;
+  width: 50;
+  margin: 15;
+  background-color: #ff4081;
+  horizontal-align: right;
+  vertical-align: bottom;
+} */
 
 #tabview_child {
   font-weight: bold;
@@ -73,7 +72,7 @@ TabView {
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
@@ -91,12 +90,14 @@ TabView {
                     <StackLayout>
 
                       <TabView ref="tabview_child" id="tabview_child" @loaded="onLoad"  @selectedIndexChange="onSelectedIndexChangedChild" height="100%" tabTextFontSize="14" selectedTabTextColor="#28BAAA" androidSelectedTabHighlightColor="white"
-                      tabTextColor="rgba(40,186,170,0.3)" tabBackgroundColor="white" iosIconRenderingMode="alwaysOriginal">
+                      tabTextColor="rgba(40,186,170,0.3)" tabBackgroundColor="white"  iosIconRenderingMode="alwaysOriginal">
 
                       <TabViewItem title="Zakat Harta" bageValue="" wrapContent="false">
                         <ScrollView ref="scroll_child_0" @scroll="onScrollChild($event, 0)" height="100%" scrollBarIndicatorVisible="false">
-                          <StackLayout id="stackList_child_0" ref="stackList_child_0" paddingBottom="75" >
-                            <PageHabitZisZakatMal v-if="tab_child_0" :items="get_habit_zis_zakat_mal_payload" class="tabviewitem-container" />
+                          <StackLayout id="stackList_child_0" ref="stackList_child_0" paddingBottom="30" >
+                            <ContentPreloader v-if="!tab_child_0" />
+
+                            <PageHabitZisMal v-if="tab_child_0" :items="get_habit_zis_zakat_mal_payload" class="tabviewitem-container" />
 
                             <ActivityIndicator ref="indicator_child_0" color="#28ADAA" :busy="busy_child_0" @busyChange="onBusyChangeChild($event, 0)" />
                           </StackLayout>
@@ -108,8 +109,11 @@ TabView {
                       <TabViewItem title="Zakat Fitri" bageValue="" wrapContent="false">
 
                         <ScrollView ref="scroll_child_1" @scroll="onScrollChild($event, 1)" height="100%" scrollBarIndicatorVisible="false">
-                          <StackLayout id="stackList_child_1" ref="stackList_child_1" paddingBottom="75" >
-                            <PageHabitZisZakatFitri :items="get_habit_zis_zakat_fitri_payload" class="tabviewitem-container" />
+                          <StackLayout id="stackList_child_1" ref="stackList_child_1" paddingBottom="30" >
+
+                            <ContentPreloader v-if="!tab_child_1" />
+
+                            <PageHabitZisNonMal v-if="tab_child_1" :items="get_habit_zis_zakat_fitri_payload" class="tabviewitem-container" />
 
                           </StackLayout>
                         </ScrollView>
@@ -124,8 +128,10 @@ TabView {
 
                 <TabViewItem title="Sedakah" bageValue="" wrapContent="false">
                     <ScrollView ref="scroll1" @scroll="onScroll($event, 1)" height="100%" scrollBarIndicatorVisible="false">
-                      <StackLayout id="stackList1" ref="stackList1" paddingBottom="75" >
-                        <PageHabitZisSedekah v-if="tab1" :items="get_habit_zis_sedekah_payload" class="tabviewitem-container" />
+                      <StackLayout id="stackList1" ref="stackList1" paddingBottom="30" >
+                        <ContentPreloader v-if="!tab1" />
+
+                        <PageHabitZisNonMal v-if="tab1" :items="get_habit_zis_sedekah_payload" class="tabviewitem-container" />
 
                         <ActivityIndicator ref="indicator1" color="#28ADAA" :busy="busy1" @busyChange="onBusyChange($event, 1)" />
                       </StackLayout>
@@ -134,8 +140,10 @@ TabView {
 
                 <TabViewItem title="Infaq" bageValue="" wrapContent="false">
                     <ScrollView ref="scroll2" @scroll="onScroll($event, 2)" height="100%" scrollBarIndicatorVisible="false">
-                      <StackLayout id="stackList2" ref="stackList2" paddingBottom="75" >
-                        <PageHabitZisInfaq v-if="tab2" :items="get_habit_zis_infaq_payload" class="tabviewitem-container" />
+                      <StackLayout id="stackList2" ref="stackList2" paddingBottom="30" >
+                        <ContentPreloader v-if="!tab2" />
+
+                        <PageHabitZisNonMal v-if="tab2" :items="get_habit_zis_infaq_payload" class="tabviewitem-container" />
 
                         <ActivityIndicator ref="indicator2" color="#28ADAA" :busy="busy2" @busyChange="onBusyChange($event, 2)" />
                       </StackLayout>
@@ -144,8 +152,10 @@ TabView {
 
                 <TabViewItem title="Waqaf" bageValue="" wrapContent="false">
                     <ScrollView ref="scroll3" @scroll="onScroll($event, 3)" height="100%" scrollBarIndicatorVisible="false">
-                      <StackLayout id="stackList3" ref="stackList3" paddingBottom="75" >
-                        <PageHabitZisWaqaf v-if="tab3" :items="get_habit_zis_waqaf_payload" class="tabviewitem-container" />
+                      <StackLayout id="stackList3" ref="stackList3" paddingBottom="30" >
+                        <ContentPreloader v-if="!tab3" />
+
+                        <PageHabitZisNonMal v-if="tab3" :items="get_habit_zis_waqaf_payload" class="tabviewitem-container" />
 
                         <ActivityIndicator ref="indicator3" color="#28ADAA" :busy="busy3" @busyChange="onBusyChange($event, 3)" />
                       </StackLayout>
@@ -159,7 +169,7 @@ TabView {
 
         <!-- </StackLayout> -->
         </GridLayout>
-
+        <ContentPreloader v-if="rendering0 && initContentPreloader" />
     </StackLayout>
 </Page>
 
@@ -197,16 +207,16 @@ export default {
         return {
             // itemList: [],
 
-            busy_child_0: true,
-            busy_child_1: true,
+            busy_child_0: false,
+            busy_child_1: false,
 
             tab_child_0: false,
             tab_child_1: false,
 
-            busy0: true,
-            busy1: true,
-            busy2: true,
-            busy3: true,
+            busy0: false,
+            busy1: false,
+            busy2: false,
+            busy3: false,
 
             selectedIndex: 0,
 
@@ -215,50 +225,6 @@ export default {
             tab2: false,
             tab3: false,
         }
-    },
-    watch: {
-      busy_child_0(val) {
-        if(val) {
-          this.$refs.stackList_child_0.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList_child_0.nativeView.paddingBottom = 0;
-      },
-      busy_child_1(val) {
-        if(val) {
-          this.$refs.stackList_child_1.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList_child_1.nativeView.paddingBottom = 0;
-      },
-      busy0(val) {
-        if(val) {
-          this.$refs.stackList0.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList0.nativeView.paddingBottom = 0;
-      },
-      busy1(val) {
-        if(val) {
-          this.$refs.stackList1.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList1.nativeView.paddingBottom = 0;
-      },
-      busy2(val) {
-        if(val) {
-          this.$refs.stackList2.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList2.nativeView.paddingBottom = 0;
-      },
-      busy3(val) {
-        if(val) {
-          this.$refs.stackList3.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList3.nativeView.paddingBottom = 0;
-      }
     },
     mounted() {
 
@@ -278,7 +244,7 @@ export default {
 
         // setTimeout(() => {
         //   this.rendering = false;
-        // }, 500);
+        // }, 400);
         // console.log(this.$store)
         // alert(this.$refs.tabviewitem.nativeView.fontSize)
 

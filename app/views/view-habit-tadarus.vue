@@ -44,17 +44,14 @@ TabView {
 }
 
 
-.fab-button {
-    height: 50;
-    /* width: 70; /// this is required on iOS - Android does not require width so you might need to adjust styles */
-    width: 50;
-    margin: 15;
-    background-color: #ff4081;
-    horizontal-align: right;
-    vertical-align: bottom;
-}
-
-
+/* .fab-button {
+  height: 50;
+  width: 50;
+  margin: 15;
+  background-color: #ff4081;
+  horizontal-align: right;
+  vertical-align: bottom;
+} */
 </style>
 
 <template>
@@ -72,7 +69,7 @@ TabView {
     </ActionBar>
 
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
@@ -98,7 +95,9 @@ TabView {
 
                 <TabViewItem title="Alquran" bageValue="" wrapContent="false">
                     <ScrollView ref="scroll0" @scroll="onScroll($event, 0)" height="100%" scrollBarIndicatorVisible="false">
-                      <StackLayout id="stackList0" ref="stackList0" paddingBottom="75" >
+                      <StackLayout id="stackList0" ref="stackList0" paddingBottom="30" >
+                        <ContentPreloader v-if="!tab0" />
+
                         <PageHabitTadarusAlquran v-if="tab0" :items="get_habit_tadarus_alquran_payload" class="tabviewitem-container" />
 
                         <ActivityIndicator ref="indicator0" color="#28ADAA" :busy="busy0" @busyChange="onBusyChange($event, 0)" />
@@ -107,7 +106,9 @@ TabView {
                 </TabViewItem>
                 <TabViewItem title="Iqra" bageValue="" wrapContent="false">
                   <ScrollView ref="scroll1" @scroll="onScroll($event, 1)" height="100%" scrollBarIndicatorVisible="false">
-                    <StackLayout id="stackList1" ref="stackList1" paddingBottom="75" >
+                    <StackLayout id="stackList1" ref="stackList1" paddingBottom="30" >
+                        <ContentPreloader v-if="!tab1" />
+
                       <PageHabitTadarusIqra v-if="tab1" :items="get_habit_tadarus_iqra_payload" class="tabviewitem-container" />
 
                         <ActivityIndicator ref="indicator1" color="#28ADAA" :busy="busy1" @busyChange="onBusyChange($event, 1)" />
@@ -120,7 +121,7 @@ TabView {
 
         <!-- </StackLayout> -->
         </GridLayout>
-
+        <ContentPreloader v-if="rendering0 && initContentPreloader" />
     </StackLayout>
 </Page>
 
@@ -158,30 +159,14 @@ export default {
         return {
             // itemList: [],
 
-            busy0: true,
-            busy1: true,
+            busy0: false,
+            busy1: false,
 
             selectedIndex: 0,
 
             tab0: false,
             tab1: false,
         }
-    },
-    watch: {
-      busy0(val) {
-        if(val) {
-          this.$refs.stackList0.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList0.nativeView.paddingBottom = 0;
-      },
-      busy1(val) {
-        if(val) {
-          this.$refs.stackList1.nativeView.paddingBottom = 75;
-          return
-        }
-        this.$refs.stackList1.nativeView.paddingBottom = 0;
-      }
     },
     mounted() {
 
@@ -203,7 +188,7 @@ export default {
 
         // setTimeout(() => {
         //   this.rendering = false;
-        // }, 500);
+        // }, 400);
         // console.log(this.$store)
         // alert(this.$refs.tabviewitem.nativeView.fontSize)
 

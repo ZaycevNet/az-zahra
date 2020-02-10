@@ -53,7 +53,7 @@
 
     <TadarusNewSubtitle ref="subtitle" class="subtitle-border" />
 
-    <StackLayout v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" :class="tadarus == 1 ? 'iqra' : 'off-bottom-border'" padding="10 15 10 15">
+    <StackLayout v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" :class="jenis == 1 ? 'iqra' : 'off-bottom-border'" padding="10 15 10 15">
 
         <!-- alquran * iqra -->
         <TadarusNewSegmented @onBubbleTap="onBubbleTap" width="100%" placeholder="Kategori" />
@@ -68,12 +68,12 @@
         <!-- <TadarusNewRadio placeholder="Durasi" /> -->
 
         <!-- alquran -->
-        <TadarusNewStepper v-show="tadarus == 1" placeholder="Tingkat"  maxLength="1" lowestNumber="1" highestNumber="6"/>
+        <TadarusNewStepper v-show="jenis == 1" placeholder="Tingkat"  maxLength="1" lowestNumber="1" highestNumber="6"/>
 
         <!-- alquran -->
-        <TadarusNewStepper v-show="tadarus == 0" placeholder="Juz" maxLength="30" lowestNumber="1" highestNumber="30"/>
-        <TadarusNewDropdownFloatLabelSurat v-show="tadarus == 0"  />
-        <TadarusNewTextfield placeholder="Ayat" v-show="tadarus == 0"  />
+        <TadarusNewStepper v-show="jenis == 0" placeholder="Juz" maxLength="30" lowestNumber="1" highestNumber="30"/>
+        <TadarusNewDropdownFloatLabelSurat v-show="jenis == 0"  />
+        <TadarusNewTextfield placeholder="Ayat" v-show="jenis == 0"  />
 
 
         <!-- alquran * iqra -->
@@ -83,11 +83,11 @@
 
     </StackLayout>
 
-    <StackLayout v-if="!rendering1" v-show="tadarus == 0" v-for="(item, index) in items" :key="index" slot="item">
+    <StackLayout v-if="!rendering1" v-show="jenis == 0" v-for="(item, index) in items" :key="index" slot="item">
         <TadarusItemCheckboxBasic :description="item.description" :checked="item.selected" :items="item" :class="index+1 >= items.length ? 'full-border-last-item' : 'off-bottom-border'" />
     </StackLayout>
 
-    <Label v-if="!rendering1" v-show="tadarus == 0" fontSize="12" padding="10 0" text="Tekan lama pilihan di atas untuk mengetahui artinya" width="100%" textAlignment="center" />
+    <Label v-if="!rendering1" v-show="jenis == 0" fontSize="12" padding="10 0" text="Tekan lama pilihan di atas untuk mengetahui artinya" width="100%" textAlignment="center" />
 
 </StackLayout>
 
@@ -97,18 +97,14 @@
 
 import Vue from 'nativescript-vue'
 
-// const TadarusModal = "@/ui/widgets/habit-tadarus/tadarus-modal"
 const delayrendering = require("@/mixins/delayrendering");
 
 export default {
     mixins: [delayrendering],
     props: ["items"],
-    // components: {
-    //   TadarusModal
-    // },
     data() {
         return {
-            tadarus:0, // 0 = alquran, 1 = iqra
+            jenis: 0, // 0 = alquran, 1 = iqra
 
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             // untuk mengakses event onSubmit() dari parent->child perlu mengirim bus.$event
@@ -125,7 +121,7 @@ export default {
     methods: {
 
       onBubbleTap(val) {
-        this.tadarus = val
+        this.jenis = val
       },
         onNext() {
             // console.log(this.$refs.dataform.nativeView)

@@ -13,7 +13,7 @@ const {
   action_habit_adab_kerabat_payload
 } = habit_adab_kerabat;
 
-const JSON = require("@/data/adab-kerabat.js");
+const JSON = require("@/data/habit-adab/adab-kerabat.js");
 // console.log(adabDiriSendiriJSON);
 
 const state = {

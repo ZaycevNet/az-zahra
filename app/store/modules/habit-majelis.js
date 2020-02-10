@@ -13,7 +13,7 @@ const {
   action_habit_majelis_payload
 } = habit_majelis;
 
-const JSON = require("@/data/majelis.json");
+const JSON = require("@/data/habit-majelis.json");
 // console.log(majelisJSON);
 
 const state = {

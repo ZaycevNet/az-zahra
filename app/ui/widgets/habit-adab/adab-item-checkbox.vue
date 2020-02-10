@@ -61,6 +61,7 @@ export default {
 
 				// letakkan diakhir agar overlay terakhir hilang
 				this.hideLoadingIndicator();
+				this.action_indicator_loading(false);				
 			})
 
 		},

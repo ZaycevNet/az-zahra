@@ -5,6 +5,8 @@ require("./habit-majelis");
 require("./habit-membaca");
 require("./habit-tadarus");
 require("./habit-zis");
+require("./habit-puasa");
+require("./habit-sholat");
 
 import Vue from 'nativescript-vue'
 

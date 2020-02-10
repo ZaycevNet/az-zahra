@@ -12,7 +12,7 @@ module.exports = {
 			showToastAccordionChild(){
 				if(this.firstLoad) return;
 
-				var toast = Toast.makeText("tunggu...");
+				var toast = Toast.makeText("tampilkan...");
 				toast.show();
 
 				this.firstLoad = true;

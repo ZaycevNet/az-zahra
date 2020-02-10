@@ -18,16 +18,26 @@ const TextViewFloatLabel = resolve => {
     )
 };
 
-const ModalActionbar = resolve => {
+// const ModalActionbar = resolve => {
+//     require.ensure(
+//         ['./modal-actionbar'],
+//         () => {
+//             resolve(require('./modal-actionbar'))
+//         }, 'modal-actionbar'
+//     )
+// };
+
+const ContentPreloader = resolve => {
     require.ensure(
-        ['./modal-actionbar'],
+        ['./content-preloader'],
         () => {
-            resolve(require('./modal-actionbar'))
-        }, 'modal-actionbar'
+            resolve(require('./content-preloader'))
+        }, 'content-preloader'
     )
 };
 
 
 Vue.component('TextFieldFloatLabel', TextFieldFloatLabel);
 Vue.component('TextViewFloatLabel', TextViewFloatLabel);
-Vue.component('ModalActionbar', ModalActionbar);
+// Vue.component('ModalActionbar', ModalActionbar);
+Vue.component('ContentPreloader', ContentPreloader);

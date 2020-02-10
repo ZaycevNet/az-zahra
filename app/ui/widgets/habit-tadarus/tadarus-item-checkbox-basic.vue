@@ -47,8 +47,8 @@ export default {
 			});
 		},
 		isLoadingReset(){
-			this.set_habit_majelis_payload_checked({ code: this.items.code, value: this.isChecked});
-			setTimeout(() => { this.isLoading = false }, 250);
+			// this.set_habit_majelis_payload_checked({ code: this.items.code, value: this.isChecked});
+			// setTimeout(() => { this.isLoading = false }, 250);
 		},
 		onCheckedChangeHandler(event){
 			if(this.isLoading) return;

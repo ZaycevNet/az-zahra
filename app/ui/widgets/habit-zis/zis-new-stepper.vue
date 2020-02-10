@@ -41,7 +41,7 @@ TextField {
 	<GridLayout rows="25, auto, *" marginBottom="10" marginTop="5">
 			<Label ref="label" row="1" :text="placeholder" opacity="0.4" fontSize="14" class="input" />
 
-			<GridLayout ref="textField" row="1" class="segment" @loaded="onLoad" width="100%" rows="*" columns="*,*,*" >
+			<GridLayout ref="textField" row="1" class="segment" width="100%" rows="*" columns="*,*,*" >
 				<StackLayout col="0" class="segment-left" horizontalAlignment="left" >
 					<Ripple @tap="onTap('dec')" width="100%" rippleColor="#fff">
 							<Label class="label-stepper" text="-"/>

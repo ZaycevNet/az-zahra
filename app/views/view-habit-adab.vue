@@ -60,7 +60,7 @@ TabView {
     </ActionBar>
 
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
@@ -93,36 +93,63 @@ TabView {
                 </TabViewItem>
                 <TabViewItem title="Ayah/Ibu" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                      <StackLayout>
+                        <ContentPreloader v-if="!tab1" />
+
                         <PageHabitAdab v-if="tab1" :items="get_habit_adab_orangtua_payload" vuex="adab_orangtua" class="tabviewitem-container" />
+                      </StackLayout>
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Saudara" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                      <StackLayout>
+                        <ContentPreloader v-if="!tab2" />
+
                         <PageHabitAdab v-if="tab2" :items="get_habit_adab_saudara_payload" vuex="adab_saudara" class="tabviewitem-container" />
+                      </StackLayout>
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Kerabat" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                      <StackLayout>
+                        <ContentPreloader v-if="!tab3" />
+
                         <PageHabitAdab v-if="tab3" :items="get_habit_adab_kerabat_payload" vuex="adab_kerabat" class="tabviewitem-container" />
+                      </StackLayout>
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Guru" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                      <StackLayout>
+                        <ContentPreloader v-if="!tab4" />
+
                         <PageHabitAdab v-if="tab4" :items="get_habit_adab_guru_payload" vuex="adab_guru" class="tabviewitem-container" />
+                      </StackLayout>
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Orang Lain" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                      <StackLayout>
+                        <ContentPreloader v-if="!tab5" />
+
                         <PageHabitAdab v-if="tab5" :items="get_habit_adab_oranglain_payload" vuex="adab_oranglain" class="tabviewitem-container" />
+                      </StackLayout>
                     </ScrollView>
                 </TabViewItem>
                 <TabViewItem title="Alat/Tempat" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
+                      <StackLayout>
+                        <ContentPreloader v-if="!tab6" />
+
                         <PageHabitAdab v-if="tab6" :items="get_habit_adab_alat_tempat_payload" vuex="adab_alat_tempat" class="tabviewitem-container" />
+                      </StackLayout>
                     </ScrollView>
                 </TabViewItem>
             </TabView>
         </StackLayout>
+
+        <ContentPreloader v-if="rendering0 && initContentPreloader" />
+
     </StackLayout>
 </Page>
 
@@ -158,7 +185,7 @@ export default {
     // },
     data() {
         return {
-            busy: true,
+            busy: false,
 
             selectedIndex: 0,
 
@@ -188,7 +215,7 @@ export default {
 
         // setTimeout(() => {
         //   this.rendering = false;
-        // }, 500);
+        // }, 400);
         // console.log(this.$store)
         // alert(this.$refs.tabviewitem.nativeView.fontSize)
 
@@ -221,14 +248,6 @@ export default {
                 let newIndex = args.value;
                 this.selectedIndex = newIndex;
                 console.log('Current tab index: ' + newIndex, this.selectedIndex);
-
-                // this.tab0 = false;
-                // this.tab1 = false;
-                // this.tab2 = false;
-                // this.tab3 = false;
-                // this.tab4 = false;
-                // this.tab5 = false;
-                // this.tab6 = false;
 
                 setTimeout(() => {
                     this['tab' + newIndex] = true

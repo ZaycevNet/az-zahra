@@ -55,12 +55,12 @@ ActionBar,
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 500)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack()" /> -->
 
-        <HabitHeadlineNonTab habit="Majelis Ilmu" />
+        <HabitHeadlineNonTab habit="Majelis Ilmu" v-shadow="5" />
         <GridLayout rows="*,auto" columns="*">
             <ScrollView height="100%" v-if="!rendering0">
                 <StackLayout>
@@ -75,6 +75,7 @@ ActionBar,
             </StackLayout>
 
         </GridLayout>
+
     </StackLayout>
 </Page>
 

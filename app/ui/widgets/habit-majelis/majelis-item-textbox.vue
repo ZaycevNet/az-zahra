@@ -1,6 +1,6 @@
 
 <template>
-	<StackLayout @loaded="onEnabledCheckbox">
+	<StackLayout>
 		<GridLayout columns="110,10,*" color="white" rows="*" height="auto" padding="5 5">
 			<Label textAlignment="left"  paddingLeft="10" fontSize="14px" verticalAlignment="top" :text="title" textWrap="true" col="0"/>
 

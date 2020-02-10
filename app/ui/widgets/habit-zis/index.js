@@ -73,15 +73,6 @@ const ZisNewTextview = resolve => {
     )
 };
 
-const ZisNewDropdownFloatLabelSurat = resolve => {
-    require.ensure(
-        ['./zis-new-dropdown-float-label-surat'],
-        () => {
-            resolve(require('./zis-new-dropdown-float-label-surat'))
-        }, 'zis-new-dropdown-float-label-surat'
-    )
-};
-
 const ZisNewDropdownFloatLabel = resolve => {
     require.ensure(
         ['./zis-new-dropdown-float-label'],
@@ -176,7 +167,6 @@ Vue.component('ZisNewSubtitle', ZisNewSubtitle);
 Vue.component('ZisNewTextfield', ZisNewTextfield);
 Vue.component('ZisNewTextview', ZisNewTextview);
 Vue.component('ZisNewDropdownFloatLabel', ZisNewDropdownFloatLabel);
-Vue.component('ZisNewDropdownFloatLabelSurat', ZisNewDropdownFloatLabelSurat);
 Vue.component('ZisNewTimepicker', ZisNewTimepicker);
 Vue.component('ZisNewDatepicker', ZisNewDatepicker);
 Vue.component('ZisItemCheckboxBasic', ZisItemCheckboxBasic);

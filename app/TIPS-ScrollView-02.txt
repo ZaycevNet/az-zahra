@@ -1,0 +1,33 @@
+const Container = require('./container/Index')
+
+const _WaitRender = require('~/mixins/shared/scripts/waitrender')
+
+module.exports = {
+    mixins: [
+        // _WaitRender
+    ],
+    components: {
+        Container
+    },
+    template: `
+        <ScrollView
+            height="*"
+            ref="Container"
+            @tap="onToggleStopFocusTextView('Container')"
+            @scroll="onScroll">
+            <Container />
+        </ScrollView>
+    `,
+    methods: {
+        onScroll: function() {
+            //access to the native event
+            const scrollView = this.$refs.Container.nativeView;
+
+            console.log('verticalOffset', scrollView.verticalOffset)
+            console.log('getActualSize', scrollView.getActualSize().height)
+            console.log('getMeasuredHeight', scrollView.getMeasuredHeight())
+            console.log('scrollableHeight', scrollView.scrollableHeight)
+
+        }
+    },
+}
