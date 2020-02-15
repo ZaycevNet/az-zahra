@@ -28,6 +28,9 @@ Label {
 </template>
 
 <script>
+import {
+    Color
+} from "color";
 export default {
   // props: {
   //     placeholder: {
@@ -57,6 +60,10 @@ export default {
 
 		const label = this.$refs.label.nativeView;
 		const textField = this.$refs.textField.nativeView;
+
+    label.translateY = -15;
+    label.opacity = 1;
+    textField.borderBottomColor = new Color("#28BAAA");
 
 		setTimeout(() => {
 			label

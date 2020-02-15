@@ -29,7 +29,7 @@
 
 <template>
 
-<StackLayout padding="10 10 10 10" marginBottom="0" @loaded="onLoaded_Rendering(0, 250)">
+<StackLayout padding="0 0 10 0" marginBottom="0" @loaded="onLoaded_Rendering(0, 250)">
 
     <!-- <TadarusNewSubtitle ref="subtitle" class="subtitle-border" /> -->
 
@@ -48,7 +48,9 @@
 
       <GridLayout columns="*,*" rows="*">
           <ProfileNewTextfield :text="items.tempat_lahir" col="0" width="45%" horizontalAlignment="left" placeholder="Tempat Lahir" />
-          <ProfileNewDatepickerTanggallahir :text="items.tanggal_lahir" col="1" width="50%" placeholder="Tanggal Lahir" />
+
+          <ProfileNewTextfield v-if="!get_profile_siswa_is_edit" :text="items.tanggal_lahir" col="1" width="50%" placeholder="Tanggal Lahir" />
+          <ProfileNewDatepickerTanggallahir v-else :text="items.tanggal_lahir" col="1" width="50%" placeholder="Tanggal Lahir" />
       </GridLayout>
 
       <!-- <TadarusNewRadio placeholder="Durasi" /> -->
@@ -66,7 +68,9 @@
       <ProfileNewTextfield placeholder="Telpon" :text="items.telpon" />
       <ProfileNewTextfield placeholder="Email" :text="items.email" />
       <ProfileNewTextfield placeholder="Whatsapp" :text="items.whatsapp" />
-      <ProfileNewRadioGender placeholder="Jenis Kelamin" :text="items.gender" />
+
+      <ProfileNewTextfield v-if="!get_profile_siswa_is_edit" placeholder="Jenis Kelamin" :text="items.whatsapp" />
+      <ProfileNewRadioGender v-else placeholder="Jenis Kelamin" :text="items.gender" />
 
       <!-- <TadarusNewDatepicker placeholder="Tanggal" /> -->
       <ProfileNewTextview placeholder="Alamat" :text="items.alamat" />

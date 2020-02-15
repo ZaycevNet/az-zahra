@@ -4,8 +4,10 @@ const {
 
 const {
   get_profile_siswa_payload,
+  get_profile_siswa_is_edit,
 
   set_profile_siswa_payload,
+  set_profile_siswa_is_edit,
 
   set_profile_siswa_payload_add,
   // set_profile_siswa_payload_remove,
@@ -24,6 +26,7 @@ const {
   set_profile_siswa_payload_group_edit,
 
   action_profile_siswa_payload,
+  action_profile_siswa_is_edit,
 
   action_profile_siswa_payload_add,
   // action_profile_siswa_payload_remove,
@@ -47,20 +50,27 @@ const JSON = require("@/data/profile/profile-siswa");
 // console.log(zis_infaqJSON);
 
 const state = {
-	payload:JSON
+  isEdit: false,
+	payload:JSON,
 };
 
 const getters = {
 	[get_profile_siswa_payload]:(state) => {
 		return state.payload;
 	},
+  [get_profile_siswa_is_edit]:(state) => {
+		return state.isEdit;
+	},
 };
 
 const mutations = {
-	[set_profile_siswa_payload]:(state) => {
+	[set_profile_siswa_payload]:(state, data) => {
 		state.payload = data
 	},
-  [set_profile_siswa_payload_add]:(state) => {
+  [set_profile_siswa_is_edit]:(state, data) => {
+		state.isEdit = data
+	},
+  [set_profile_siswa_payload_add]:(state, data) => {
 		state.payload.push(data)
 	},
   // [set_profile_siswa_payload_remove]: (state, data) => {
@@ -123,6 +133,9 @@ const mutations = {
 const actions = {
 	[action_profile_siswa_payload]: ({commit}, payload) => {
 			commit('set_profile_siswa_payload', payload);
+	},
+  [action_profile_siswa_is_edit]: ({commit}, payload) => {
+			commit('set_profile_siswa_is_edit', payload);
 	},
   [action_profile_siswa_payload_add]: ({commit}, payload) => {
 			commit('set_profile_siswa_payload_add', payload);

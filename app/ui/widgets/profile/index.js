@@ -164,6 +164,38 @@ const ProfileModal = resolve => {
     )
 };
 
+const ProfileNewDropdownRombel = resolve => {
+    require.ensure(
+        ['./profile-new-dropdown-rombel'],
+        () => {
+            resolve(require('./profile-new-dropdown-rombel'))
+        }, 'profile-new-dropdown-rombel'
+    )
+};
+
+const ProfileNewDropdownKelas = resolve => {
+    require.ensure(
+        ['./profile-new-dropdown-kelas'],
+        () => {
+            resolve(require('./profile-new-dropdown-kelas'))
+        }, 'profile-new-dropdown-kelas'
+    )
+};
+
+const ProfileNewDropdownJenjang = resolve => {
+    require.ensure(
+        ['./profile-new-dropdown-jenjang'],
+        () => {
+            resolve(require('./profile-new-dropdown-jenjang'))
+        }, 'profile-new-dropdown-jenjang'
+    )
+};
+
+Vue.component('ProfileNewDropdownRombel', ProfileNewDropdownRombel);
+Vue.component('ProfileNewDropdownKelas', ProfileNewDropdownKelas);
+Vue.component('ProfileNewDropdownJenjang', ProfileNewDropdownJenjang);
+
+
 Vue.component('ProfileModal', ProfileModal);
 Vue.component('ProfileNewStepper', ProfileNewStepper);
 Vue.component('ProfileNewSegmented', ProfileNewSegmented);

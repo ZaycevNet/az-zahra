@@ -45,7 +45,7 @@
 		</StackLayout>
 
     <StackLayout backgroundColor="black" height="100%" verticalAlignment="middle">
-        <ImageZoom margin="0" padding="0" :src="image" maxZoom="2" minZoom="1" />
+        <ImageZoom height="300" margin="0" padding="0" :src="image" maxZoom="2" minZoom="1" />
     </StackLayout>
 </StackLayout>
 

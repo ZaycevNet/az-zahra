@@ -75,7 +75,7 @@ TabView {
 
             <TabViewItem title="Biodata" bageValue="" wrapContent="false">
                 <ScrollView ref="scroll0" @scroll="onScroll($event, 0)" height="100%" scrollBarIndicatorVisible="false">
-                    <StackLayout id="stackList0" ref="stackList0" paddingBottom="0">
+                    <StackLayout id="stackList0" ref="stackList0" paddingBottom="10">
 
                         <ContentPreloader v-if="!tab0" />
 
@@ -100,7 +100,7 @@ TabView {
                             }" height="1" width="100%" backgroundColor="rgba(40,186,170,0.3)" />
 
                                 <ScrollView :ref="'scroll_child_'+index" @scroll="onScrollChild($event, index)" height="100%" scrollBarIndicatorVisible="false">
-                                    <StackLayout :id="'stackList_child_'+index" :ref="'stackList_child_'+index" paddingBottom="0">
+                                    <StackLayout :id="'stackList_child_'+index" :ref="'stackList_child_'+index" paddingBottom="10">
 
                                         <ContentPreloader v-if="!content_preloader(index)" />
 
@@ -117,7 +117,7 @@ TabView {
             </TabViewItem>
 
 
-            <TabViewItem title="Kelompok" bageValue="" wrapContent="false">
+            <!-- <TabViewItem title="Kelompok" bageValue="" wrapContent="false">
                 <StackLayout>
 
                     <TabView ref="tabview_child1" id="tabview_child1" @loaded="onLoad1" @selectedIndexChange="onSelectedIndexChangedChild1" height="100%" tabTextFontSize="14" selectedTabTextColor="#28BAAA" androidSelectedTabHighlightColor="white" tabTextColor="rgba(40,186,170,0.3)"
@@ -145,8 +145,34 @@ TabView {
 
                     </TabView>
                 </StackLayout>
-            </TabViewItem>
+            </TabViewItem> -->
 
+            <TabViewItem title="Kelompok" bageValue="" wrapContent="false">
+              <StackLayout>
+                <Label color="#28BAAA" text="Yang diikuti" padding="10" backgroundColor="white" v-shadow="{
+                    elevation: 0,
+                    bgcolor: '#6DBAB1'
+                }" borderBottomWidth="1" borderBottomColor="#28BAAA" />
+
+                    <!-- <StackLayout>
+                        <StackLayout v-shadow="{
+                        elevation: 0,
+                        bgcolor: '#6DBAB1'
+                    }" height="1" width="100%" backgroundColor="rgba(40,186,170,0.3)">
+                    </StackLayout> -->
+
+                    <ScrollView ref="scroll2" @scroll="onScroll($event, 2)" height="100%" scrollBarIndicatorVisible="false">
+                        <StackLayout id="stackList2" ref="stackList2" paddingBottom="25" paddingTop="5">
+
+                            <ContentPreloader v-if="!tab2" />
+
+                            <PageProfileSiswaGroup v-if="tab2" :items="get_profile_siswa_payload.payload_group" class="tabviewitem-container" />
+
+                            <ActivityIndicator ref="indicator2" color="#28ADAA" :busy="busy2" @busyChange="onBusyChange($event, 2)" />
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </TabViewItem>
 
             <TabViewItem title="Kebiasaan" bageValue="" wrapContent="false">
                 <ScrollView ref="scroll3" @scroll="onScroll($event, 3)" height="100%" scrollBarIndicatorVisible="false">
@@ -200,15 +226,15 @@ export default {
             tab_child_2: false,
             tab_child_3: false,
 
-            busy_child1_0: false,
-            tab_child1_0: false,
+            // busy_child1_0: false,
+            // tab_child1_0: false,
 
             busy0: false,
             busy1: false,
             busy2: false,
             busy3: false,
 
-            selectedIndex: 3,
+            selectedIndex: 0,
 
             tab0: false,
 
@@ -248,20 +274,20 @@ export default {
                     this.$refs.tabview_child.nativeView.android.tabLayout.setBackgroundResource(0);
                 }
             },
-            onLoad1() {
-                if (!isIOS) {
-                    this.$refs.tabview_child1.nativeView.android.tabLayout.setBackgroundResource(0);
-                }
-            },
+            // onLoad1() {
+            //     if (!isIOS) {
+            //         this.$refs.tabview_child1.nativeView.android.tabLayout.setBackgroundResource(0);
+            //     }
+            // },
             onBusyChange(event, index) {
                 console.log(event.value, index)
             },
             onBusyChangeChild(event, index) {
                 console.log(event.value, index)
             },
-            onBusyChangeChild1(event, index) {
-                console.log(event.value, index)
-            },
+            // onBusyChangeChild1(event, index) {
+            //     console.log(event.value, index)
+            // },
             onScrollChild(args, index) {
                 // console.log(index);
                 // console.log(args.scrollY)
@@ -285,19 +311,19 @@ export default {
                     this.$emit('onBubbleParallex', true);
                 }
             },
-            onScrollChild1(args, index) {
-                if (args.scrollY >= (args.object.getViewById("stackList_child1_" + index).getActualSize().height - args.object.getActualSize().height)) {
-                    this['busy_child1_' + index] = true;
-                    setTimeout(() => {
-                        this['busy_child1_' + index] = false;
-                    }, 1000);
-                }
-
-                // untuk reset parallex
-                if (args.scrollY <= 0) {
-                    this.$emit('onBubbleParallex', true);
-                }
-            },
+            // onScrollChild1(args, index) {
+            //     if (args.scrollY >= (args.object.getViewById("stackList_child1_" + index).getActualSize().height - args.object.getActualSize().height)) {
+            //         this['busy_child1_' + index] = true;
+            //         setTimeout(() => {
+            //             this['busy_child1_' + index] = false;
+            //         }, 1000);
+            //     }
+            //
+            //     // untuk reset parallex
+            //     if (args.scrollY <= 0) {
+            //         this.$emit('onBubbleParallex', true);
+            //     }
+            // },
             // onScrollNested(args) {
             //       // untuk reset parallex
             //     if(args.scrollY <= 0) {
@@ -343,14 +369,14 @@ export default {
                 }, 100)
 
             },
-            onSelectedIndexChangedChild1: function(args) {
-                // this.selectedIndex = 1;
-
-                setTimeout(() => {
-                    this['tab_child1_' + args.value] = true
-                }, 100)
-
-            },
+            // onSelectedIndexChangedChild1: function(args) {
+            //     // this.selectedIndex = 1;
+            //
+            //     setTimeout(() => {
+            //         this['tab_child1_' + args.value] = true
+            //     }, 100)
+            //
+            // },
             onSelectedIndexChanged: function(args) {
 
                 let newIndex = args.value;

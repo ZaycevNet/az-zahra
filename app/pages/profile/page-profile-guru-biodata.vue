@@ -7,74 +7,56 @@
     border-top-right-radius: 5;
 }
 
-.full-border-last-item {
+/* .off-top-border {
     border-width: 1;
     border-color: #28BAAA;
-    border-bottom-left-radius: 5;
-    border-bottom-right-radius: 5;
     border-top-width: 0;
-    padding-bottom: 15;
+} */
+
+.full-border-radius {
+    border-width: 0;
+    border-color: #28BAAA;
+    border-radius: 5;
 }
 
-.off-bottom-border {
+/* .off-top-bottom-border {
     border-width: 1;
     border-color: #28BAAA;
+    border-top-width: 0;
     border-bottom-width: 0;
-    border-top-width: 0;
-}
-
-.iqra {
-    border-width: 1;
-    border-color: #28BAAA;
-    border-bottom-left-radius: 5;
-    border-bottom-right-radius: 5;
-    border-top-width: 0;
-    border-bottom-width: 1;
-}
-
+} */
 </style>
 
 <template>
 
-<StackLayout padding="10 10 10 10" marginBottom="65" @loaded="onLoaded_Rendering(0, 250)">
+<StackLayout padding="0 0 10 0" marginBottom="0" @loaded="onLoaded_Rendering(0, 250)">
 
-    <TadarusNewSubtitle ref="subtitle" class="subtitle-border" />
+    <!-- <TadarusNewSubtitle ref="subtitle" class="subtitle-border" /> -->
 
-    <StackLayout v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" :class="jenis == 1 ? 'iqra' : 'off-bottom-border'" padding="10 15 10 15">
+    <StackLayout v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" class="full-border-radius" padding="10 15 10 15">
 
-        <!-- alquran * iqra -->
-        <TadarusNewSegmented @onBubbleTap="onBubbleTap" width="100%" placeholder="Kategori" />
+      <GridLayout columns="*,*" rows="*">
+          <ProfileNewTextfield :text="items.nama_depan" col="0" width="45%" horizontalAlignment="left" placeholder="Nama Depan" />
+          <ProfileNewTextfield :text="items.nama_belakang" col="1" width="50%" placeholder="Nama Belakang" />
+      </GridLayout>
 
-        <!-- alquran * iqra -->
-        <!-- waktu -->
-        <!-- <TadarusNewDropdownFloatLabel /> -->
-        <GridLayout columns="*,*" rows="*">
-            <TadarusNewTimepicker col="0" width="45%" horizontalAlignment="left" placeholder="Waktu Mulai" />
-            <TadarusNewTimepicker col="1" width="50%" placeholder="Waktu Selesai" />
-        </GridLayout>
-        <!-- <TadarusNewRadio placeholder="Durasi" /> -->
+      <GridLayout columns="*,*" rows="*">
+          <ProfileNewTextfield :text="items.gelar_depan" col="0" width="45%" horizontalAlignment="left" placeholder="Gelar Depan" />
+          <ProfileNewTextfield :text="items.gelar_belakang" col="1" width="50%" placeholder="Gelar Belakang" />
+      </GridLayout>
 
-        <!-- alquran -->
-        <TadarusNewStepper v-show="jenis == 1" placeholder="Tingkat"  maxLength="1" lowestNumber="1" highestNumber="6"/>
+      <ProfileNewTextfield placeholder="NIP (Nomer Induk Pegawai)" :text="items.nip" />
+      <ProfileNewTextfield placeholder="Telpon" :text="items.telpon" />
+      <ProfileNewTextfield placeholder="Email" :text="items.email" />
+      <ProfileNewTextfield placeholder="Whatsapp" :text="items.whatsapp" />
 
-        <!-- alquran -->
-        <TadarusNewStepper v-show="jenis == 0" placeholder="Juz" maxLength="30" lowestNumber="1" highestNumber="30"/>
-        <TadarusNewDropdownFloatLabelSurat v-show="jenis == 0"  />
-        <TadarusNewTextfield placeholder="Ayat" v-show="jenis == 0"  />
+      <ProfileNewTextfield v-if="!get_profile_guru_is_edit" placeholder="Jenis Kelamin" :text="items.whatsapp" />
+      <ProfileNewRadioGender v-else placeholder="Jenis Kelamin" :text="items.gender" />
 
-
-        <!-- alquran * iqra -->
-        <TadarusNewTextfield placeholder="Tempat" />
-        <TadarusNewDatepicker placeholder="Tanggal" />
-        <TadarusNewTextview placeholder="Rangkuman" />
+      <!-- <TadarusNewDatepicker placeholder="Tanggal" /> -->
+      <ProfileNewTextview placeholder="Alamat" :text="items.alamat" />
 
     </StackLayout>
-
-    <StackLayout v-if="!rendering1" v-show="jenis == 0" v-for="(item, index) in items" :key="index" slot="item">
-        <TadarusItemCheckboxBasic :description="item.description" :checked="item.selected" :items="item" :class="index+1 >= items.length ? 'full-border-last-item' : 'off-bottom-border'" />
-    </StackLayout>
-
-    <Label v-if="!rendering1" v-show="jenis == 0" fontSize="12" padding="10 0" text="Tekan lama pilihan di atas untuk mengetahui artinya" width="100%" textAlignment="center" />
 
 </StackLayout>
 

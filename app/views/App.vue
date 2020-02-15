@@ -1,7 +1,7 @@
 <template>
 	<StackLayout>
 		<!-- <ContentPreloader /> -->
-		<Navigator :defaultRoute="isLoggedIn ? '/home' : '/view-profile-siswa'"/>
+		<Navigator :defaultRoute="!isLoggedIn ? '/home' : '/view-profile-guru'"/>
 	</StackLayout>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
 	data(){
 		return {
-			isLoggedIn: false,
+			isLoggedIn: true,
 		}
 	}
 }

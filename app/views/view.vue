@@ -101,6 +101,10 @@ export default {
           name: "ViewProfileSiswa",
           component: "/view-profile-siswa", //this.$views.ViewHabitOrganisasi
         },
+				{
+          name: "ViewProfileGuru",
+          component: "/view-profile-guru", //this.$views.ViewHabitOrganisasi
+        },
 
 			],
 		}

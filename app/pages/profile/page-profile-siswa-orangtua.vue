@@ -29,7 +29,7 @@
 
 <template>
 
-<StackLayout padding="10 10 10 10" marginBottom="0" @loaded="onLoaded_Rendering(0, 250)">
+<StackLayout padding="0 0 10 0" marginBottom="0" @loaded="onLoaded_Rendering(0, 250)">
 
     <!-- <TadarusNewSubtitle ref="subtitle" class="subtitle-border" /> -->
 

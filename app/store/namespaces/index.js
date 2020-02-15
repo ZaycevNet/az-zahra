@@ -54,6 +54,7 @@ const habit_sholat_hari_raya = require('./habit-sholat/habit-sholat-hari-raya');
 const habit_sholat_fardhu = require('./habit-sholat/habit-sholat-fardhu');
 
 const profile_siswa = require('./profile/profile-siswa');
+const profile_guru = require('./profile/profile-guru');
 
 module.exports = {
     indicator,
@@ -107,7 +108,7 @@ module.exports = {
     habit_sholat_fardhu,
 
     profile_siswa,
-
+    profile_guru,
     // auth,
     // tab,
     // init,

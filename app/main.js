@@ -39,7 +39,7 @@ import store from "./store/index";
 // import Main from '@/views/view-habit-organisasi';
 
 // import Main from '@/views/fancyalert.vue';
-import Main from '@/views/research/cfalert.vue';
+// import Main from '@/views/research/cfalert.vue';
 // import Main from '@/views/feedback.vue';
 // import Main from '@/views/LoadingIndicator';
 // import Main from '@/views/popup';

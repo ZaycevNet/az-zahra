@@ -8,9 +8,14 @@ const PageProfileGuruBiodata = resolve => {
         }, 'page-profile-guru-biodata'
     )
 }
-Vue.component('PageProfileGuruBiodata', PageProfileGuruBiodata);
-
-
+const PageProfileGuruKelas = resolve => {
+    require.ensure(
+        ['./page-profile-guru-kelas'],
+        () => {
+            resolve(require('./page-profile-guru-kelas'))
+        }, 'page-profile-guru-kelas'
+    )
+}
 const PageProfileSiswaBiodata = resolve => {
     require.ensure(
         ['./page-profile-siswa-biodata'],
@@ -25,6 +30,14 @@ const PageProfileSiswaOrangtua = resolve => {
         () => {
             resolve(require('./page-profile-siswa-orangtua'))
         }, 'page-profile-siswa-orangtua'
+    )
+}
+const PageProfileGuruGroup = resolve => {
+    require.ensure(
+        ['./page-profile-guru-group'],
+        () => {
+            resolve(require('./page-profile-guru-group'))
+        }, 'page-profile-guru-group'
     )
 }
 const PageProfileSiswaGroup = resolve => {
@@ -57,3 +70,7 @@ Vue.component('PageProfileSiswaOrangtua', PageProfileSiswaOrangtua);
 Vue.component('PageProfileSiswaGroup', PageProfileSiswaGroup);
 Vue.component('PageProfileFotoZoomModal', PageProfileFotoZoomModal);
 Vue.component('PageProfileSiswaHabit', PageProfileSiswaHabit);
+
+Vue.component('PageProfileGuruBiodata', PageProfileGuruBiodata);
+Vue.component('PageProfileGuruGroup', PageProfileGuruGroup);
+Vue.component('PageProfileGuruKelas', PageProfileGuruKelas);

@@ -11,7 +11,11 @@ const {
 const {
   get_profile_siswa_payload,
 
+  get_profile_siswa_is_edit,
+
   set_profile_siswa_payload,
+
+  set_profile_siswa_is_edit,
 
   set_profile_siswa_payload_add,
   set_profile_siswa_payload_edit,
@@ -26,6 +30,8 @@ const {
   set_profile_siswa_payload_group_edit,
 
   action_profile_siswa_payload,
+
+  action_profile_siswa_is_edit,
 
   action_profile_siswa_payload_add,
   action_profile_siswa_payload_edit,
@@ -45,11 +51,13 @@ const map_profile_siswa = {
     computed: {
         ...mapGetters({
           get_profile_siswa_payload,
+          get_profile_siswa_is_edit,
         }),
     },
     methods: {
         ...mapActions({
           action_profile_siswa_payload,
+          action_profile_siswa_is_edit,
 
           action_profile_siswa_payload_add,
           action_profile_siswa_payload_edit,
@@ -65,6 +73,7 @@ const map_profile_siswa = {
         }),
         ...mapMutations({
           set_profile_siswa_payload,
+          set_profile_siswa_is_edit,
 
           set_profile_siswa_payload_add,
           set_profile_siswa_payload_edit,

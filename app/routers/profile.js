@@ -1,11 +1,11 @@
 
-import ViewProfileGuruBiodata from "@/views/profile/view-profile-guru-biodata";
+import ViewProfileGuru from "@/views/profile/view-profile-guru";
 
 import ViewProfileSiswa from "@/views/profile/view-profile-siswa";
 
 export const profile = {
-	'/view-profile-guru-biodata': {
-		component: ViewProfileGuruBiodata,
+	'/view-profile-guru': {
+		component: ViewProfileGuru,
 		meta: { needsAuth: false }
 	},
 

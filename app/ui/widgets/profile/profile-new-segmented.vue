@@ -69,19 +69,23 @@ export default {
 		const label = this.$refs.label.nativeView;
 		const textField = this.$refs.textField.nativeView;
 
-		setTimeout(() => {
-			label
-					.animate({
-							translate: {
-									x: 0,
-									y: -25
-							},
-							opacity: 1
-					})
-					.then(() => {
-						// textField.borderBottomColor = "#28BAAA";
-					}, () => {});
-		},100)
+		label.translateY = -25;
+		label.opacity = 1;
+		// textField.borderBottomColor = new Color("#28BAAA");
+
+		// setTimeout(() => {
+		// 	label
+		// 			.animate({
+		// 					translate: {
+		// 							x: 0,
+		// 							y: -25
+		// 					},
+		// 					opacity: 1
+		// 			})
+		// 			.then(() => {
+		// 				// textField.borderBottomColor = "#28BAAA";
+		// 			}, () => {});
+		// },100)
 	},
 	methods: {
 		onLoad(){

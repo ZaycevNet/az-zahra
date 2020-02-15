@@ -12,7 +12,7 @@ Label {
 					padding="9 0 12 3.5" >
 					<Label :text="dateText" color="black" fontSize="14" />
 				</StackLayout>
-				<Label text="wajib diisi" horizontalAlignment="right" verticalAlignment="bottom" color="rgba(255,0,51,0.6)" fontSize="12" row="2" />
+				<Label text="wajib diisi" horizontalAlignment="right" verticalAlignment="bottom" color="rgba(255,0,51,0.6)" fontSize="12" row="2" v-if="get_profile_siswa_is_edit"/>
 	</GridLayout>
 </template>
 
@@ -38,19 +38,24 @@ Label {
 
 					const label = this.$refs.label.nativeView;
 					const textField = this.$refs.textField.nativeView;
-					setTimeout(() => {
-            label
-                .animate({
-                    translate: {
-                        x: 0,
-                        y: -15
-                    },
-                    opacity: 1
-                })
-                .then(() => {
-                  textField.borderBottomColor = new Color("#28BAAA");
-                }, () => {});
-          },100)
+
+          label.translateY = -15;
+          label.opacity = 1;
+          textField.borderBottomColor = new Color("#28BAAA");
+
+					// setTimeout(() => {
+          //   label
+          //       .animate({
+          //           translate: {
+          //               x: 0,
+          //               y: -15
+          //           },
+          //           opacity: 1
+          //       })
+          //       .then(() => {
+          //         textField.borderBottomColor = new Color("#28BAAA");
+          //       }, () => {});
+          // },100)
         },
 				methods: {
 					getFormattedDate: function(date) {

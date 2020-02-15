@@ -78,7 +78,7 @@ ActionBar,
               <Label :text="'ion-ios-close' | fonticon" class="action-bar-icon ion" />
           </Ripple>
 
-          <Label @tap="" class="action-bar-title" :text=" !isEdit ? 'Profile Siswa' : 'Ubah Profile Siswa'" col="1" />
+          <Label @tap="" class="action-bar-title" :text=" !isEdit ? 'Profile Guru' : 'Ubah Profile Guru'" col="1" />
           <Ripple rippleColor="#28ADAA" v-if="!isEdit" @tap="onEdit" col="2" >
             <Label class="action-bar-right fa" :text="'fa-pencil-square-o' | fonticon" />
           </Ripple>
@@ -109,7 +109,7 @@ ActionBar,
 
                 <StackLayout horizontalAlignment="center" marginBottom="20">
 
-                    <Label text="Dessy Indah Fitri" fontSize="18px" fontWeight="bold" textAlignment="center" color="white" paddingTop="15px" paddingLeft="10" paddingRight="10" paddingBottom="15px" />
+                    <Label text="Ferynda" fontSize="18px" fontWeight="bold" textAlignment="center" color="white" paddingTop="15px" paddingLeft="10" paddingRight="10" paddingBottom="15px" />
 
                     <Label text="1201 Westlake Avenue, Suite 205, Seattle, WA 98121 USA" fontSize="12px" color="white" width="100%" textWrap="true" paddingLeft="50" paddingRight="50" textAlignment="center" />
 
@@ -128,7 +128,7 @@ ActionBar,
             <GridLayout rows="*,auto" columns="*" backgroundColor="white" ref="content" height="1000" paddingBottom="0">
             <!-- <StackLayout backgroundColor="white" ref="content" height="1000" paddingBottom="35"> -->
 
-              <ProfileSiswa @onBubbleParallex="onBubbleParallex" paddingBottom="30"/>
+              <ProfileGuru @onBubbleParallex="onBubbleParallex" paddingBottom="30"/>
 
               <!-- <transition name="transition" v-if="isEdit" appear> -->
                 <StackLayout ref="submitbutton" padding="0 10" rowSpan="2" verticalAlignment="bottom" v-shadow="shadowCustom" v-show="isEdit">
@@ -153,21 +153,18 @@ ActionBar,
 <script>
 const permissions = require("nativescript-permissions");
 
-import ProfileSiswa from "./view-profile-siswa-content"
+import ProfileGuru from "./view-profile-guru-content"
 
 import PageProfileFotoZoomModal from "@/pages/profile/page-profile-foto-zoom-modal"
 
 import Mediafilepicker from '@/mixins/global/mediafilepicker'
 
-import {
-    AndroidData, ShapeEnum
-}
-from "nativescript-vue-shadow";
+import { AndroidData, ShapeEnum } from "nativescript-vue-shadow";
 
 export default {
   mixins:[Mediafilepicker],
         components: {
-          ProfileSiswa
+          ProfileGuru
         },
         data() {
             return {
@@ -182,7 +179,7 @@ export default {
                 isEdit: false,
 
                 isUserInteractionEnabled: true,
-                fotoProfile: "~/assets/images/love.jpg",
+                fotoProfile: "~/assets/images/best.bmp",
             }
         },
         watch: {
@@ -249,7 +246,7 @@ export default {
                 .then(() => {
 
                   vm.isEdit = false;
-                  vm.action_profile_siswa_is_edit(false);
+                  vm.action_profile_guru_is_edit(false);
                   vm.isUserInteractionEnabled = true;
 
                   vm.$refs.Container.nativeView.scrollToVerticalOffset(0, true)
@@ -262,7 +259,7 @@ export default {
               var dialogs = require("tns-core-modules/ui/dialogs");
               dialogs.confirm({
                   title: "Perhatian",
-                  message: "Data perubahan yang belum disimpan akan hilang saat halaman profile siswa ini ditutup",
+                  message: "Data perubahan yang belum disimpan akan hilang saat halaman profile guru ini ditutup",
                   okButtonText: "Simpan",
                   cancelButtonText: "Mengerti",
                   neutralButtonText: "Biarkan Hilang"
@@ -294,7 +291,7 @@ export default {
               .then(() => {
 
                 this.isEdit = false;
-                this.action_profile_siswa_is_edit(false);
+                this.action_profile_guru_is_edit(false);
                 this.isUserInteractionEnabled = true;
 
                 this.$refs.Container.nativeView.scrollToVerticalOffset(0, true)
@@ -304,7 +301,7 @@ export default {
             },
             onEdit(){
               this.isEdit = true;
-              this.action_profile_siswa_is_edit(true);
+              this.action_profile_guru_is_edit(true);
               this.isUserInteractionEnabled = false;
 
               this.$refs.fabButton.nativeView.animate({

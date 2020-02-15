@@ -26,10 +26,10 @@ Label {
       			<DropDown :items="items" class="changed-styles" hint="" @opened="dropDownOpened" @closed="dropDownClosed" isEnabled="true" paddingLeft="5"
       			 @selectedIndexChanged="dropDownSelectedIndexChanged" />
       		</StackLayout>
-          <Label ref="label" paddingBottom="2.5" rowSpan="2" text="Jenis" opacity="0.4" verticalAlignment="bottom"
+          <Label ref="label" paddingBottom="2.5" rowSpan="2" text="Rombel" opacity="0.4" verticalAlignment="bottom"
               fontSize="14" class="input" />
 
-          <Label text="wajib diisi" horizontalAlignment="right" verticalAlignment="bottom" color="rgba(255,0,51,0.6)" fontSize="12" row="2" v-if="get_profile_siswa_is_edit"/>
+          <Label text="wajib diisi" horizontalAlignment="right" verticalAlignment="bottom" color="rgba(255,0,51,0.6)" fontSize="12" row="2" v-if="get_profile_guru_is_edit"/>
 
   </GridLayout>
 
@@ -44,14 +44,14 @@ export default {
 	data(){
 		return {
 			items: [
-        ' Zakat Mal (Harta)',
-        ' Zakat Fitri',
-        ' Infaq Wajib',
-        ' Infaq Sunnah',
-        ' Sedekah Jariyah',
-        ' Sedekah Biasa',
-        " Waqaf Umum (Ghaira Mu'ayyan)",
-        " Waqaf Khusus (Mu'ayyan)",
+        ' A',
+        ' B',
+        ' C',
+        ' D',
+        ' E',
+        ' F',
+        " G",
+        " H",
       ],
 			selectedIndex: 0,
 		}

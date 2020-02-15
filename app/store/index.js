@@ -52,6 +52,7 @@ import habit_sholat_hari_raya from "./modules/habit-sholat/habit-sholat-hari-ray
 import habit_sholat_fardhu from "./modules/habit-sholat/habit-sholat-fardhu";
 
 import profile_siswa from "./modules/profile/profile-siswa";
+import profile_guru from "./modules/profile/profile-guru";
 
 
 Vue.use(Vuex);
@@ -114,6 +115,7 @@ let store = new Vuex.Store({
     habit_sholat_fardhu,
 
     profile_siswa,
+    profile_guru,
   },
   strict: debug
 });
