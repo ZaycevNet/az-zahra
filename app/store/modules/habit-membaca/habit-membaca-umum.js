@@ -16,7 +16,7 @@ const {
   action_habit_membaca_umum_payload_edit
 } = habit_membaca_umum;
 
-const JSON = require("@/data/habit-membaca/membaca-umum.json");
+const JSON = require("@/data/habit-membaca/membaca-umum");
 // console.log(membaca_umumJSON);
 
 const state = {

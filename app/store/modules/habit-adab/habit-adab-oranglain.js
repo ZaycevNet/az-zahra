@@ -13,7 +13,7 @@ const {
   action_habit_adab_oranglain_payload
 } = habit_adab_oranglain;
 
-const JSON = require("@/data/habit-adab/adab-oranglain.js");
+const JSON = require("@/data/habit-adab/adab-oranglain");
 // console.log(adabDiriSendiriJSON);
 
 const state = {

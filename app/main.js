@@ -4,6 +4,8 @@ require('@/pages')
 require("@/store/maps");
 require('@/mixins')
 require('@/filters')
+require('@/layouts')
+// require('@/routers')
 
 import Vue from 'nativescript-vue'
 import VueDevtools from 'nativescript-vue-devtools'
@@ -37,7 +39,7 @@ import store from "./store/index";
 // import Main from '@/views/view-habit-organisasi';
 
 // import Main from '@/views/fancyalert.vue';
-// import Main from '@/views/cfalert.vue';
+import Main from '@/views/research/cfalert.vue';
 // import Main from '@/views/feedback.vue';
 // import Main from '@/views/LoadingIndicator';
 // import Main from '@/views/popup';
@@ -47,16 +49,24 @@ import store from "./store/index";
 
 // import Main from "@/organisasi-new-raddataform";
 // import Main from "@/views/radiobutton";
-
+// import Main from "@/views/research/pro-nested-scrollview";
 
 import Navigator from 'nativescript-vue-navigator'
-import { routes } from '@/routers'
+
+import { habit } from '@/routers/habit'
+import { profile } from '@/routers/profile'
+
+const routes = {
+	...habit,
+	...profile,
+}
+
 Vue.use(Navigator, { routes })
 
 import views from "./view";
 Vue.prototype.$views = views;
 
-import Main from '@/views/view';
+// import Main from '@/views/view';
 
 import App from '@/views/app';
 /*
@@ -93,14 +103,11 @@ Vue.registerElement('CheckBox',() => require('@nstudio/nativescript-checkbox').C
     }
   }
 );
-Vue.registerElement(
-	"Ripple",
-	() => require("nativescript-ripple").Ripple
-);
-Vue.registerElement(
-  'Fab',
-  () => require('@nstudio/nativescript-floatingactionbutton').Fab
-);
+Vue.registerElement("Ripple",() => require("nativescript-ripple").Ripple);
+Vue.registerElement('Fab',() => require('@nstudio/nativescript-floatingactionbutton').Fab);
+Vue.registerElement('ImageZoom', () => require('nativescript-image-zoom').ImageZoom);
+Vue.registerElement('CardView',() => require('@nstudio/nativescript-cardview').CardView);
+// Vue.registerElement("NestedScrollView", () => require("nativescript-nested-scrollview").NestedScrollView);
 
 const { TNSFontIcon, fonticon } = require("nativescript-fonticon");
 
@@ -117,7 +124,7 @@ import * as application from 'tns-core-modules/application'
 
 // router.push('/home');
 const app = new Vue({
-  name:"THIRD COMMIT 246389",
+  name:"THIRD COMMIT 246538559",
   store,
   data(){
     return {

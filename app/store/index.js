@@ -51,6 +51,8 @@ import habit_sholat_jumat from "./modules/habit-sholat/habit-sholat-jumat";
 import habit_sholat_hari_raya from "./modules/habit-sholat/habit-sholat-hari-raya";
 import habit_sholat_fardhu from "./modules/habit-sholat/habit-sholat-fardhu";
 
+import profile_siswa from "./modules/profile/profile-siswa";
+
 
 Vue.use(Vuex);
 
@@ -110,6 +112,8 @@ let store = new Vuex.Store({
     habit_sholat_jumat,
     habit_sholat_hari_raya,
     habit_sholat_fardhu,
+
+    profile_siswa,
   },
   strict: debug
 });

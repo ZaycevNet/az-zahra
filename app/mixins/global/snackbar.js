@@ -45,9 +45,9 @@ module.exports = {
 	      });
 	  },
 
-		showActionSnackbar() {
+		showActionSnackbar(args = '👍 Sukses! Data berhasil diproses...') {
 	    this._SnackBar
-	      .simple('👍 Sukses! Data berhasil diproses...', 'white', '#28ADAA', 2, false)
+	      .simple(args, 'white', '#28ADAA', 2, false)
 	      .then(args => {
 	        console.log('SnackBar.simple() result', args);
 	      })

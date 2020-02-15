@@ -15,7 +15,7 @@
           borderBottomLeftRadius="5"
           borderBottomRightRadius="5"
           :visibility="visibility.status"
-          :subtitle="judul"
+          :judul="judul"
           :index="index"
           :bus="bus"
           :vuex="vuex"

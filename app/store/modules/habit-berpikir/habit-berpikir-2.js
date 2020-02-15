@@ -13,7 +13,7 @@ const {
   action_habit_berpikir_kedua_payload
 } = habit_berpikir_kedua;
 
-const JSON = require("@/data/habit-berpikir/berpikir-kedua.js");
+const JSON = require("@/data/habit-berpikir/berpikir-kedua");
 // console.log(JSON);
 
 const state = {

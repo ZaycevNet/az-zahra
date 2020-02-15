@@ -2,6 +2,7 @@
 
 android {
   defaultConfig {
+	minSdkVersion 17
     generatedDensities = []
     applicationId = "com.labsnip.azzahra"
   }

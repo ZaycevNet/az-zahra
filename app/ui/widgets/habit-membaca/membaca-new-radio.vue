@@ -1,3 +1,8 @@
+<style scoped>
+Label {
+  font-weight: normal;
+}
+</style>
 <template>
 	<GridLayout rows="25, auto, *" marginBottom="10" marginTop="5">
 			<Label ref="label" row="1" :text="placeholder" opacity="0.4"
@@ -87,7 +92,7 @@ export default {
 	    }
 
 			this.fillColor = "#28BAAA";
-			
+
 	    this.radioOptions.forEach(option => {
 	      if (option.text !== radioOption.text) {
 	        option.selected = false;

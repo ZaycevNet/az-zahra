@@ -1,4 +1,8 @@
-
+<style scoped>
+Label {
+  font-weight: normal;
+}
+</style>
 <template>
 	<StackLayout @loaded="onEnabledCheckbox">
 		<GridLayout columns="110,10,*" color="white" rows="*" height="auto" padding="5 5">

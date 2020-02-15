@@ -16,7 +16,7 @@ const {
   action_habit_tadarus_iqra_payload_edit
 } = habit_tadarus_iqra;
 
-const JSON = require("@/data/habit-tadarus/tadarus-iqra.json");
+const JSON = require("@/data/habit-tadarus/tadarus-iqra");
 // console.log(tadarus_iqraJSON);
 
 const state = {

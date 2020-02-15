@@ -13,7 +13,7 @@ const {
   action_habit_organisasi_payload
 } = habit_organisasi;
 
-const JSON = require("@/data/habit-organisasi.json");
+const JSON = require("@/data/habit-organisasi");
 // console.log(organisasiJSON);
 
 const state = {

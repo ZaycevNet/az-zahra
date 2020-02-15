@@ -1,4 +1,8 @@
-
+<style scoped>
+Label {
+  font-weight: normal;
+}
+</style>
 <template>
 	<StackLayout backgroundColor="white">
 		<Ripple rippleColor="#28ADAA" @tap="onGridLayout" >
@@ -62,7 +66,7 @@ export default {
 				// letakkan diakhir agar overlay terakhir hilang
 				this.hideLoadingIndicator();
 				this.action_indicator_loading(false);
-				
+
 			})
 
 		},

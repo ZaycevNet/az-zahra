@@ -15,7 +15,7 @@
           borderBottomLeftRadius="0"
           borderBottomRightRadius="0"
           :visibility="visibility.status"
-          :subtitle="subtitle"
+          :judul="judul"
           :index="index"
           :vuex="vuex"
           class="full-border"
@@ -36,7 +36,7 @@ const delayrendering = require("@/mixins/delayrendering");
 
 export default {
     mixins: [delayrendering],
-    props: ['subtitle', 'index', 'vuex'],
+    props: ['judul', 'index', 'vuex'],
     data() {
         return {
             visibility: {

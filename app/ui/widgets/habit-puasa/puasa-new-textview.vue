@@ -1,3 +1,8 @@
+<style scoped>
+Label {
+  font-weight: normal;
+}
+</style>
 <template>
     <GridLayout rows="25, auto, *" marginBottom="15">
         <Label ref="label" row="1" :text="placeholder" opacity="0.4"

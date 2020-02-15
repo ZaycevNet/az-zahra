@@ -16,7 +16,7 @@ const {
   action_habit_membaca_islami_payload_edit
 } = habit_membaca_islami;
 
-const JSON = require("@/data/habit-membaca/membaca-islami.json");
+const JSON = require("@/data/habit-membaca/membaca-islami");
 // console.log(membaca_islamiJSON);
 
 const state = {

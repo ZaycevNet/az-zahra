@@ -17,7 +17,7 @@ const {
   action_habit_tadarus_alquran_payload_edit
 } = habit_tadarus_alquran;
 
-const JSON = require("@/data/habit-tadarus/tadarus-alquran.json");
+const JSON = require("@/data/habit-tadarus/tadarus-alquran");
 // console.log(tadarus_alquranJSON);
 
 const state = {

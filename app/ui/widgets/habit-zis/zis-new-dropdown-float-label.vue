@@ -15,8 +15,11 @@
 /* StackLayout {
     horizontal-align: center;
 } */
-</style>
 
+Label {
+  font-weight: normal;
+}
+</style>
 <template>
   <GridLayout rows="25, auto, *" marginBottom="10">
           <StackLayout ref="textField" row="1" colSpan="2" borderBottomWidth="1" borderBottomColor="#cec8c8" width="auto">
@@ -130,7 +133,7 @@ export default {
       this.selectedIndex = args.newIndex;
 		    console.log(`Drop Down selected index changed from ${args.oldIndex} to ${args.newIndex}`);
 
-			this.$emit('onBubbleTap', this.selectedIndex)        
+			this.$emit('onBubbleTap', this.selectedIndex)
 		},
 
 	}

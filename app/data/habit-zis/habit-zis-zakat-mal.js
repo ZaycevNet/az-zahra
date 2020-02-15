@@ -13,10 +13,10 @@ module.exports = [
 		"tempat":"Masjid At-Taqwa",
 		"tujuan": "Mensucikan harta",
 
-		"type":"0",
+
 		"interval":"bulanan",
-		"max_point":"5",
-		"countable":"1",
+		"point":"1",
+
 		"selected":true
 	}
 ]

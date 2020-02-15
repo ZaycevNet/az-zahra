@@ -54,6 +54,7 @@ import habit_sholat_jumat from "./habit-sholat/habit-sholat-jumat";
 import habit_sholat_hari_raya from "./habit-sholat/habit-sholat-hari-raya";
 import habit_sholat_fardhu from "./habit-sholat/habit-sholat-fardhu";
 
+import profile_siswa from "./profile/profile-siswa";
 
 // const map_habit_adab_diri_sendiri = require('./habit-adab-diri-sendiri')
 // Vue.mixin(auth)
@@ -109,3 +110,5 @@ Vue.mixin(habit_majelis);
 
 Vue.mixin(habit_membaca_islami);
 Vue.mixin(habit_membaca_umum);
+
+Vue.mixin(profile_siswa);

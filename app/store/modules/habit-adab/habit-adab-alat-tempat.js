@@ -13,7 +13,7 @@ const {
   action_habit_adab_alat_tempat_payload
 } = habit_adab_alat_tempat;
 
-const JSON = require("@/data/habit-adab/adab-alat-tempat.js");
+const JSON = require("@/data/habit-adab/adab-alat-tempat");
 console.log(JSON);
 
 const state = {

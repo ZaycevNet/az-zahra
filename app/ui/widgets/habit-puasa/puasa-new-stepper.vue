@@ -35,8 +35,10 @@ TextField {
 	padding: 5 0;
 }
 
+Label {
+  font-weight: normal;
+}
 </style>
-
 <template>
 	<GridLayout rows="25, auto, *" marginBottom="10" marginTop="5">
 			<Label ref="label" row="1" :text="placeholder" opacity="0.4" fontSize="14" class="input" />

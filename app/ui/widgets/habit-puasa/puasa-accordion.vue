@@ -12,7 +12,7 @@
 <template>
 
 <StackLayout padding="10 10 0 10">
-    <ZisSubtitle ref="subtitle" borderBottomLeftRadius="5" borderBottomRightRadius="5" :visibility="visibility.status" :judul="judul" :bus="bus" class="full-border" @onBubbleTriggered="onBubbleTriggered" />
+    <PuasaSubtitle ref="subtitle" borderBottomLeftRadius="5" borderBottomRightRadius="5" :visibility="visibility.status" :judul="judul" :bus="bus" class="full-border" @onBubbleTriggered="onBubbleTriggered" />
 
     <transition name="transition" appear>
         <StackLayout ref="habitContainer" v-if="!rendering0" :visibility="visibility.string">

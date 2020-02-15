@@ -9,10 +9,14 @@ module.exports = {
 			}
 		},
 		methods: {
-			showToastAccordionChild(){
+			showToast(args = "tampilkan..."){
+				var toast = Toast.makeText(args);
+				toast.show();
+			},			
+			showToastAccordionChild(args = "tampilkan..."){
 				if(this.firstLoad) return;
 
-				var toast = Toast.makeText("tampilkan...");
+				var toast = Toast.makeText(args);
 				toast.show();
 
 				this.firstLoad = true;

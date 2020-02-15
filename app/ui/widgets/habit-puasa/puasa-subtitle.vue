@@ -5,7 +5,7 @@
             <StackLayout col="0" >
               <Label textAlignment="left" fontWeight="bold" paddingLeft="10" fontSize="16px" verticalAlignment="left" :text="judul" textWrap="true"/>
 
-              <Label textAlignment="left" paddingLeft="10" fontSize="12px" verticalAlignment="left" text="Dibuat: 21-10-2020 21:30" textWrap="true" />
+              <Label textAlignment="left" fontWeight="normal" paddingLeft="10" fontSize="12px" verticalAlignment="left" text="Dibuat: 21-10-2020 21:30" textWrap="true" />
           </StackLayout>
 
             <StackLayout ref="iconContainer" col="2" row="0" verticalAlignment="middle">

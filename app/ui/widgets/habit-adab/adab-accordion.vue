@@ -15,7 +15,7 @@
           borderBottomLeftRadius="5"
           borderBottomRightRadius="5"
           :visibility="visibility.status"
-          :subtitle="subtitle"
+          :judul="judul"
           :index="index"
           :bus="bus"
           :vuex="vuex"
@@ -38,7 +38,7 @@ const parentChildEventbus = require("@/mixins/parent-child-eventbus");
 
 export default {
     mixins: [delayrendering, parentChildEventbus],
-    props: ['subtitle', 'index', 'vuex'],
+    props: ['judul', 'index', 'vuex'],
     data() {
         return {
             visibility: {

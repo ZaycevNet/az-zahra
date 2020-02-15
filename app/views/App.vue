@@ -1,7 +1,7 @@
 <template>
 	<StackLayout>
 		<!-- <ContentPreloader /> -->
-		<Navigator :defaultRoute="!isLoggedIn ? '/home' : '/view-habit-organisasi'"/>
+		<Navigator :defaultRoute="isLoggedIn ? '/home' : '/view-profile-siswa'"/>
 	</StackLayout>
 </template>
 

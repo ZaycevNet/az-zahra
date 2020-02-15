@@ -13,7 +13,7 @@ const {
   action_habit_adab_orangtua_payload
 } = habit_adab_orangtua;
 
-const JSON = require("@/data/habit-adab/adab-orangtua.js");
+const JSON = require("@/data/habit-adab/adab-orangtua");
 // console.log(adabDiriSendiriJSON);
 
 const state = {

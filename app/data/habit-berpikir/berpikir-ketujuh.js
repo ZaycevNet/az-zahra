@@ -3,17 +3,19 @@ module.exports = [
 		"id":"1",
 		"code":Math.random()*99999999999,
 		"initial": "HABIT-BERFIKIR-KETUJUH",
-		"subtitle":"Harisun ‘ala waqtihi (menjaga waktu)",
+		"judul":"Harisun ‘ala waqtihi (menjaga waktu)",
+		"jenis":"ketujuh",
+
 		"payload_description":[
 			{
 				"id":"12",
 				"code":Math.random()*99999999999,
 				"initial": "HABIT-BERFIKIR-KETUJUH",
 				"description":"Berusaha terus disiplin?",
-				"type":"0",
+
 				"interval":"harian",
-				"max_point":"5",
-				"countable":"1",
+				"point":"1",
+
 				"selected":false
 			},
 			{
@@ -21,10 +23,10 @@ module.exports = [
 				"code":Math.random()*99999999999,
 				"initial": "HABIT-BERFIKIR-KETUJUH",
 				"description":"Tidak suka menunda pekerjaan?",
-				"type":"0",
+
 				"interval":"harian",
-				"max_point":"5",
-				"countable":"1",
+				"point":"1",
+
 				"selected":true
 			},
 			{
@@ -32,10 +34,10 @@ module.exports = [
 				"code":Math.random()*99999999999,
 				"initial": "HABIT-BERFIKIR-KETUJUH",
 				"description":"Pandai mengatur waktu?",
-				"type":"0",
+
 				"interval":"harian",
-				"max_point":"5",
-				"countable":"1",
+				"point":"1",
+
 				"selected":true
 			}
 		]

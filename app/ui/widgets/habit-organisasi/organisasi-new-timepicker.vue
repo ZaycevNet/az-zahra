@@ -1,5 +1,8 @@
-
-
+<style scoped>
+Label {
+  font-weight: normal;
+}
+</style>
 <template>
 
 <GridLayout rows="25, auto, *" marginBottom="10">

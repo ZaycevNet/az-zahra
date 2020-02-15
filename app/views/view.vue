@@ -35,67 +35,71 @@ export default {
       pages: [
         {
           name: "ViewHabitAdab",
-          component: "habit-adab", //this.$views.ViewHabitAdab
+          component: "/view-habit-adab", //this.$views.ViewHabitAdab
         },
 				{
           name: "ViewHabitOrganisasiNew",
-          component: "habit-organisasi-new", //this.$views.ViewHabitOrganisasiNew
+          component: "/view-habit-organisasi-new", //this.$views.ViewHabitOrganisasiNew
         },
 				{
           name: "ViewHabitOrganisasi",
-          component: "habit-organisasi", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-organisasi", //this.$views.ViewHabitOrganisasi
         },
 				{
           name: "ViewHabitMejelis",
-          component: "habit-majelis", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-majelis", //this.$views.ViewHabitOrganisasi
         },
 				{
           name: "ViewHabitMejelisNew",
-          component: "habit-majelis-new", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-majelis-new", //this.$views.ViewHabitOrganisasi
         },
 				{
           name: "ViewHabitMembaca",
-          component: "habit-membaca", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-membaca", //this.$views.ViewHabitOrganisasi
         },
 				{
           name: "ViewHabitMembacaNew",
-          component: "habit-membaca-new", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-membaca-new", //this.$views.ViewHabitOrganisasi
         },
 				{
           name: "ViewHabitTadarus",
-          component: "habit-tadarus", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-tadarus", //this.$views.ViewHabitOrganisasi
 				},
 				{
           name: "ViewHabitTadarusNew",
-          component: "habit-tadarus-new", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-tadarus-new", //this.$views.ViewHabitOrganisasi
         },
 				{
           name: "ViewHabitTadarusModal",
-          component: "habit-tadarus-modal", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-tadarus-modal", //this.$views.ViewHabitOrganisasi
 				},
 				{
           name: "ViewHabitBerpikir",
-          component: "habit-berpikir", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-berpikir", //this.$views.ViewHabitOrganisasi
         },
 				{
           name: "ViewHabitZis",
-          component: "habit-zis", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-zis", //this.$views.ViewHabitOrganisasi
 				},
 				{
           name: "ViewHabitZisNew",
-          component: "habit-zis-new", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-zis-new", //this.$views.ViewHabitOrganisasi
         },
 				{
           name: "ViewHabitPuasa",
-          component: "habit-puasa", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-puasa", //this.$views.ViewHabitOrganisasi
 				},
 				{
           name: "ViewHabitPuasaNew",
-          component: "habit-puasa-new", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-puasa-new", //this.$views.ViewHabitOrganisasi
         },
 				{
           name: "ViewHabitSholat",
-          component: "habit-sholat", //this.$views.ViewHabitOrganisasi
+          component: "/view-habit-sholat", //this.$views.ViewHabitOrganisasi
+				},
+				{
+          name: "ViewProfileSiswa",
+          component: "/view-profile-siswa", //this.$views.ViewHabitOrganisasi
         },
 
 			],
@@ -122,7 +126,7 @@ export default {
 			// 		// this.$store.commit("gotoRoute", false)
 			// });
 
-			this.$navigator.navigate('/view-'+pageComponent.component,
+			this.$navigator.navigate(pageComponent.component,
 				// { clearHistory: true }
 			)
 

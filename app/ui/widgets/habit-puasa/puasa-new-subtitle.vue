@@ -1,3 +1,8 @@
+<style scoped>
+Label {
+  font-weight: normal;
+}
+</style>
 <template>
     <StackLayout backgroundColor="#28BAAA" color="white" >
         <GridLayout columns="*,40%" rows="*" height="auto" padding="10 5">

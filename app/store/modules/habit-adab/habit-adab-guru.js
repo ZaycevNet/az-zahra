@@ -13,7 +13,7 @@ const {
   action_habit_adab_guru_payload
 } = habit_adab_guru;
 
-const JSON = require("@/data/habit-adab/adab-guru.js");
+const JSON = require("@/data/habit-adab/adab-guru");
 // console.log(adabDiriSendiriJSON);
 
 const state = {

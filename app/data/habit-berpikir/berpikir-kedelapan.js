@@ -3,17 +3,20 @@ module.exports = [
 		"id":"1",
 		"code":Math.random()*99999999999,
 		"initial": "HABIT-BERFIKIR-KEDELAPAN",
-		"subtitle":"Munazhzhamun fii syu’unihi (tertib dalam setiap urusan)",
+
+		"judul":"Munazhzhamun fii syu’unihi (tertib dalam setiap urusan)",
+		"jenis":"kedelapan",
+
 		"payload_description":[
 			{
 				"id":"12",
 				"code":Math.random()*99999999999,
 				"initial": "HABIT-BERFIKIR-KEDELAPAN",
 				"description":"Memiliki jadwal aktivtas harian?",
-				"type":"0",
+
 				"interval":"harian",
-				"max_point":"5",
-				"countable":"1",
+				"point":"1",
+
 				"selected":false
 			},
 			{
@@ -21,10 +24,10 @@ module.exports = [
 				"code":Math.random()*99999999999,
 				"initial": "HABIT-BERFIKIR-KEDELAPAN",
 				"description":"Melaksanakan jadwal tersebut?",
-				"type":"0",
+
 				"interval":"harian",
-				"max_point":"5",
-				"countable":"1",
+				"point":"1",
+
 				"selected":true
 			},
 			{
@@ -32,10 +35,10 @@ module.exports = [
 				"code":Math.random()*99999999999,
 				"initial": "HABIT-BERFIKIR-KEDELAPAN",
 				"description":"Membuat rencana sebelum bertindak?",
-				"type":"0",
+
 				"interval":"harian",
-				"max_point":"5",
-				"countable":"1",
+				"point":"1",
+
 				"selected":true
 			}
 		]

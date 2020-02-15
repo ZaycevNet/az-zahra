@@ -2,7 +2,7 @@
 	<Ripple rippleColor="white" @tap="onTapBubble">
     <StackLayout backgroundColor="#28BAAA" color="white">
         <GridLayout columns="*,40%,40%" rows="*" height="auto" padding="10 5">
-            <Label textAlignment="left" fontWeight="bold" paddingLeft="10" fontSize="16px" verticalAlignment="left" :text="subtitle" textWrap="true" col="0" />
+            <Label textAlignment="left" fontWeight="bold" paddingLeft="10" fontSize="16px" verticalAlignment="left" :text="judul" textWrap="true" col="0" />
 						<StackLayout ref="iconContainer" col="1" row="0" verticalAlignment="middle">
                 <Label fontSize="16px" textAlignment="center" :text="counter" />
             </StackLayout>
@@ -21,7 +21,7 @@ const accordionItemFirstLoad = require("@/mixins/toast-accordion-item-first-load
 
 export default {
   mixins: [accordionItemFirstLoad],
-	props: ['visibility', 'subtitle', 'index', 'vuex', 'bus'],
+	props: ['visibility', 'judul', 'index', 'vuex', 'bus'],
 	data(){
 		return {
 			iconDown: this.visibility,
@@ -30,7 +30,7 @@ export default {
 	computed: {
 		counter(){
 			return this['get_habit_'+this.vuex+'_payload_checked'](this.index)+'/'+this['get_habit_'+this.vuex+'_payload_length'](this.index);
-			// return this.get_item_only_checked(this.subtitle)+'/'+this.description_length;
+			// return this.get_item_only_checked(this.judul)+'/'+this.description_length;
 		}
 	},
 	mounted(){

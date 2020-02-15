@@ -8,10 +8,10 @@ module.exports = [
 		'jenis': 'kafarat',
 		'judul': 'Kafarat Nazar',
 
-		"type":"0",
-		"interval":"bulanan",
-		"max_point":"5",
-		"countable":"1",
+
+		"interval":"bebas",
+		"point":"1",
+
 
 		"payload_description":[
 			{
@@ -19,10 +19,10 @@ module.exports = [
 				"code":Math.random()*99999999999,
 				"initial": "HABIT-PUASA",
 				"description":"Apakah sahur",
-				"type":"0",
-				"interval":"bulanan",
-				"max_point":"5",
-				"countable":"1",
+
+				"interval":"bebas",
+				"point":"1",
+
 				"selected":true
 			},
 			{
@@ -30,10 +30,10 @@ module.exports = [
 				"code":Math.random()*99999999999,
 				"initial": "HABIT-PUASA",
 				"description":"Puasa sampai tuntas?",
-				"type":"0",
-				"interval":"bulanan",
-				"max_point":"5",
-				"countable":"1",
+
+				"interval":"bebas",
+				"point":"1",
+
 				"selected":true
 			}
 		]
@@ -47,10 +47,10 @@ module.exports = [
 		'jenis': 'kafarat',
 		'judul': 'Kafarat Qadha Ramadhan',
 
-		"type":"0",
-		"interval":"bulanan",
-		"max_point":"5",
-		"countable":"1",
+
+		"interval":"bebas",
+		"point":"1",
+
 
 		"payload_description":[
 			{
@@ -58,10 +58,10 @@ module.exports = [
 				"code":Math.random()*99999999999,
 				"initial": "HABIT-PUASA",
 				"description":"Apakah sahur",
-				"type":"0",
-				"interval":"bulanan",
-				"max_point":"5",
-				"countable":"1",
+
+				"interval":"bebas",
+				"point":"1",
+
 				"selected":true
 			},
 			{
@@ -69,10 +69,10 @@ module.exports = [
 				"code":Math.random()*99999999999,
 				"initial": "HABIT-PUASA",
 				"description":"Puasa sampai tuntas?",
-				"type":"0",
-				"interval":"bulanan",
-				"max_point":"5",
-				"countable":"1",
+
+				"interval":"bebas",
+				"point":"1",
+
 				"selected":true
 			}
 		]

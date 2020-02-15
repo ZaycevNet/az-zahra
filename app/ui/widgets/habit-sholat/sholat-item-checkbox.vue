@@ -1,4 +1,9 @@
 
+<style scoped>
+Label {
+  font-weight: normal;
+}
+</style>
 <template>
 	<StackLayout backgroundColor="white">
 		<Ripple rippleColor="#28ADAA" @tap="onGridLayout" >

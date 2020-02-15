@@ -7,6 +7,7 @@ require("./habit-tadarus");
 require("./habit-zis");
 require("./habit-puasa");
 require("./habit-sholat");
+require("./profile");
 
 import Vue from 'nativescript-vue'
 
