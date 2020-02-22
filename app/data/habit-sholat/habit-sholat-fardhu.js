@@ -7,7 +7,6 @@ module.exports = [
 		"jenis":"fardhu",
 		"judul": "Sholat Subuh",
 
-
 		"interval":"harian",
 		"point":"1",
 

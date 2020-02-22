@@ -1,7 +1,7 @@
 
 <template>
 	<StackLayout backgroundColor="white" >
-		<Ripple @tap="onGridLayout" @longPress="onPress" rippleColor="#28ADAA" >
+		<Ripple @tap="onGridLayout" rippleColor="#28ADAA" >
 		<GridLayout columns="*,40%" rows="*" height="auto" padding="5 5">
 			<Label textAlignment="left"  paddingLeft="10" fontSize="14px" verticalAlignment="middle" :text="description" textWrap="true" col="0"/>
 			<!-- <Label :text="myitems" /> -->
@@ -33,19 +33,6 @@ export default {
 		}
 	},
 	methods:{
-		onPress(){
-			// Import the EventBus we just created.
-			const { EventBus } = require('@/event-bus.js');
-			EventBus.$emit('ViewHabitTadarusModal', true);
-
-			this.$showModal(this.$views.ViewHabitTadarusModal, {
-					transition: 'slideLeft', // not working on modal
-			}).then(data => {
-					console.log(data)
-					EventBus.$emit('ViewHabitTadarusModal', false);
-					// this.$store.commit("gotoRoute", false)
-			});
-		},
 		isLoadingReset(){
 			// this.set_habit_majelis_payload_checked({ code: this.items.code, value: this.isChecked});
 			// setTimeout(() => { this.isLoading = false }, 250);

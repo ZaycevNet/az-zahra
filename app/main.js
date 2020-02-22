@@ -55,10 +55,14 @@ import Navigator from 'nativescript-vue-navigator'
 
 import { habit } from '@/routers/habit'
 import { profile } from '@/routers/profile'
+import { group } from '@/routers/group'
+import { jurnal } from '@/routers/jurnal'
 
 const routes = {
 	...habit,
 	...profile,
+	...group,
+	...jurnal,
 }
 
 Vue.use(Navigator, { routes })
@@ -85,7 +89,6 @@ for (let comp of getExamples()) {
 // import { Statusbar } from "nativescript-plugin-statusbar";
 // let status = new Statusbar();
 
-
 if(TNS_ENV !== 'production') {
   //Vue.use(VueDevtools)
 }
@@ -94,6 +97,7 @@ Vue.config.silent = (TNS_ENV === 'production')
 
 Vue.registerElement("DropDown", () => require("nativescript-drop-down/drop-down").DropDown);
 Vue.registerElement('RadSideDrawer', () => require('nativescript-ui-sidedrawer').RadSideDrawer);
+Vue.registerElement('RadCalendar', () => require('nativescript-ui-calendar').RadCalendar);
 Vue.registerElement('Gradient', () => require('nativescript-gradient').Gradient);
 Vue.registerElement('CheckBox',() => require('@nstudio/nativescript-checkbox').CheckBox,
   {
@@ -107,6 +111,7 @@ Vue.registerElement("Ripple",() => require("nativescript-ripple").Ripple);
 Vue.registerElement('Fab',() => require('@nstudio/nativescript-floatingactionbutton').Fab);
 Vue.registerElement('ImageZoom', () => require('nativescript-image-zoom').ImageZoom);
 Vue.registerElement('CardView',() => require('@nstudio/nativescript-cardview').CardView);
+
 // Vue.registerElement("NestedScrollView", () => require("nativescript-nested-scrollview").NestedScrollView);
 
 const { TNSFontIcon, fonticon } = require("nativescript-fonticon");
@@ -124,7 +129,7 @@ import * as application from 'tns-core-modules/application'
 
 // router.push('/home');
 const app = new Vue({
-  name:"THIRD COMMIT 246538559",
+  name:"THIRD COMMIT 3 246531855912",
   store,
   data(){
     return {
@@ -135,14 +140,20 @@ const app = new Vue({
     this.statusbar.setStatusBarColor("#28ADAA");
 
     // console.log(this.$route.path, this.$router.history.stack.length);
+		const { EventBus } = require('@/event-bus.js');
 
     application.android.on('activityBackPressed', args => {
+
+			EventBus.$off();
+
+			// alert(123);
       // if(this.$store.getters.waitingUI){
       //   args.cancel = true //
       //   return
       // }
       //
       // args.cancel = false //
+			args.cancel = true //
     })
   },
   // watch: {

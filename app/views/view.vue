@@ -105,7 +105,26 @@ export default {
           name: "ViewProfileGuru",
           component: "/view-profile-guru", //this.$views.ViewHabitOrganisasi
         },
-
+				{
+          name: "ViewGroup",
+          component: "/view-group", //this.$views.ViewHabitOrganisasi
+        },
+				{
+          name: "ViewGroupSKM",
+          component: "/view-group-skm", //this.$views.ViewHabitOrganisasi
+        },
+				{
+          name: "ViewGroupAnggota",
+          component: "/view-group-anggota", //this.$views.ViewHabitOrganisasi
+				},
+				{
+          name: "ViewGroupHasil",
+          component: "/view-group-hasil", //this.$views.ViewHabitOrganisasi
+				},
+				{
+          name: "ViewGroupHasilDetail",
+          component: "/view-group-hasil-detail", //this.$views.ViewHabitOrganisasi
+        },
 			],
 		}
 	},

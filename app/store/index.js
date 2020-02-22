@@ -54,6 +54,12 @@ import habit_sholat_fardhu from "./modules/habit-sholat/habit-sholat-fardhu";
 import profile_siswa from "./modules/profile/profile-siswa";
 import profile_guru from "./modules/profile/profile-guru";
 
+import group_master from "./modules/group/group-master";
+import group_skm from "./modules/group/group-skm";
+import group_anggota from "./modules/group/group-anggota";
+import group_hasil from "./modules/group/group-hasil";
+import group_hasil_siswa from "./modules/group/group-hasil-siswa";
+
 
 Vue.use(Vuex);
 
@@ -116,6 +122,12 @@ let store = new Vuex.Store({
 
     profile_siswa,
     profile_guru,
+
+    group_master,
+    group_skm,
+    group_anggota,
+    group_hasil,
+    group_hasil_siswa,
   },
   strict: debug
 });

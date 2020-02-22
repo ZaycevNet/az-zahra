@@ -11,7 +11,7 @@
 
 					<Label textWrap="true" text="250" fontWeight="bold" color="#fff" fontStyle="underline" textAlignment="right" fontSize="24" />
 
-					<Label text="Sudah melakukan aktivitas" fontWeight="normal" color="#fff" textAlignment="right" fontSize="12" />
+					<Label text="Sudah melakukan aktivitas" fontWeight="normal" color="#fff" textAlignment="right" fontSize="13" />
 
 				</StackLayout>
 			</Gradient>

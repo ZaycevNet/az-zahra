@@ -14,8 +14,9 @@ module.exports = [
 
 			"interval":"harian",
 			"jenis":"sholat",
-			"aktifitas":"10",
-			"total_aktifitas":"180",
+			"judul":"Kebiasaan Sholat",
+			"aktivitas":"10",
+			"total_aktivitas":"180",
 
 		},
 		"payload_habit_puasa":{
@@ -26,8 +27,9 @@ module.exports = [
 
 			"interval":"bebas",
 			"jenis":"puasa",
-			"aktifitas":"10",
-			// "total_aktifitas":"180",
+			"judul":"Kebiasaan Puasa",
+			"aktivitas":"10",
+			// "total_aktivitas":"180",
 		},
 		"payload_habit_zis":{
 			"id":"1",
@@ -37,8 +39,9 @@ module.exports = [
 
 			"interval":"bebas",
 			"jenis":"zis",
-			"aktifitas":"10",
-			// "total_aktifitas":"180",
+			"judul":"Kebiasaan Zakat-Infak-Sedekah",
+			"aktivitas":"10",
+			// "total_aktivitas":"180",
 		},
 		"payload_habit_adab":{
 			"id":"1",
@@ -48,8 +51,9 @@ module.exports = [
 
 			"interval":"harian",
 			"jenis":"adab",
-			"aktifitas":"10",
-			"total_aktifitas":"180",
+			"judul":"Kebiasaan Adab Islami",
+			"aktivitas":"10",
+			"total_aktivitas":"180",
 		},
 		"payload_habit_berpikir":{
 			"id":"1",
@@ -59,8 +63,9 @@ module.exports = [
 
 			"interval":"harian",
 			"jenis":"berpikir",
-			"aktifitas":"10",
-			"total_aktifitas":"180",
+			"judul":"Kebiasaan Berpikir Positif",
+			"aktivitas":"10",
+			"total_aktivitas":"180",
 		},
 		"payload_habit_membaca":{
 			"id":"1",
@@ -69,9 +74,10 @@ module.exports = [
 			"initial":"PROFILE-SISWA-HABIT",
 
 			"interval":"bebas",
-			"jenis":"berpikir",
-			"aktifitas":"10",
-			// "total_aktifitas":"180",
+			"jenis":"membaca",
+			"judul":"Kebiasaan Membaca",
+			"aktivitas":"10",
+			// "total_aktivitas":"180",
 		},
 		"payload_habit_tadarus":{
 			"id":"1",
@@ -81,8 +87,9 @@ module.exports = [
 
 			"interval":"bebas",
 			"jenis":"tadarus",
-			"aktifitas":"10",
-			// "total_aktifitas":"180",
+			"judul":"Kebiasaan Tadarus",
+			"aktivitas":"10",
+			// "total_aktivitas":"180",
 		},
 		"payload_habit_majelis":{
 			"id":"1",
@@ -92,8 +99,9 @@ module.exports = [
 
 			"interval":"bebas",
 			"jenis":"majelis",
-			"aktifitas":"10",
-			// "total_aktifitas":"180",
+			"judul":"Kebiasaan Majelis Ilmu",
+			"aktivitas":"10",
+			// "total_aktivitas":"180",
 		},
 		"payload_habit_organisasi":{
 			"id":"1",
@@ -103,8 +111,9 @@ module.exports = [
 
 			"interval":"bebas",
 			"jenis":"organisasi",
-			"aktifitas":"10",
-			// "total_aktifitas":"180",
+			"judul":"Kebiasaan Berorganisasi",
+			"aktivitas":"10",
+			// "total_aktivitas":"180",
 		}
 	}
 ]

@@ -56,6 +56,13 @@ const habit_sholat_fardhu = require('./habit-sholat/habit-sholat-fardhu');
 const profile_siswa = require('./profile/profile-siswa');
 const profile_guru = require('./profile/profile-guru');
 
+const group_master = require('./group/group-master');
+const group_skm = require('./group/group-skm');
+const group_anggota = require('./group/group-anggota');
+const group_hasil = require('./group/group-hasil');
+const group_hasil_siswa = require('./group/group-hasil-siswa');
+
+
 module.exports = {
     indicator,
 
@@ -109,6 +116,12 @@ module.exports = {
 
     profile_siswa,
     profile_guru,
+
+    group_master,
+    group_skm,
+    group_anggota,
+    group_hasil,
+    group_hasil_siswa,
     // auth,
     // tab,
     // init,
