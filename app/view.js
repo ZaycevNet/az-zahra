@@ -26,6 +26,7 @@ import ViewHabitZis from "@/views/habit/view-habit-zis";
 // Profile
 import ViewProfileGuruContent from "@/views/profile/view-profile-guru-content";
 import ViewProfileGuru from "@/views/profile/view-profile-guru";
+import PageProfileFotoZoomModal from "@/pages/profile/page-profile-foto-zoom-modal"
 
 import ViewProfileSiswaContent from "@/views/profile/view-profile-siswa-content";
 import ViewProfileSiswa from "@/views/profile/view-profile-siswa";
@@ -38,7 +39,22 @@ import ViewGroupHasil from "@/views/group/view-group-hasil"
 import ViewGroupSKM from "@/views/group/view-group-skm"
 import ViewGroup from "@/views/group/view-group"
 
+import ViewDashboardDetailAnchor from "@/views/dashboard/view-dashboard-detail-anchor"
+
+import ViewJurnalDetail from "@/views/jurnal/view-jurnal-detail"
+import ViewJurnal from "@/views/jurnal/view-jurnal"
+
+import ViewOnboarding from "@/views/onboarding/view-onboarding"
+
+
+import ViewMain from "@/views/main/view-main"
+
+
 const views = {
+	ViewMain,
+
+	ViewDashboardDetailAnchor,
+
 	ViewHabitAdab,
 	ViewHabitBerpikir,
 	ViewHabitSholat,
@@ -61,6 +77,8 @@ const views = {
 	ViewProfileSiswaContent,
 	ViewProfileSiswa,
 
+	PageProfileFotoZoomModal,
+
 	ViewGroupAnggota,
 	// ViewGroupContent,
 	ViewGroupHasilDetail,
@@ -68,6 +86,11 @@ const views = {
 	ViewGroupHasil,
 	ViewGroupSKM,
 	ViewGroup,
+
+	ViewJurnalDetail,
+	ViewJurnal,
+
+	ViewOnboarding,
 }
 
 export default views;

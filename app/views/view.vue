@@ -125,6 +125,23 @@ export default {
           name: "ViewGroupHasilDetail",
           component: "/view-group-hasil-detail", //this.$views.ViewHabitOrganisasi
         },
+
+				{
+          name: "ViewJurnalDetail",
+          component: "/view-jurnal-detail", //this.$views.ViewHabitOrganisasi
+        },
+				{
+          name: "ViewJurnal",
+          component: "/view-jurnal", //this.$views.ViewHabitOrganisasi
+        },
+				{
+          name: "ViewMain",
+          component: "/view-main", //this.$views.ViewHabitOrganisasi
+        },
+				{
+          name: "ViewOnboarding",
+          component: "/view-onboarding", //this.$views.ViewHabitOrganisasi
+        },
 			],
 		}
 	},
@@ -174,6 +191,7 @@ export default {
 			return
 
     }
-  }
+
+	}
 }
 </script>

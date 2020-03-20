@@ -10,6 +10,10 @@ require("./habit-sholat");
 require("./profile");
 require("./group");
 require("./jurnal");
+require("./dashboard");
+require("./timeline");
+require("./auth");
+require("./masukkan");
 
 import Vue from 'nativescript-vue'
 
@@ -30,4 +34,56 @@ const HeadlineNonTab = resolve => {
     )
 }
 
+const MiniProfile = resolve => {
+    require.ensure(
+        ['./mini-profile'],
+        () => {
+            resolve(require('./mini-profile'))
+        }, 'mini-profile'
+    )
+}
+
+const MiniProfileDrawer = resolve => {
+    require.ensure(
+        ['./mini-profile-drawer'],
+        () => {
+            resolve(require('./mini-profile-drawer'))
+        }, 'mini-profile-drawer'
+    )
+}
+
+
+const ButtonRipple = resolve => {
+    require.ensure(
+        ['./button-ripple'],
+        () => {
+            resolve(require('./button-ripple'))
+        }, 'button-ripple'
+    )
+}
+
+const ButtonRoundRipple = resolve => {
+    require.ensure(
+        ['./button-round-ripple'],
+        () => {
+            resolve(require('./button-round-ripple'))
+        }, 'button-round-ripple'
+    )
+}
+
+const ButtonRoundRippleSave = resolve => {
+    require.ensure(
+        ['./button-round-ripple-save'],
+        () => {
+            resolve(require('./button-round-ripple-save'))
+        }, 'button-round-ripple-save'
+    )
+}
+
+Vue.component('ButtonRoundRippleSave', ButtonRoundRippleSave)
+Vue.component('ButtonRoundRipple', ButtonRoundRipple)
+Vue.component('ButtonRipple', ButtonRipple)
 Vue.component('HeadlineNonTab', HeadlineNonTab)
+Vue.component('HabitHeadlineNonTab', HabitHeadlineNonTab)
+Vue.component('MiniProfile', MiniProfile)
+Vue.component('MiniProfileDrawer', MiniProfileDrawer)

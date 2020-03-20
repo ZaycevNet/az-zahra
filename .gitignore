@@ -1,5 +1,6 @@
 # JetBrains project files
 .idea
+.update_backup
 
 # NPM
 node_modules
@@ -7,3 +8,14 @@ node_modules
 # NativeScript application
 hooks
 platforms
+
+app__
+App_ResourcesXX
+app0
+app1
+
+
+BUILD COMMAND.txt
+catatan.txt
+labsnip-az-zahra.keystore
+ns-vue.jks

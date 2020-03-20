@@ -65,6 +65,27 @@ const PageProfileFotoZoomModal = resolve => {
         }, 'page-profile-foto-zoom-modal'
     )
 }
+
+const PageProfileGuruDaftar = resolve => {
+    require.ensure(
+        ['./page-profile-guru-daftar'],
+        () => {
+            resolve(require('./page-profile-guru-daftar'))
+        }, 'page-profile-guru-daftar'
+    )
+}
+
+const PageProfileSiswaDaftar = resolve => {
+    require.ensure(
+        ['./page-profile-siswa-daftar'],
+        () => {
+            resolve(require('./page-profile-siswa-daftar'))
+        }, 'page-profile-siswa-daftar'
+    )
+}
+
+Vue.component('PageProfileSiswaDaftar', PageProfileSiswaDaftar);
+Vue.component('PageProfileGuruDaftar', PageProfileGuruDaftar);
 Vue.component('PageProfileSiswaBiodata', PageProfileSiswaBiodata);
 Vue.component('PageProfileSiswaOrangtua', PageProfileSiswaOrangtua);
 Vue.component('PageProfileSiswaGroup', PageProfileSiswaGroup);

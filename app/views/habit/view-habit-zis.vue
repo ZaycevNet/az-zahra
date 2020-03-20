@@ -28,9 +28,9 @@ ActionBar,
     width: 30;
 }
 
-.tabviewitem-container {
+/* .tabviewitem-container {
     padding-bottom: 10;
-}
+} */
 
 TabView > * {
     text-transform: none;
@@ -72,14 +72,14 @@ TabView {
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 300)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
 
         <ZisHeadline habit="Zakat Infaq Sedekah" />
 
-        <GridLayout ref="container" rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" >
+        <GridLayout ref="container" rows="*,auto" v-if="!rendering0">
         <!-- <StackLayout v-if="!rendering0"> -->
 
             <TabView ref="tabview" id="tabview" :selectedIndex="selectedIndex" @selectedIndexChange="onSelectedIndexChanged" @loaded="onTabViewLoaded" @unloaded="onTabViewUnloaded" height="100%" tabTextFontSize="15" selectedTabTextColor="white" androidSelectedTabHighlightColor="white"
@@ -97,7 +97,7 @@ TabView {
                           <StackLayout id="stackList_child_0" ref="stackList_child_0" paddingBottom="30" >
                             <ContentPreloader v-if="!tab_child_0" />
 
-                            <PageHabitZisMal v-if="tab_child_0" :items="get_habit_zis_zakat_mal_payload" class="tabviewitem-container" />
+                            <PageHabitZisMal v-if="tab_child_0" :items="get_habit_zis_zakat_mal_payload"  />
 
                             <ActivityIndicator ref="indicator_child_0" color="#28ADAA" :busy="busy_child_0" @busyChange="onBusyChangeChild($event, 0)" />
                           </StackLayout>
@@ -113,7 +113,7 @@ TabView {
 
                             <ContentPreloader v-if="!tab_child_1" />
 
-                            <PageHabitZisNonMal v-if="tab_child_1" :items="get_habit_zis_zakat_fitri_payload" class="tabviewitem-container" />
+                            <PageHabitZisNonMal v-if="tab_child_1" :items="get_habit_zis_zakat_fitri_payload"  />
 
                           </StackLayout>
                         </ScrollView>
@@ -131,7 +131,7 @@ TabView {
                       <StackLayout id="stackList1" ref="stackList1" paddingBottom="30" >
                         <ContentPreloader v-if="!tab1" />
 
-                        <PageHabitZisNonMal v-if="tab1" :items="get_habit_zis_sedekah_payload" class="tabviewitem-container" />
+                        <PageHabitZisNonMal v-if="tab1" :items="get_habit_zis_sedekah_payload"  />
 
                         <ActivityIndicator ref="indicator1" color="#28ADAA" :busy="busy1" @busyChange="onBusyChange($event, 1)" />
                       </StackLayout>
@@ -143,7 +143,7 @@ TabView {
                       <StackLayout id="stackList2" ref="stackList2" paddingBottom="30" >
                         <ContentPreloader v-if="!tab2" />
 
-                        <PageHabitZisNonMal v-if="tab2" :items="get_habit_zis_infaq_payload" class="tabviewitem-container" />
+                        <PageHabitZisNonMal v-if="tab2" :items="get_habit_zis_infaq_payload"  />
 
                         <ActivityIndicator ref="indicator2" color="#28ADAA" :busy="busy2" @busyChange="onBusyChange($event, 2)" />
                       </StackLayout>
@@ -155,7 +155,7 @@ TabView {
                       <StackLayout id="stackList3" ref="stackList3" paddingBottom="30" >
                         <ContentPreloader v-if="!tab3" />
 
-                        <PageHabitZisNonMal v-if="tab3" :items="get_habit_zis_waqaf_payload" class="tabviewitem-container" />
+                        <PageHabitZisNonMal v-if="tab3" :items="get_habit_zis_waqaf_payload"  />
 
                         <ActivityIndicator ref="indicator3" color="#28ADAA" :busy="busy3" @busyChange="onBusyChange($event, 3)" />
                       </StackLayout>
@@ -165,7 +165,7 @@ TabView {
 
             </TabView>
 
-            <Fab @tap="" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
+            <Fab @tap="gotoPage({ path:'/view-habit-zis-new' })" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
 
         <!-- </StackLayout> -->
         </GridLayout>
@@ -228,19 +228,19 @@ export default {
     },
     mounted() {
 
-        const application = require('tns-core-modules/application');
-        application.android.on('activityBackPressed', args => {
-
-            new Promise(resolve => {
-                this.rendering0 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
-        })
+        // const application = require('tns-core-modules/application');
+        // application.android.on('activityBackPressed', args => {
+        //
+        //     new Promise(resolve => {
+        //         // this.rendering0 = true;
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        //
+        //     args.cancel = true //
+        // })
 
         // setTimeout(() => {
         //   this.rendering = false;
@@ -295,17 +295,17 @@ export default {
                 }, 1000);
             }
         },
-        onBack() {
-                // alert(this.routeProps.origin);
-                // this.$router.replace('/');
-                new Promise(resolve => {
-                    this.rendering0 = true;
-                    resolve();
-                }).then(result => {
-                    this.$navigateBack();
-                    // this.$modal.close("Aku Pulang")
-                });
-            },
+        // onBack() {
+        //         // alert(this.routeProps.origin);
+        //         // this.$router.replace('/');
+        //         new Promise(resolve => {
+        //             this.rendering0 = true;
+        //             resolve();
+        //         }).then(result => {
+        //             this.$navigateBack();
+        //             // this.$modal.close("Aku Pulang")
+        //         });
+        //     },
             // TABVIEW
             onSelectedIndexChangedChild: function(args) {
                 this.selectedIndex = 0;

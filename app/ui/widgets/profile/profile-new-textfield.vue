@@ -7,9 +7,9 @@ Label {
     <GridLayout rows="25, auto, *" marginBottom="10">
         <Label ref="label" row="1" :text="placeholder" opacity="0.4" fontSize="14" class="input"/>
 
-        <TextField ref="textField" row="1" :editable="get_profile_siswa_is_edit" fontSize="14" @focus="onFocus" :text="text" @blur="onBlur" borderBottomWidth="1" borderBottomColor="#cec8c8" paddingLeft="3.5" />
+        <TextField ref="textField" row="1" :editable="editable" fontSize="14" @focus="onFocus" :text="text" @blur="onBlur" borderBottomWidth="1" borderBottomColor="#cec8c8" paddingLeft="3.5" />
 
-        <Label text="wajib diisi" horizontalAlignment="right" verticalAlignment="bottom" color="rgba(255,0,51,0.6)" fontSize="12" row="2" v-if="get_profile_siswa_is_edit" />
+        <Label text="wajib diisi" horizontalAlignment="right" verticalAlignment="bottom" color="rgba(255,0,51,0.6)" fontSize="12" row="2" v-if="editable" />
 
     </GridLayout>
 </template>
@@ -24,7 +24,7 @@ Label {
         //         type: String
         //     },
         // },
-        props:['placeholder','text'],
+        props:['placeholder','text','editable'],
         mounted(){
           if(this.$refs.label == undefined) return;
 

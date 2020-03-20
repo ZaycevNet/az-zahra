@@ -1,36 +1,5 @@
 Guru<style scoped>
 
-ActionBar,
-.action-bar {
-    background-color: #28ADAA;
-    padding-left: 0px;
-    android-elevation: 0;
-}
-
-.action-bar-title {
-    text-align: left;
-    font-size: 18px;
-    padding-right: 16;
-    background-color: #28ADAA;
-    vertical-alignment: middle;
-}
-
-.action-bar-right {
-    text-align: right;
-    font-size: 18px;
-    padding-right: 16;
-    background-color: #28ADAA;
-    vertical-alignment: middle;
-}
-
-.action-bar-icon {
-    font-size: 35px;
-    width: 30;
-}
-
-.tabviewitem-container {
-    padding-bottom: 10;
-}
 
 TabView > * {
     text-transform: none;
@@ -74,29 +43,31 @@ TabView {
         tabTextColor="rgb(255,255,255,0.5)" tabBackgroundColor="#28BAAA" iosIconRenderingMode="alwaysOriginal">
 
             <TabViewItem title="Biodata" bageValue="" wrapContent="false">
+
                 <ScrollView ref="scroll0" @scroll="onScroll($event, 0)" height="100%" scrollBarIndicatorVisible="false">
-                    <StackLayout id="stackList0" ref="stackList0" paddingBottom="10">
+                    <StackLayout id="stackList0" ref="stackList0" paddingBottom="30" >
 
                         <ContentPreloader v-if="!tab0" />
 
-                        <PageProfileGuruBiodata v-if="tab0" :items="get_profile_guru_payload.payload_biodata" class="tabviewitem-container" />
+                        <PageProfileGuruBiodata v-if="tab0" :items="get_profile_guru_payload.payload_biodata"  />
 
                     </StackLayout>
                 </ScrollView>
+
             </TabViewItem>
 
             <TabViewItem title="Kelas" bageValue="" wrapContent="false">
 
                 <ScrollView ref="scroll1" @scroll="onScroll($event, 1)" height="100%" scrollBarIndicatorVisible="false">
-                    <StackLayout id="stackList1" ref="stackList1" paddingBottom="10">
+                    <StackLayout id="stackList1" ref="stackList1" paddingBottom="30">
 
                         <ContentPreloader v-if="!tab1" />
 
-                        <PageProfileGuruKelas v-if="tab1" :items="get_profile_guru_payload.payload_kelas" class="tabviewitem-container" />
+                        <PageProfileGuruKelas v-if="tab1" :items="get_profile_guru_payload.payload_kelas"  />
 
                     </StackLayout>
                 </ScrollView>
-              <!-- </StackLayout> -->
+
             </TabViewItem>
 
             <TabViewItem title="Kelompok" bageValue="" wrapContent="false">
@@ -111,11 +82,13 @@ TabView {
 
                             <ContentPreloader v-if="!tab2" />
 
-                            <PageProfileGuruGroup v-if="tab2" :items="get_profile_guru_payload.payload_kelas" class="tabviewitem-container" />
+                            <PageProfileGuruGroup v-if="tab2" :items="get_profile_guru_payload.payload_group"  />
 
                             <ActivityIndicator ref="indicator2" color="#28ADAA" :busy="busy2" @busyChange="onBusyChange($event, 2)" />
+
                         </StackLayout>
                     </ScrollView>
+
                 </StackLayout>
             </TabViewItem>
 
@@ -173,13 +146,6 @@ export default {
                     this['busy' + index] = true;
                     setTimeout(() => {
                         this['busy' + index] = false;
-
-                        // let n = [];
-                        // for (var i = 0; i < 30; i++) {
-                        //     n.push(i + 1);
-                        // }
-                        // this.itemList.push(n);
-
                     }, 1000);
                 }
 
@@ -188,15 +154,7 @@ export default {
                     this.$emit('onBubbleParallex', true);
                 }
             },
-            onBack() {
-                new Promise(resolve => {
-                    this.rendering0 = true;
-                    resolve();
-                }).then(result => {
-                    this.$navigateBack();
-                    // this.$modal.close("Aku Pulang")
-                });
-            },
+
             // TABVIEW
 
             onSelectedIndexChanged: function(args) {

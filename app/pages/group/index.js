@@ -45,12 +45,12 @@ const PageGroupHasilKalenderModal = resolve => {
     )
 }
 
-const PageGroupHasilSiswa = resolve => {
+const PageGroupHasilDetail = resolve => {
     require.ensure(
-        ['./page-group-hasil-siswa'],
+        ['./page-group-hasil-detail'],
         () => {
-            resolve(require('./page-group-hasil-siswa'))
-        }, 'page-group-hasil-siswa'
+            resolve(require('./page-group-hasil-detail'))
+        }, 'page-group-hasil-detail'
     )
 }
 
@@ -58,5 +58,5 @@ Vue.component('PageGroupSKM', PageGroupSKM);
 Vue.component('PageGroupMaster', PageGroupMaster);
 Vue.component('PageGroupAnggota', PageGroupAnggota);
 Vue.component('PageGroupHasil', PageGroupHasil);
-Vue.component('PageGroupHasilSiswa', PageGroupHasilSiswa);
+Vue.component('PageGroupHasilDetail', PageGroupHasilDetail);
 Vue.component('PageGroupHasilKalenderModal', PageGroupHasilKalenderModal);

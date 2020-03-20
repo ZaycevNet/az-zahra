@@ -4,7 +4,7 @@ Label {
 }
 </style>
 <template>
-	<StackLayout>
+	<!-- <StackLayout> -->
 		<GridLayout columns="110,10,*" color="white" rows="*" height="auto" padding="5 5">
 			<Label textAlignment="left"  paddingLeft="10" fontSize="14px" verticalAlignment="top" :text="title" textWrap="true" col="0"/>
 
@@ -13,7 +13,7 @@ Label {
 			<Label textAlignment="left" paddingRight="10" fontSize="14px" verticalAlignment="top" :text="description" textWrap="true" col="2"/>
 
 		</GridLayout>
-</StackLayout>
+<!-- </StackLayout> -->
 </template>
 
 <script>

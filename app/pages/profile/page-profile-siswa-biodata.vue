@@ -42,12 +42,12 @@
       <!-- waktu -->
       <!-- <TadarusNewDropdownFloatLabel /> -->
       <GridLayout columns="*,*" rows="*">
-          <ProfileNewTextfield :text="items.nama_depan" col="0" width="45%" horizontalAlignment="left" placeholder="Nama Depan" />
-          <ProfileNewTextfield :text="items.nama_belakang" col="1" width="50%" placeholder="Nama Belakang" />
+          <ProfileNewTextfield :editable="get_profile_siswa_is_edit" :text="items.nama_depan" col="0" width="45%" horizontalAlignment="left" placeholder="Nama Depan" />
+          <ProfileNewTextfield :editable="get_profile_siswa_is_edit" :text="items.nama_belakang" col="1" width="50%" placeholder="Nama Belakang" />
       </GridLayout>
 
       <GridLayout columns="*,*" rows="*">
-          <ProfileNewTextfield :text="items.tempat_lahir" col="0" width="45%" horizontalAlignment="left" placeholder="Tempat Lahir" />
+          <ProfileNewTextfield :editable="get_profile_siswa_is_edit" :text="items.tempat_lahir" col="0" width="45%" horizontalAlignment="left" placeholder="Tempat Lahir" />
 
           <ProfileNewTextfield v-if="!get_profile_siswa_is_edit" :text="items.tanggal_lahir" col="1" width="50%" placeholder="Tanggal Lahir" />
           <ProfileNewDatepickerTanggallahir v-else :text="items.tanggal_lahir" col="1" width="50%" placeholder="Tanggal Lahir" />
@@ -64,24 +64,18 @@
       <!-- <TadarusNewTextfield placeholder="Ayat" v-show="jenis == 0"  /> -->
 
       <!-- alquran * iqra -->
-      <ProfileNewTextfield placeholder="NIS (Nomer Induk Siswa)" :text="items.nis" />
-      <ProfileNewTextfield placeholder="Telpon" :text="items.telpon" />
-      <ProfileNewTextfield placeholder="Email" :text="items.email" />
-      <ProfileNewTextfield placeholder="Whatsapp" :text="items.whatsapp" />
+      <ProfileNewTextfield :editable="get_profile_siswa_is_edit" placeholder="NIS (Nomer Induk Siswa)" :text="items.nis" />
+      <ProfileNewTextfield :editable="get_profile_siswa_is_edit" placeholder="Telpon" :text="items.telpon" />
+      <ProfileNewTextfield :editable="get_profile_siswa_is_edit" placeholder="Email" :text="items.email" />
+      <ProfileNewTextfield :editable="get_profile_siswa_is_edit" placeholder="Whatsapp" :text="items.whatsapp" />
 
       <ProfileNewTextfield v-if="!get_profile_siswa_is_edit" placeholder="Jenis Kelamin" :text="items.whatsapp" />
       <ProfileNewRadioGender v-else placeholder="Jenis Kelamin" :text="items.gender" />
 
       <!-- <TadarusNewDatepicker placeholder="Tanggal" /> -->
-      <ProfileNewTextview placeholder="Alamat" :text="items.alamat" />
+      <ProfileNewTextview :editable="get_profile_siswa_is_edit" placeholder="Alamat" :text="items.alamat" />
 
     </StackLayout>
-
-    <!-- <StackLayout v-if="!rendering1" v-show="jenis == 0" v-for="(item, index) in items" :key="index" slot="item">
-        <TadarusItemCheckboxBasic :description="item.description" :checked="item.selected" :items="item" :class="index+1 >= items.length ? 'full-border-last-item' : 'off-bottom-border'" />
-    </StackLayout> -->
-
-    <!-- <Label v-if="!rendering1" v-show="jenis == 0" fontSize="12" padding="10 0" text="Tekan lama pilihan di atas untuk mengetahui artinya" width="100%" textAlignment="center" /> -->
 
 </StackLayout>
 

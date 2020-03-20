@@ -3,7 +3,7 @@
 .ranking-activity {
     color: white;
     /* margin-top:-4; */
-    font-size: 20;
+    font-size: 18;
     text-alignment: left;
     font-weight: bold;
 }

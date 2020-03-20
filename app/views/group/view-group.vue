@@ -44,7 +44,8 @@ ActionBar,
     <RadSideDrawer ref="drawerBottom" drawerContentSize="Auto" drawerLocation="Bottom" showOverNavigation="true" @drawerOpening="onOpeningDrawerTriggered($event)" @drawerClosed="onClosedDrawerTriggered($event)" @drawerClosing="onClosingDrawerTriggered($event)"
     :gesturesEnabled="gesturesEnabled">
 
-        <ScrollView ~drawerContent ref="drawerContent" backgroundColor="white" marginLeft="10" marginTop="0" marginRight="10" horizontalAlignment="center" class="top-radius">
+        <!-- OLD STYLE -->
+        <!-- <ScrollView ~drawerContent ref="drawerContent" backgroundColor="white" marginLeft="10" marginTop="0" marginRight="10" horizontalAlignment="center" class="top-radius">
 
             <StackLayout height="35%" class="top-radius" backgroundColor="#28ADAA">
                 <StackLayout backgroundColor="#28ADAA" height="10" width="100%" class="top-radius" />
@@ -61,12 +62,32 @@ ActionBar,
                     </StackLayout>
                 </DockLayout>
 
-                <!-- <Gradient direction="top down" colors="#28ADAA, #28BAAA"  borderRadius="8">
-                  <Label color="white" fontSize="16" textAlignment="center" text="Buat Kelompok Baru" padding="15 10"/>
-              </Gradient> -->
+            </StackLayout>
+        </ScrollView> -->
 
-                <!-- <Button @tap="onCreateNew" verticalAlignment="top" v-shadow="10" :text="String.fromCharCode('0xf040')" fontSize="20px" width="50" height="50" margin="50 25 0 0" class="fa" color="white" horizontalAlignment="right" backgroundColor="red"
-                borderRadius="25%" /> -->
+        <ScrollView ~drawerContent ref="drawerContent" style="margin-top:0;horizontal-alignment:center;">
+
+            <StackLayout height="50%" backgroundColor="#fff">
+
+                <Gradient direction="top down" colors="#28ADAA, #28BAAA" borderRadius="0">
+                  <GridLayout rows="50" columns="*,auto">
+
+                    <StackLayout col="0" verticalAlignment="middle">
+                      <Label color="white" fontSize="16" textAlignment="left" text="Formulir Kelompok" padding="0 10" />
+                    </StackLayout>
+
+                    <StackLayout col="1" horizontalAlignment="right" verticalAlignment="middle">
+                      <ButtonRipple margin="0 10" />
+                    </StackLayout>
+
+                  </GridLayout>
+                </Gradient>
+
+                <DockLayout style="background-color:rgba(242, 242, 235, 1);height:100%;padding:10" stretchLastChild="true">
+
+                  <GroupNewTextfield dock="top" placeholder="Isikan dengan nama kelompok" />
+
+                </DockLayout>
 
             </StackLayout>
         </ScrollView>
@@ -76,11 +97,11 @@ ActionBar,
 
               <ActionBar ref="actionbar" color="white" flat="true">
                   <GridLayout width="100%" columns="auto, *, 60%">
-                      <Ripple rippleColor="#28ADAA">
+                      <Ripple @tap="onBack" rippleColor="#28ADAA">
                           <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
                       </Ripple>
 
-                      <Label @tap="" class="action-bar-title" text="Kelompok" col="1" />
+                      <Label @tap="onBack" class="action-bar-title" text="Kelompok" col="1" />
                       <Ripple rippleColor="#28ADAA" col="2" @tap="onNew">
                           <Label class="action-bar-right ion" :text="'ion-md-add' | fonticon" />
                       </Ripple>
@@ -121,8 +142,6 @@ import {
 }
 from 'ui/label';
 
-const application = require('tns-core-modules/application')
-
 // import JurnalComment from "./jurnal-comment"
 
 import ViewGroupContent from "./view-group-content";
@@ -158,13 +177,13 @@ export default {
     mounted() {
         this.drawerBottom = this.$refs.drawerBottom;
 
-
         // Import the EventBus we just created.
         const { EventBus } = require('@/event-bus.js');
         EventBus.$on('ViewGroup', data => {
 
           this.isDrawer = true;
           this.onOpenDrawerTap();
+
 
           // this.$refs.actionbar.nativeView.animate({
           //   translate: {
@@ -176,24 +195,15 @@ export default {
 
         });
 
-
         const application = require('tns-core-modules/application');
         application.android.on('activityBackPressed', args => {
 
-            if(this.isDrawer) {
+            if(this.$store.getters.bottomDrawer) {
               this.onCloseDrawerTap()
               return
             }
 
-            new Promise(resolve => {
-                this.rendering0 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
+            args.cancel = false //
         })
 
     },
@@ -203,6 +213,7 @@ export default {
           this.onBubbleEvent("new");
           this.isDrawer = true;
 
+          this.$store.commit("setBottomDrawer", true)
           // this.$refs.actionbar.nativeView.animate({
           //   translate: {
           //       x: 0,
@@ -308,6 +319,7 @@ export default {
             },
             onCloseDrawerTap() {
                 this.$refs.drawerBottom.nativeView.closeDrawer();
+                this.$store.commit('setBottomDrawer', false)
             },
             onOpeningDrawerTriggered(arg) {
                 // trigger when sidedrawer opening

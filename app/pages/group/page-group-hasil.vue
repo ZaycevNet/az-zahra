@@ -109,7 +109,7 @@ Label {
                 <Label verticalAlignment="center" color="white" fontSize="24" class="ion" :text="'ion-ios-trophy' | fonticon" margin="0 5" />
             </Ripple> -->
 
-            <TextField borderRadius="3" :text="filter" @textChange="onSearchSubmit" :hint="String.fromCharCode('0xf375') + ' Cari Siswa...'" row="0" col="4" class="ion" margin="0 5 0 5" />
+            <TextField borderRadius="3" :text="filter" @textChange="onSearchSubmit" :hint="String.fromCharCode('0xf375') + ' Cari Siswa...'" row="0" col="3" class="ion" margin="0 5 0 5" />
 
             <Ripple rippleColor="white" row="0" col="4" @tap="onSearchClear">
                 <Label verticalAlignment="center" color="white" fontSize="24" class="ion" :text="String.fromCharCode('0xf2c0')" margin="0 5" />
@@ -120,43 +120,45 @@ Label {
 
             <!-- Wajib ada 1 v-template tanpa yang if -->
             <v-template>
-              <CardView elevation="7" margin="5 7.5" radius="20">
-                <Gradient direction="to left" colors="white, white, white, white,  rgba(40,186,170,0.00)">
-                <GridLayout columns="85,*" rows="85" margin="0" padding="5" borderRadius="10"  borderWidth="0" borderColor="rgba(40,186,170,0.5)">
-                    <StackLayout col="0" row="0" dock="left" padding="5">
-                        <Image :src="item.foto" stretch="aspectFill" width="100%" height="100%" borderRadius="50%" />
-                    </StackLayout>
-                    <StackLayout col="1" padding="0 10" verticalAlignment="middle">
-                        <DockLayout stretchLastChild="true" width="100%">
-                            <StackLayout dock="left">
-                                <Label>
-                                    <FormattedString>
-                                        <Span class="person-name" :text="item.nama_depan +' '" />
-                                        <Span class="person-name" :text="item.nama_belakang" />
-                                    </FormattedString>
-                                </Label>
-                                <Label :text="'NIS: '+ item.nis" class="person-title" />
-                                <Label>
-                                    <FormattedString>
+              <Ripple @tap="gotoPage({ path:'/view-group-hasil-detail' })" rippleColor="#fff">
+                <CardView elevation="7" margin="5 7.5" radius="20">
+                  <Gradient direction="to left" colors="white, white, white, white,  rgba(40,186,170,0.00)">
+                  <GridLayout columns="85,*" rows="85" margin="0" padding="5" borderRadius="10"  borderWidth="0" borderColor="rgba(40,186,170,0.5)">
+                      <StackLayout col="0" row="0" dock="left" padding="5">
+                          <Image :src="item.foto" stretch="aspectFill" width="100%" height="100%" borderRadius="50%" />
+                      </StackLayout>
+                      <StackLayout col="1" padding="0 10" verticalAlignment="middle">
+                          <DockLayout stretchLastChild="true" width="100%">
+                              <StackLayout dock="left">
+                                  <Label>
+                                      <FormattedString>
+                                          <Span class="person-name" :text="item.nama_depan +' '" />
+                                          <Span class="person-name" :text="item.nama_belakang" />
+                                      </FormattedString>
+                                  </Label>
+                                  <Label :text="'NIS: '+ item.nis" class="person-title" />
+                                  <Label>
+                                      <FormattedString>
 
-                                        <Span class="person-title" :text="item.jenjang+':'" />
-                                        <Span class="person-title" :text="' Kelas '+ item.kelas " />
-                                        <Span class="person-title" :text="' - '+item.rombel" />
-                                    </FormattedString>
-                                </Label>
+                                          <Span class="person-title" :text="item.jenjang+':'" />
+                                          <Span class="person-title" :text="' Kelas '+ item.kelas " />
+                                          <Span class="person-title" :text="' - '+item.rombel" />
+                                      </FormattedString>
+                                  </Label>
 
-                            </StackLayout>
+                              </StackLayout>
 
-                            <StackLayout>
-                                <Label :text="item.total_aktivitas" class="ranking-activity" />
-                                <Label text="10/10" class="total-activity" />
-                            </StackLayout>
-                        </DockLayout>
-                        <Label class="info-activity" text="Perhitungan SKM Harian" />
-                    </StackLayout>
-                </GridLayout>
-              </Gradient>
-              </CardView>
+                              <StackLayout>
+                                  <Label :text="item.total_aktivitas" class="ranking-activity" />
+                                  <Label text="10/10" class="total-activity" />
+                              </StackLayout>
+                          </DockLayout>
+                          <Label class="info-activity" text="Perhitungan SKM Harian" />
+                      </StackLayout>
+                  </GridLayout>
+                </Gradient>
+                </CardView>
+              </Ripple>
             </v-template>
 
         </RadListView>

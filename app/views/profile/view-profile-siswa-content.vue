@@ -1,36 +1,5 @@
 <style scoped>
 
-ActionBar,
-.action-bar {
-    background-color: #28ADAA;
-    padding-left: 0px;
-    android-elevation: 0;
-}
-
-.action-bar-title {
-    text-align: left;
-    font-size: 18px;
-    padding-right: 16;
-    background-color: #28ADAA;
-    vertical-alignment: middle;
-}
-
-.action-bar-right {
-    text-align: right;
-    font-size: 18px;
-    padding-right: 16;
-    background-color: #28ADAA;
-    vertical-alignment: middle;
-}
-
-.action-bar-icon {
-    font-size: 35px;
-    width: 30;
-}
-
-.tabviewitem-container {
-    padding-bottom: 10;
-}
 
 TabView > * {
     text-transform: none;
@@ -75,11 +44,11 @@ TabView {
 
             <TabViewItem title="Biodata" bageValue="" wrapContent="false">
                 <ScrollView ref="scroll0" @scroll="onScroll($event, 0)" height="100%" scrollBarIndicatorVisible="false">
-                    <StackLayout id="stackList0" ref="stackList0" paddingBottom="10">
+                    <StackLayout id="stackList0" ref="stackList0" paddingBottom="30">
 
                         <ContentPreloader v-if="!tab0" />
 
-                        <PageProfileSiswaBiodata v-if="tab0" :items="get_profile_siswa_payload.payload_biodata" class="tabviewitem-container" />
+                        <PageProfileSiswaBiodata v-if="tab0" :items="get_profile_siswa_payload.payload_biodata" height="100%" />
 
                     </StackLayout>
                 </ScrollView>
@@ -104,7 +73,7 @@ TabView {
 
                                         <ContentPreloader v-if="!content_preloader(index)" />
 
-                                        <PageProfileSiswaOrangtua v-if="content_preloader(index)" :items="item" class="tabviewitem-container" />
+                                        <PageProfileSiswaOrangtua v-if="content_preloader(index)" :items="item" height="100%" />
 
                                     </StackLayout>
                                 </ScrollView>
@@ -134,7 +103,7 @@ TabView {
 
                                         <ContentPreloader v-if="!tab_child1_0" />
 
-                                        <PageProfileSiswaGroup v-if="tab_child1_0" :items="get_profile_siswa_payload.payload_group" class="tabviewitem-container" />
+                                        <PageProfileSiswaGroup v-if="tab_child1_0" :items="get_profile_siswa_payload.payload_group" height="100%" />
 
                                         <ActivityIndicator ref="indicator_child1_0" color="#28ADAA" :busy="busy_child1_0" @busyChange="onBusyChangeChild1($event, 0)" />
 
@@ -166,7 +135,7 @@ TabView {
 
                             <ContentPreloader v-if="!tab2" />
 
-                            <PageProfileSiswaGroup v-if="tab2" :items="get_profile_siswa_payload.payload_group" class="tabviewitem-container" />
+                            <PageProfileSiswaGroup v-if="tab2" :items="get_profile_siswa_payload.payload_group" height="100%" />
 
                             <ActivityIndicator ref="indicator2" color="#28ADAA" :busy="busy2" @busyChange="onBusyChange($event, 2)" />
                         </StackLayout>
@@ -180,7 +149,7 @@ TabView {
 
                         <ContentPreloader v-if="!tab3" />
 
-                        <PageProfileSiswaHabit v-if="tab3" :items="get_habit_zis_waqaf_payload" class="tabviewitem-container" />
+                        <PageProfileSiswaHabit v-if="tab3" :items="get_habit_zis_waqaf_payload" height="100%" />
 
                     </StackLayout>
                 </ScrollView>
@@ -250,7 +219,6 @@ export default {
             }
         }
     },
-
     methods: {
         reAdjustDefaultScrollY(args, index) {
                 // TIDAK WAJIB
@@ -351,15 +319,15 @@ export default {
                     this.$emit('onBubbleParallex', true);
                 }
             },
-            onBack() {
-                new Promise(resolve => {
-                    this.rendering0 = true;
-                    resolve();
-                }).then(result => {
-                    this.$navigateBack();
-                    // this.$modal.close("Aku Pulang")
-                });
-            },
+            // onBack() {
+            //     new Promise(resolve => {
+            //         this.rendering0 = true;
+            //         resolve();
+            //     }).then(result => {
+            //         this.$navigateBack();
+            //         // this.$modal.close("Aku Pulang")
+            //     });
+            // },
             // TABVIEW
             onSelectedIndexChangedChild: function(args) {
                 // this.selectedIndex = 1;

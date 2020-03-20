@@ -71,16 +71,19 @@ ActionBar,
 
   <ActionBar ref="actionbar" color="white" flat="true">
       <GridLayout width="100%" columns="auto, *, 60%">
-          <Ripple rippleColor="#28ADAA" @tap="onBack" v-if="!isEdit">
+          <Ripple rippleColor="#28ADAA" @tap="onBackAlertCheck" v-if="!isEdit">
               <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
           </Ripple>
           <Ripple rippleColor="#28ADAA" @tap="onCancel" v-else>
               <Label :text="'ion-ios-close' | fonticon" class="action-bar-icon ion" />
           </Ripple>
 
-          <Label @tap="" class="action-bar-title" :text=" !isEdit ? 'Profile Guru' : 'Ubah Profile Guru'" col="1" />
+          <Label @tap="" class="action-bar-title" :text=" !isEdit ? 'Profile Guru' : 'Sunting Profile Guru'" col="1" />
           <Ripple rippleColor="#28ADAA" v-if="!isEdit" @tap="onEdit" col="2" >
             <Label class="action-bar-right fa" :text="'fa-pencil-square-o' | fonticon" />
+          </Ripple>
+          <Ripple rippleColor="#28ADAA" v-else @tap="onSubmit" col="2" >
+            <Label class="action-bar-right fa" :text="'fa-check-square-o' | fonticon" />
           </Ripple>
       </GridLayout>
   </ActionBar>
@@ -109,7 +112,7 @@ ActionBar,
 
                 <StackLayout horizontalAlignment="center" marginBottom="20">
 
-                    <Label text="Ferynda" fontSize="18px" fontWeight="bold" textAlignment="center" color="white" paddingTop="15px" paddingLeft="10" paddingRight="10" paddingBottom="15px" />
+                    <Label text="Muhamad Duki" fontSize="18px" fontWeight="bold" textAlignment="center" color="white" paddingTop="15px" paddingLeft="10" paddingRight="10" paddingBottom="15px" />
 
                     <Label text="1201 Westlake Avenue, Suite 205, Seattle, WA 98121 USA" fontSize="12px" color="white" width="100%" textWrap="true" paddingLeft="50" paddingRight="50" textAlignment="center" />
 
@@ -128,16 +131,18 @@ ActionBar,
             <GridLayout rows="*,auto" columns="*" backgroundColor="white" ref="content" height="1000" paddingBottom="0">
             <!-- <StackLayout backgroundColor="white" ref="content" height="1000" paddingBottom="35"> -->
 
-              <ProfileGuru @onBubbleParallex="onBubbleParallex" paddingBottom="30"/>
+              <ProfileGuruContent @onBubbleParallex="onBubbleParallex" paddingBottom="30"/>
 
-              <!-- <transition name="transition" v-if="isEdit" appear> -->
-                <StackLayout ref="submitbutton" padding="0 10" rowSpan="2" verticalAlignment="bottom" v-shadow="shadowCustom" v-show="isEdit">
-                    <Ripple rippleColor="white" margin="10 0" @tap="onSubmit">
-                        <Label class="btn-next" text="Simpan" />
-                    </Ripple>
-                </StackLayout>
-              <!-- </transition> -->
-            <!-- </StackLayout> -->
+              <StackLayout ref="submitbutton" padding="0 10" rowSpan="2" verticalAlignment="bottom" v-shadow="shadowCustom" v-show="isEdit" horizontalAlignment="middle">
+
+                  <ButtonRoundRippleSave margin="10 0" text="Simpan" icon="f046" @onBubbleEvent="onSubmit"/>
+
+                  <!-- <Ripple rippleColor="white" margin="10 0" @tap="onSubmit">
+                      <Label class="btn-next fa" :text="String.fromCharCode('0xf046')+' Simpan'" />
+                  </Ripple> -->
+
+              </StackLayout>
+
             </GridLayout>
 
         </StackLayout>
@@ -153,7 +158,7 @@ ActionBar,
 <script>
 const permissions = require("nativescript-permissions");
 
-import ProfileGuru from "./view-profile-guru-content"
+import ProfileGuruContent from "./view-profile-guru-content"
 
 import PageProfileFotoZoomModal from "@/pages/profile/page-profile-foto-zoom-modal"
 
@@ -164,7 +169,7 @@ import { AndroidData, ShapeEnum } from "nativescript-vue-shadow";
 export default {
   mixins:[Mediafilepicker],
         components: {
-          ProfileGuru
+          ProfileGuruContent
         },
         data() {
             return {
@@ -177,24 +182,37 @@ export default {
 
                 isZoom: false,
                 isEdit: false,
+                isUnsaved: null, // jika tombol edit diklik maka ini menjadi false, jika false maka alert muncul saat onBack
 
                 isUserInteractionEnabled: true,
-                fotoProfile: "~/assets/images/best.bmp",
+                fotoProfile: "~/assets/images/ukik.jpg",
             }
         },
         watch: {
-          isUserInteractionEnabled(val) {
-            if(this.isEdit) return
-            if(val) {
-              this.$refs.fabButton.nativeView.animate({
-                  translate: {
-                      x: 0,
-                      y: 100
-                  },
-                  opacity: 1
-              })
-              .then(() => {}, () => {});
-            } else {
+          // isUserInteractionEnabled(val) {
+          //   if(this.isEdit) return
+          //   if(val) {
+          //     this.$refs.fabButton.nativeView.animate({
+          //         translate: {
+          //             x: 0,
+          //             y: 100
+          //         },
+          //         opacity: 1
+          //     })
+          //     .then(() => {}, () => {});
+          //   } else {
+          //     this.$refs.fabButton.nativeView.animate({
+          //         translate: {
+          //             x: 0,
+          //             y: 0
+          //         },
+          //         opacity: 1
+          //     })
+          //     .then(() => {}, () => {});
+          //   }
+          // },
+          isEdit(val) {
+            if(!this.isEdit) {
               this.$refs.fabButton.nativeView.animate({
                   translate: {
                       x: 0,
@@ -207,35 +225,26 @@ export default {
           }
         },
         mounted() {
-            // setTimeout(() => {
-            //   this.$refs.Container.nativeView.scrollToVerticalOffset(this.$refs.Container.nativeView.scrollableHeight, true)
-            // }, 2000)
-
-            this.$refs.submitbutton.nativeView.translateY = 100;
-
-            const application = require('tns-core-modules/application');
-            application.android.on('activityBackPressed', args => {
-
-                if(this.isZoom) {
-                  return
-                }
-
-                new Promise(resolve => {
-                    this.rendering0 = true;
-                    resolve();
-                }).then(result => {
-                    this.$navigateBack();
-                    // this.$modal.close("Aku Pulang")
-                });
-
-                args.cancel = true //
-            })
-
+            // this.$refs.submitbutton.nativeView.translateY = 100;
         },
         methods: {
+          onBackAlertCheck(){
+            if(this.isUnsaved) {
+              this.onBackAlert()
+            } else {
+              this.onBack()
+            }
+          },
             onCancel(){
                 const vm = this;
                 this.showToast("data belum disimpan...")
+
+                vm.isUnsaved = true;
+                vm.isEdit = false;
+                vm.action_profile_guru_is_edit(false);
+                vm.isUserInteractionEnabled = true;
+                // vm.$refs.Container.nativeView.scrollToVerticalOffset(0, true)
+
                 vm.$refs.submitbutton.nativeView.animate({
                     translate: {
                         x: 0,
@@ -243,43 +252,23 @@ export default {
                     },
                     opacity: 1
                 })
-                .then(() => {
-
-                  vm.isEdit = false;
-                  vm.action_profile_guru_is_edit(false);
-                  vm.isUserInteractionEnabled = true;
-
-                  vm.$refs.Container.nativeView.scrollToVerticalOffset(0, true)
-
-                }, () => {});
             },
-            onBack(){
-              const vm = this;
 
-              var dialogs = require("tns-core-modules/ui/dialogs");
-              dialogs.confirm({
-                  title: "Perhatian",
-                  message: "Data perubahan yang belum disimpan akan hilang saat halaman profile guru ini ditutup",
-                  okButtonText: "Simpan",
-                  cancelButtonText: "Mengerti",
-                  neutralButtonText: "Biarkan Hilang"
-              }).then(function (result) {
-                  // result argument is boolean
-
-                  console.log("Dialog result: " + result);
-                  if(result == undefined) {
-                      // TETAP DITUTUP
-                  }
-
-              });
-
-            },
             onSubmit(){
               this.showLoadingIndicator();
               setTimeout(() => {
                 this.hideLoadingIndicator();
-                this.showActionSnackbar('👍 Sukses! Data berhasil disimpan...');
+                this.showFeedback()
+                // this.showActionSnackbar('👍 Sukses! Data berhasil disimpan...');
               }, 500);
+
+              // AXIOS
+              this.isUnsaved = false;
+              this.isEdit = false;
+              this.action_profile_guru_is_edit(false);
+              this.isUserInteractionEnabled = true;
+              // this.$refs.Container.nativeView.scrollToVerticalOffset(0, true)
+
 
               this.$refs.submitbutton.nativeView.animate({
                   translate: {
@@ -288,18 +277,10 @@ export default {
                   },
                   opacity: 1
               })
-              .then(() => {
-
-                this.isEdit = false;
-                this.action_profile_guru_is_edit(false);
-                this.isUserInteractionEnabled = true;
-
-                this.$refs.Container.nativeView.scrollToVerticalOffset(0, true)
-
-              }, () => {});
 
             },
             onEdit(){
+              this.isUnsaved = true;
               this.isEdit = true;
               this.action_profile_guru_is_edit(true);
               this.isUserInteractionEnabled = false;
@@ -429,14 +410,14 @@ export default {
 
                 this.$refs.Container.nativeView.scrollToVerticalOffset(0, true)
                 this.isUserInteractionEnabled = true;
-                // this.$refs.fabButton.nativeView.animate({
-                //     translate: {
-                //         x: 0,
-                //         y: 100
-                //     },
-                //     opacity: 1
-                // })
-                // .then(() => {}, () => {});
+
+                this.$refs.fabButton.nativeView.animate({
+                    translate: {
+                        x: 0,
+                        y: 100
+                    },
+                    opacity: 1
+                })
             },
 
             onBubbleParallex(val){
@@ -444,12 +425,6 @@ export default {
 
               this.isUserInteractionEnabled = val;
             },
-            // onScrollNested(args) {
-            //     console.log(args.scrollY)
-            //     if(args.scrollY <= 0) {
-            //         this.isUserInteractionEnabled = true;
-            //     }
-            // },
             onScroll(args) {
                 if(this.isEdit) return
 
@@ -468,27 +443,27 @@ export default {
                   // args.object.isUserInteractionEnabled = false;
                   this.isUserInteractionEnabled = false;
 
-                  // this.$refs.fabButton.nativeView.animate({
-                  //     translate: {
-                  //         x: 0,
-                  //         y: 0
-                  //     },
-                  //     opacity: 1
-                  // })
-                  // .then(() => {}, () => {});
+                  this.$refs.fabButton.nativeView.animate({
+                      translate: {
+                          x: 0,
+                          y: 0
+                      },
+                      opacity: 1
+                  })
                 }
 
                 // console.log(args.scrollY, args.object.getViewById("stackList").getActualSize().height / 4)
 
                 if(args.scrollY <= (args.object.getViewById("stackList").getActualSize().height - args.object.getActualSize().height) - 5) {
-                  // this.$refs.fabButton.nativeView.animate({
-                  //     translate: {
-                  //         x: 0,
-                  //         y: 100
-                  //     },
-                  //     opacity: 1
-                  // })
-                  // .then(() => {}, () => {});
+
+                  this.$refs.fabButton.nativeView.animate({
+                      translate: {
+                          x: 0,
+                          y: 100
+                      },
+                      opacity: 1
+                  })
+                  .then(() => {}, () => {});
                 }
             },
             onScrollParallex(offset) {

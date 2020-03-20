@@ -7,24 +7,12 @@
     border-top-right-radius: 5;
 }
 
-/* .off-top-border {
-    border-width: 1;
-    border-color: #28BAAA;
-    border-top-width: 0;
-} */
-
 .full-border-radius {
     border-width: 0;
     border-color: #28BAAA;
     border-radius: 5;
 }
 
-/* .off-top-bottom-border {
-    border-width: 1;
-    border-color: #28BAAA;
-    border-top-width: 0;
-    border-bottom-width: 0;
-} */
 </style>
 
 <template>
@@ -36,25 +24,25 @@
     <StackLayout v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" class="full-border-radius" padding="10 15 10 15">
 
       <GridLayout columns="*,*" rows="*">
-          <ProfileNewTextfield :text="items.nama_depan" col="0" width="45%" horizontalAlignment="left" placeholder="Nama Depan" />
-          <ProfileNewTextfield :text="items.nama_belakang" col="1" width="50%" placeholder="Nama Belakang" />
+          <ProfileNewTextfield :editable="get_profile_guru_is_edit" :text="items.nama_depan" col="0" width="45%" horizontalAlignment="left" placeholder="Nama Depan" />
+          <ProfileNewTextfield :editable="get_profile_guru_is_edit" :text="items.nama_belakang" col="1" width="50%" placeholder="Nama Belakang" />
       </GridLayout>
 
       <GridLayout columns="*,*" rows="*">
-          <ProfileNewTextfield :text="items.gelar_depan" col="0" width="45%" horizontalAlignment="left" placeholder="Gelar Depan" />
-          <ProfileNewTextfield :text="items.gelar_belakang" col="1" width="50%" placeholder="Gelar Belakang" />
+          <ProfileNewTextfield :editable="get_profile_guru_is_edit" :text="items.gelar_depan" col="0" width="45%" horizontalAlignment="left" placeholder="Gelar Depan" />
+          <ProfileNewTextfield :editable="get_profile_guru_is_edit" :text="items.gelar_belakang" col="1" width="50%" placeholder="Gelar Belakang" />
       </GridLayout>
 
-      <ProfileNewTextfield placeholder="NIP (Nomer Induk Pegawai)" :text="items.nip" />
-      <ProfileNewTextfield placeholder="Telpon" :text="items.telpon" />
-      <ProfileNewTextfield placeholder="Email" :text="items.email" />
-      <ProfileNewTextfield placeholder="Whatsapp" :text="items.whatsapp" />
+      <ProfileNewTextfield :editable="get_profile_guru_is_edit" placeholder="NIP (Nomer Induk Pegawai)" :text="items.nip" />
+      <ProfileNewTextfield :editable="get_profile_guru_is_edit" placeholder="Telpon" :text="items.telpon" />
+      <ProfileNewTextfield :editable="get_profile_guru_is_edit" placeholder="Email" :text="items.email" />
+      <ProfileNewTextfield :editable="get_profile_guru_is_edit" placeholder="Whatsapp" :text="items.whatsapp" />
 
       <ProfileNewTextfield v-if="!get_profile_guru_is_edit" placeholder="Jenis Kelamin" :text="items.whatsapp" />
       <ProfileNewRadioGender v-else placeholder="Jenis Kelamin" :text="items.gender" />
 
       <!-- <TadarusNewDatepicker placeholder="Tanggal" /> -->
-      <ProfileNewTextview placeholder="Alamat" :text="items.alamat" />
+      <ProfileNewTextview :editable="get_profile_guru_is_edit" placeholder="Alamat" :text="items.alamat" />
 
     </StackLayout>
 

@@ -53,6 +53,8 @@ import habit_sholat_fardhu from "./modules/habit-sholat/habit-sholat-fardhu";
 
 import profile_siswa from "./modules/profile/profile-siswa";
 import profile_guru from "./modules/profile/profile-guru";
+import profile_siswa_daftar from "./modules/profile/profile-siswa-daftar";
+import profile_guru_daftar from "./modules/profile/profile-guru-daftar";
 
 import group_master from "./modules/group/group-master";
 import group_skm from "./modules/group/group-skm";
@@ -60,6 +62,13 @@ import group_anggota from "./modules/group/group-anggota";
 import group_hasil from "./modules/group/group-hasil";
 import group_hasil_siswa from "./modules/group/group-hasil-siswa";
 
+import onboarding from "./modules/onboarding";
+import syarat_ketentuan from "./modules/syarat-ketentuan";
+import kebijakan_privasi from "./modules/kebijakan-privasi";
+
+// NON NAMESPACE
+import sideDrawer from "./modules/sideDrawer";
+import navigator from "./modules/navigator";
 
 Vue.use(Vuex);
 
@@ -69,7 +78,8 @@ let store = new Vuex.Store({
   modules: {
     indicator,
 
-    // sideDrawer,
+    sideDrawer,
+    navigator,
     // keyboard_backpress,
 
     habit_adab_alat_tempat,
@@ -122,12 +132,20 @@ let store = new Vuex.Store({
 
     profile_siswa,
     profile_guru,
+    profile_siswa_daftar,
+    profile_guru_daftar,
 
     group_master,
     group_skm,
     group_anggota,
     group_hasil,
     group_hasil_siswa,
+
+    onboarding,
+
+    syarat_ketentuan,
+
+    kebijakan_privasi,
   },
   strict: debug
 });

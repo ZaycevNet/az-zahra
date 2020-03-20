@@ -51,26 +51,26 @@ ActionBar,
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 300)">
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
 
 
         <HabitHeadlineNonTab habit="Majelis Ilmu" v-shadow="5" />
 
-        <GridLayout ref="container" rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" >
+        <GridLayout ref="container" rows="*,auto" v-if="!rendering0" >
 
-            <ScrollView ref="scroll" @scroll="onScroll" height="100%" v-if="!rendering1">
+            <ScrollView ref="scroll" @scroll="onScroll" height="100%">
                 <StackLayout  id="stackList" ref="stackList" paddingBottom="30">
-                    <!-- <PageHabitMajelis v-for="(i, index) in itemList" id="item" :key="index" :index="index" :renderingTime="index*renderingChild" class="tabviewitem-container" /> -->
+                    <!-- <PageHabitMajelis v-for="(i, index) in itemList" id="item" :key="index" :index="index" :renderingTime="index*renderingChild"  /> -->
 
-                    <PageHabitMajelis :items="get_habit_majelis_payload" class="tabviewitem-container" />
+                    <PageHabitMajelis :items="get_habit_majelis_payload"  />
 
                     <ActivityIndicator ref="indicator" color="#28ADAA" :busy="busy" @busyChange="onBusyChange" />
                 </StackLayout>
             </ScrollView>
 
-            <Fab @tap="" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
+            <Fab @tap="gotoPage({ path:'/view-habit-majelis-new' })" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
 
         </GridLayout>
         <ContentPreloader v-if="rendering0 && initContentPreloader" />
@@ -185,16 +185,16 @@ export default {
         },
 
 
-        onBack() {
-              new Promise(resolve => {
-                  this.rendering0 = true;
-                  this.rendering1 = true;
-                  resolve();
-              }).then(result => {
-                  this.$navigateBack();
-                  // this.$modal.close("Aku Pulang")
-              });
-            },
+        // onBack() {
+        //       new Promise(resolve => {
+        //           this.rendering0 = true;
+        //           this.rendering1 = true;
+        //           resolve();
+        //       }).then(result => {
+        //           this.$navigateBack();
+        //           // this.$modal.close("Aku Pulang")
+        //       });
+        //     },
             onItemTap({
                 item
             }) {
@@ -202,20 +202,20 @@ export default {
             },
     },
     mounted() {
-        const application = require('tns-core-modules/application');
-        application.android.on('activityBackPressed', args => {
-            new Promise(resolve => {
-                this.rendering0 = true;
-                this.rendering1 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
-
-        })
+        // const application = require('tns-core-modules/application');
+        // application.android.on('activityBackPressed', args => {
+        //     new Promise(resolve => {
+        //         // this.rendering0 = true;
+        //         // this.rendering1 = true;
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        //
+        //     args.cancel = true //
+        //
+        // })
 
         // this.statusbar.setStatusBarColor("#28ADAA");
     },

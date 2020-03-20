@@ -34,10 +34,10 @@ const getters = {
 };
 
 const mutations = {
-	[set_habit_puasa_kafarat_payload]:(state) => {
+	[set_habit_puasa_kafarat_payload]:(state, data) => {
 		state.payload = data
 	},
-  [set_habit_puasa_kafarat_payload_add]:(state) => {
+  [set_habit_puasa_kafarat_payload_add]:(state, data) => {
 		state.payload.push(data)
 	},
   [set_habit_puasa_kafarat_payload_remove]: (state, data) => {

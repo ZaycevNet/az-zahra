@@ -28,9 +28,9 @@ ActionBar,
     width: 30;
 }
 
-.tabviewitem-container {
+/* .tabviewitem-container {
     padding-bottom: 10;
-}
+} */
 
 TabView > * {
     text-transform: none;
@@ -60,7 +60,7 @@ TabView {
     </ActionBar>
 
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 300)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
@@ -76,7 +76,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab0" />
 
-                        <PageHabitSholat v-if="tab0" :items="get_habit_sholat_fardhu_payload" vuex="sholat_fardhu" class="tabviewitem-container" />
+                        <PageHabitSholat v-if="tab0" :items="get_habit_sholat_fardhu_payload" vuex="sholat_fardhu"  />
 
                         <ActivityIndicator v-if="busy" ref="indicator" color="#28ADAA" :busy="busy" @busyChange="onBusyChange" />
                       </StackLayout>
@@ -88,7 +88,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab1" />
 
-                        <PageHabitSholat v-if="tab1" :items="get_habit_sholat_jumat_payload" vuex="sholat_jumat" class="tabviewitem-container" />
+                        <PageHabitSholat v-if="tab1" :items="get_habit_sholat_jumat_payload" vuex="sholat_jumat"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -98,7 +98,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab2" />
 
-                        <PageHabitSholat v-if="tab2" :items="get_habit_sholat_malam_payload" vuex="sholat_malam" class="tabviewitem-container" />
+                        <PageHabitSholat v-if="tab2" :items="get_habit_sholat_malam_payload" vuex="sholat_malam"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -109,7 +109,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab3" />
 
-                        <PageHabitSholat v-if="tab3" :items="get_habit_sholat_pagi_payload" vuex="sholat_pagi" class="tabviewitem-container" />
+                        <PageHabitSholat v-if="tab3" :items="get_habit_sholat_pagi_payload" vuex="sholat_pagi"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -120,7 +120,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab4" />
 
-                        <PageHabitSholat v-if="tab4" :items="get_habit_sholat_hari_raya_payload" vuex="sholat_hari_raya" class="tabviewitem-container" />
+                        <PageHabitSholat v-if="tab4" :items="get_habit_sholat_hari_raya_payload" vuex="sholat_hari_raya"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -131,7 +131,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab5" />
 
-                        <PageHabitSholat v-if="tab5" :items="get_habit_sholat_tambahan_payload" vuex="sholat_tambahan" class="tabviewitem-container" />
+                        <PageHabitSholat v-if="tab5" :items="get_habit_sholat_tambahan_payload" vuex="sholat_tambahan"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -182,19 +182,19 @@ export default {
         }
     },
     mounted() {
-        const application = require('tns-core-modules/application');
-        application.android.on('activityBackPressed', args => {
-
-            new Promise(resolve => {
-                // this.rendering0 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
-        })
+        // const application = require('tns-core-modules/application');
+        // application.android.on('activityBackPressed', args => {
+        //
+        //     new Promise(resolve => {
+        //         // this.rendering0 = true;
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        //
+        //     args.cancel = true //
+        // })
 
     },
     methods: {
@@ -206,17 +206,17 @@ export default {
         onBusyChange(event) {
           console.log(event.value)
         },
-        onBack() {
-                // alert(this.routeProps.origin);
-                // this.$router.replace('/');
-                new Promise(resolve => {
-                    // this.rendering0 = true;
-                    resolve();
-                }).then(result => {
-                    this.$navigateBack();
-                    // this.$modal.close("Aku Pulang")
-                });
-            },
+        // onBack() {
+        //         // alert(this.routeProps.origin);
+        //         // this.$router.replace('/');
+        //         new Promise(resolve => {
+        //             // this.rendering0 = true;
+        //             resolve();
+        //         }).then(result => {
+        //             this.$navigateBack();
+        //             // this.$modal.close("Aku Pulang")
+        //         });
+        //     },
             // TABVIEW
             onSelectedIndexChanged: function(args) {
 

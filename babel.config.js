@@ -3,8 +3,5 @@ module.exports = function (api) {
 
   return {
     presets: [['@babel/env', { targets: { esmodules: true } }]],
-    plugins: [
-      "@babel/plugin-syntax-dynamic-import"
-    ]
   }
 }

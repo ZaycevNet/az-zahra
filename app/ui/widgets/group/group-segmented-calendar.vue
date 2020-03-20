@@ -48,7 +48,7 @@ export default {
 		return {
 		  segmentedOptions: [
 				{
-					selected: false
+					selected: true
 				},
 				{
 					selected: false

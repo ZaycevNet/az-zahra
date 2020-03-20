@@ -13,13 +13,13 @@ module.exports = {
   },
 	methods: {
 		showFeedback() {
-			return
+			// return
 	    this.feedback.show({
 	      title: "Sukses",
 	      titleColor: new Color("rgba(255,255,255,0.85)"),
 	      // message: "Data berhasil disimpan...",
 	      messageColor: new Color("rgba(255,255,255,0.75)"),
-	      duration: 100000, // gak pernah tau kapan selesainya axios
+	      duration: 1000, // gak pernah tau kapan selesainya axios
 	      type: FeedbackType.Success,
 	      backgroundColor: new Color("#28ADAA"),
 	      onTap: () => console.log("showSuccessAltColor tapped")

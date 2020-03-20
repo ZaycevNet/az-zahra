@@ -1,12 +1,5 @@
 <style scoped>
 
-/* .full-border {
-    border-width: 0;
-    border-color: #28ADAA;
-    border-top-left-radius: 5;
-    border-top-right-radius: 5;
-} */
-
 .left-right-border {
     border-color: #28ADAA;
     border-left-width: 1;
@@ -18,35 +11,6 @@
     border-bottom-right-radius: 5;
     padding-bottom: 15;
 }
-
-/* .full-border-last-item {
-    border-width: 0;
-    border-color: #28ADAA;
-    border-bottom-left-radius: 5;
-    border-bottom-right-radius: 5;
-    border-top-width: 0;
-    padding-bottom: 15;
-} */
-
-/* .off-top-border {
-    border-width: 0;
-    border-color: #28ADAA;
-    border-top-width: 0;
-} */
-
-/* .off-bottom-border {
-    border-width: 0;
-    border-color: #28ADAA;
-    border-bottom-width: 0;
-    border-top-width: 0;
-} */
-
-/* .off-top-bottom-border {
-    border-width: 0;
-    border-color: #28ADAA;
-    border-top-width: 0;
-    border-bottom-width: 0;
-} */
 
 </style>
 
@@ -81,7 +45,6 @@
         </StackLayout>
     </ProfileAccordion>
 </StackLayout>
-
 
 </template>
 

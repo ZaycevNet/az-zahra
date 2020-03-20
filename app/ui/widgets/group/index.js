@@ -51,14 +51,14 @@ const GroupHeadlineAnggota = resolve => {
         }, 'group-headline-anggota'
     )
 }
-// const GroupItemTextbox = resolve => {
-//     require.ensure(
-//         ['./group-item-textbox'],
-//         () => {
-//             resolve(require('./group-item-textbox'))
-//         }, 'group-item-textbox'
-//     )
-// };
+const GroupItemTextbox = resolve => {
+    require.ensure(
+        ['./group-item-textbox'],
+        () => {
+            resolve(require('./group-item-textbox'))
+        }, 'group-item-textbox'
+    )
+};
 
 // const GroupNewSubtitle = resolve => {
 //     require.ensure(
@@ -69,23 +69,23 @@ const GroupHeadlineAnggota = resolve => {
 //     )
 // };
 
-// const GroupSubtitle = resolve => {
-//     require.ensure(
-//         ['./group-subtitle'],
-//         () => {
-//             resolve(require('./group-subtitle'))
-//         }, 'group-subtitle'
-//     )
-// };
+const GroupSubtitle = resolve => {
+    require.ensure(
+        ['./group-subtitle'],
+        () => {
+            resolve(require('./group-subtitle'))
+        }, 'group-subtitle'
+    )
+};
 
-// const GroupNewTextfield = resolve => {
-//     require.ensure(
-//         ['./group-new-textfield'],
-//         () => {
-//             resolve(require('./group-new-textfield'))
-//         }, 'group-new-textfield'
-//     )
-// };
+const GroupNewTextfield = resolve => {
+    require.ensure(
+        ['./group-new-textfield'],
+        () => {
+            resolve(require('./group-new-textfield'))
+        }, 'group-new-textfield'
+    )
+};
 
 // const GroupNewTextview = resolve => {
 //     require.ensure(
@@ -95,14 +95,15 @@ const GroupHeadlineAnggota = resolve => {
 //         }, 'group-new-textview'
 //     )
 // };
-// const GroupNewTextviewSKM = resolve => {
-//     require.ensure(
-//         ['./group-new-textview-skm'],
-//         () => {
-//             resolve(require('./group-new-textview-skm'))
-//         }, 'group-new-textview-skm'
-//     )
-// };
+
+const GroupNewTextviewSKM = resolve => {
+    require.ensure(
+        ['./group-new-textview-skm'],
+        () => {
+            resolve(require('./group-new-textview-skm'))
+        }, 'group-new-textview-skm'
+    )
+};
 
 
 // const GroupNewDropdownFloatLabel = resolve => {
@@ -142,30 +143,30 @@ const GroupPopupFilter = resolve => {
     )
 };
 
-const GroupPopupCalenderSiswa = resolve => {
+const GroupPopupCalenderDetail = resolve => {
     require.ensure(
-        ['./group-popup-calendar-siswa'],
+        ['./group-popup-calendar-detail'],
         () => {
-            resolve(require('./group-popup-calendar-siswa'))
-        }, 'group-popup-calendar-siswa'
+            resolve(require('./group-popup-calendar-detail'))
+        }, 'group-popup-calendar-detail'
     )
 };
 
-const GroupPopupRankingSiswa = resolve => {
+const GroupPopupRankingDetail = resolve => {
     require.ensure(
-        ['./group-popup-ranking-siswa'],
+        ['./group-popup-ranking-detail'],
         () => {
-            resolve(require('./group-popup-ranking-siswa'))
-        }, 'group-popup-ranking-siswa'
+            resolve(require('./group-popup-ranking-detail'))
+        }, 'group-popup-ranking-detail'
     )
 };
 
-const GroupPopupFilterSiswa = resolve => {
+const GroupPopupFilterDetail = resolve => {
     require.ensure(
-        ['./group-popup-filter-siswa'],
+        ['./group-popup-filter-detail'],
         () => {
-            resolve(require('./group-popup-filter-siswa'))
-        }, 'group-popup-filter-siswa'
+            resolve(require('./group-popup-filter-detail'))
+        }, 'group-popup-filter-detail'
     )
 };
 //
@@ -187,14 +188,14 @@ const GroupPopupFilterSiswa = resolve => {
 //     )
 // };
 
-// const GroupAccordion = resolve => {
-//     require.ensure(
-//         ['./group-accordion'],
-//         () => {
-//             resolve(require('./group-accordion'))
-//         }, 'group-accordion'
-//     )
-// };
+const GroupAccordion = resolve => {
+    require.ensure(
+        ['./group-accordion'],
+        () => {
+            resolve(require('./group-accordion'))
+        }, 'group-accordion'
+    )
+};
 
 // const GroupNewRadio = resolve => {
 //     require.ensure(
@@ -214,37 +215,46 @@ const GroupSegmentedCalendar = resolve => {
     )
 };
 
-// const GroupButtonConfirm = resolve => {
-//     require.ensure(
-//         ['./group-button-confirm'],
-//         () => {
-//             resolve(require('./group-button-confirm'))
-//         }, 'group-button-confirm'
-//     )
-// };
+const GroupButtonConfirm = resolve => {
+    require.ensure(
+        ['./group-button-confirm'],
+        () => {
+            resolve(require('./group-button-confirm'))
+        }, 'group-button-confirm'
+    )
+};
 
-// Vue.component('GroupButtonConfirm', GroupButtonConfirm);
+const GroupMiniProfile = resolve => {
+    require.ensure(
+        ['./group-mini-profile'],
+        () => {
+            resolve(require('./group-mini-profile'))
+        }, 'group-mini-profile'
+    )
+}
+
+Vue.component('GroupButtonConfirm', GroupButtonConfirm);
 Vue.component('GroupSegmentedCalendar', GroupSegmentedCalendar);
-// Vue.component('GroupNewRadio', GroupNewRadio);
-// Vue.component('GroupAccordion', GroupAccordion);
+Vue.component('GroupMiniProfile', GroupMiniProfile);
+Vue.component('GroupAccordion', GroupAccordion);
 Vue.component('GroupHeadline', GroupHeadline);
 Vue.component('GroupHeadlineHasilDetail', GroupHeadlineHasilDetail);
 Vue.component('GroupHeadlineSKM', GroupHeadlineSKM);
 Vue.component('GroupHeadlineHasil', GroupHeadlineHasil);
 Vue.component('GroupHeadlineAnggota', GroupHeadlineAnggota);
-// Vue.component('GroupItemTextbox', GroupItemTextbox);
+Vue.component('GroupItemTextbox', GroupItemTextbox);
 Vue.component('GroupItemHabit', GroupItemHabit);
-// Vue.component('GroupSubtitle', GroupSubtitle);
+Vue.component('GroupSubtitle', GroupSubtitle);
 // Vue.component('GroupNewSubtitle', GroupNewSubtitle);
-// Vue.component('GroupNewTextfield', GroupNewTextfield);
+Vue.component('GroupNewTextfield', GroupNewTextfield);
 // Vue.component('GroupNewTextview', GroupNewTextview);
-// Vue.component('GroupNewTextviewSKM', GroupNewTextviewSKM);
+Vue.component('GroupNewTextviewSKM', GroupNewTextviewSKM);
 // Vue.component('GroupNewDropdownFloatLabel', GroupNewDropdownFloatLabel);
 Vue.component('GroupPopupCalender', GroupPopupCalender);
 Vue.component('GroupPopupRanking', GroupPopupRanking);
-Vue.component('GroupPopupCalenderSiswa', GroupPopupCalenderSiswa);
-Vue.component('GroupPopupRankingSiswa', GroupPopupRankingSiswa);
+Vue.component('GroupPopupCalenderDetail', GroupPopupCalenderDetail);
+Vue.component('GroupPopupRankingDetail', GroupPopupRankingDetail);
 Vue.component('GroupPopupFilter', GroupPopupFilter);
-Vue.component('GroupPopupFilterSiswa', GroupPopupFilterSiswa);
+Vue.component('GroupPopupFilterDetail', GroupPopupFilterDetail);
 // Vue.component('GroupNewTimepicker', GroupNewTimepicker);
 // Vue.component('GroupNewDatepicker', GroupNewDatepicker);

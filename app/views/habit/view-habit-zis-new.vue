@@ -50,28 +50,32 @@ ActionBar,
             <Ripple rippleColor="#28ADAA" @tap="onBack">
                 <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
             </Ripple>
-            <Label @tap="onBack" class="action-bar-title" text="Kebiasaan" col="1" />
+            <Label @tap="onBack" class="action-bar-title" text="Tambahkan Kebiasaan" col="1" />
             <!-- <Label class="action-bar-right" text="1/2" col="2" /> -->
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 300)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack()" /> -->
 
         <HabitHeadlineNonTab habit="Zakat Infaq Sedekah" v-shadow="5" />
+
         <GridLayout rows="*,auto" columns="*">
             <ScrollView height="100%" v-if="!rendering0">
                 <StackLayout>
-                    <PageHabitZisNew class="tabviewitem-container" />
+                    <PageHabitZisNew  />
                 </StackLayout>
             </ScrollView>
 
             <StackLayout padding="0 10" rowSpan="2" verticalAlignment="bottom" v-shadow="shadowCustom">
-                <Ripple rippleColor="white" margin="10 0">
+
+                  <ButtonRoundRippleSave margin="10 0" text="Simpan" icon="f046" @onBubbleEvent="onAxios"/>
+
+                <!-- <Ripple rippleColor="white" margin="10 0">
                     <Label class="btn-next" text="Simpan" />
-                </Ripple>
+                </Ripple> -->
             </StackLayout>
 
         </GridLayout>
@@ -116,45 +120,46 @@ export default {
         }
     },
     methods: {
-        onBack() {
-          new Promise(resolve => {
-              this.rendering0 = true;
-              resolve();
-          }).then(result => {
-              this.$navigateBack();
-              // this.$modal.close("Aku Pulang")
-          });
-        },
+      onAxios(){
+  			this.showLoadingIndicator();
+
+  			// Axios Here
+  			new Promise(resolve => {
+          setTimeout(() => {
+            resolve();
+          }, 500)
+  			}).then(result => {
+  				// this.showActionSnackbar();
+
+          this.onBack();
+
+  				this.showFeedback();
+  				this.hideLoadingIndicator();
+  			})
+
+  		},
     },
     mounted() {
-        // Import the EventBus we just created.
-      	const { EventBus } = require('@/event-bus.js');
 
-        let modal = false
-        // Listen for the i-got-clicked event and its payload.
-        EventBus.$on('ViewHabitTadarusModal', data => {
-          // console.log(`Oh, that's nice. It's gotten ${clickCount} clicks! :)`)
-          modal = data;
-        });
 
-        const application = require('tns-core-modules/application');
-        application.android.on('activityBackPressed', args => {
-
-            if(modal) {
-              return
-            }
-
-            new Promise(resolve => {
-                this.rendering0 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
-
-        })
+        // const application = require('tns-core-modules/application');
+        // application.android.on('activityBackPressed', args => {
+        //
+        //     if(modal) {
+        //       return
+        //     }
+        //
+        //     new Promise(resolve => {
+        //         // this.rendering0 = true;
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        //
+        //     args.cancel = true //
+        //
+        // })
 
 
         // this.statusbar.setStatusBarColor("#28ADAA");

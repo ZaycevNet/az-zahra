@@ -1,37 +1,5 @@
 <style scoped>
 
-ActionBar,
-.action-bar {
-    background-color: #28ADAA;
-    padding-left: 0px;
-    android-elevation: 0;
-}
-
-.action-bar-title {
-    text-align: left;
-    font-size: 18px;
-    padding-right: 16;
-    background-color: #28ADAA;
-    vertical-alignment: middle;
-}
-
-.action-bar-right {
-    text-align: right;
-    font-size: 18px;
-    padding-right: 16;
-    background-color: #28ADAA;
-    vertical-alignment: middle;
-}
-
-.action-bar-icon {
-    font-size: 35px;
-    width: 30;
-}
-
-.tabviewitem-container {
-    padding-bottom: 10;
-}
-
 TabView > * {
     text-transform: none;
 }
@@ -54,19 +22,6 @@ TabView {
 </style>
 
 <template>
-<!--
-<Page actionBarHidden="false">
-
-    <ActionBar color="white">
-        <GridLayout width="100%" columns="auto, *, 60%">
-            <Ripple rippleColor="#28ADAA" @tap="onBack">
-                <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
-            </Ripple>
-            <Label @tap="onBack" class="action-bar-title" text="Kebiasaan" col="1" />
-            <Label class="action-bar-right" text="1/2" col="2" />
-        </GridLayout>
-    </ActionBar>
- -->
 
     <StackLayout @loaded="onLoaded_Rendering(0, 400)" >
 
@@ -81,7 +36,6 @@ TabView {
             <TabView ref="tabview" id="tabview" :selectedIndex="selectedIndex" @selectedIndexChange="onSelectedIndexChanged" @loaded="onTabViewLoaded" @unloaded="onTabViewUnloaded" height="100%" tabTextFontSize="15" selectedTabTextColor="white" androidSelectedTabHighlightColor="white"
             tabTextColor="rgb(255,255,255,0.5)" tabBackgroundColor="#28BAAA" iosIconRenderingMode="alwaysOriginal">
 
-
                 <TabViewItem title="Aktif" bageValue="" wrapContent="false">
                     <ScrollView ref="scroll0" @scroll="onScroll($event, 0)" height="100%" scrollBarIndicatorVisible="false">
                         <ContentPreloader v-if="!tab0" />
@@ -93,6 +47,7 @@ TabView {
                       </StackLayout>
                     </ScrollView>
                 </TabViewItem>
+
                 <TabViewItem title="Diarsipkan" bageValue="" wrapContent="false">
                   <ScrollView ref="scroll1" @scroll="onScroll($event, 1)" height="100%" scrollBarIndicatorVisible="false">
                     <ContentPreloader v-if="!tab1" />
@@ -112,7 +67,6 @@ TabView {
         </GridLayout>
         <ContentPreloader v-if="rendering0 && initContentPreloader" />
     </StackLayout>
-<!-- </Page> -->
 
 </template>
 
@@ -159,8 +113,8 @@ export default {
     },
     mounted() {
 
-        console.log("XXXXXXXXXX ",this.get_group_master_payload_aktif('true'))
-        console.log("YYYYYYYYYY ",this.get_group_master_payload_aktif('false'))
+        // console.log("XXXXXXXXXX ",this.get_group_master_payload_aktif('true'))
+        // console.log("YYYYYYYYYY ",this.get_group_master_payload_aktif('false'))
 
         // this.itemList = this.get_habit_Group_payload;
 
@@ -208,17 +162,17 @@ export default {
                 }, 1000);
             }
         },
-        onBack() {
-                // alert(this.routeProps.origin);
-                // this.$router.replace('/');
-                new Promise(resolve => {
-                    this.rendering0 = true;
-                    resolve();
-                }).then(result => {
-                    this.$navigateBack();
-                    // this.$modal.close("Aku Pulang")
-                });
-            },
+        // onBack() {
+        //         // alert(this.routeProps.origin);
+        //         // this.$router.replace('/');
+        //         new Promise(resolve => {
+        //             this.rendering0 = true;
+        //             resolve();
+        //         }).then(result => {
+        //             this.$navigateBack();
+        //             // this.$modal.close("Aku Pulang")
+        //         });
+        //     },
             // TABVIEW
             onSelectedIndexChanged: function(args) {
 

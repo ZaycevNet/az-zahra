@@ -1,18 +1,5 @@
 <style scoped>
 
-/* .full-border {
-    border-width: 0;
-    border-color: #28ADAA;
-    border-top-left-radius: 5;
-    border-top-right-radius: 5;
-} */
-
-/* .left-right-border {
-    border-color: #28ADAA;
-    border-left-width: 1;
-    border-right-width: 1;
-} */
-
 .button-last-item-left {
     border-bottom-left-radius: 5;
     /* border-bottom-right-radius: 5; */
@@ -35,34 +22,6 @@
     border-top-color:rgba(255,255,255,0.25);
 }
 
-/* .full-border-last-item {
-    border-width: 0;
-    border-color: #28ADAA;
-    border-bottom-left-radius: 5;
-    border-bottom-right-radius: 5;
-    border-top-width: 0;
-    padding-bottom: 15;
-} */
-
-/* .off-top-border {
-    border-width: 0;
-    border-color: #28ADAA;
-    border-top-width: 0;
-} */
-
-/* .off-bottom-border {
-    border-width: 0;
-    border-color: #28ADAA;
-    border-bottom-width: 0;
-    border-top-width: 0;
-} */
-
-/* .off-top-bottom-border {
-    border-width: 0;
-    border-color: #28ADAA;
-    border-top-width: 0;
-    border-bottom-width: 0;
-} */
 
 </style>
 
@@ -86,7 +45,7 @@
 
             <GridLayout v-if="item.aktif" columns="*,*,*,*">
 
-              <Ripple col="0" rippleColor="white">
+              <Ripple @tap="gotoPage({ path: '/view-group-hasil' })" col="0" rippleColor="white">
                   <StackLayout backgroundColor="#28BAAA" width="100%" class="button-last-item-left" horizontalAlignment="right" padding="10 15">
                       <Label fontWeight="" color="white" width="auto" height="auto" textAlignment="center">
                           <FormattedString>
@@ -96,7 +55,8 @@
                       <Label textAlignment="center" color="white" text="Hasil" fontSize="14" />
                   </StackLayout>
               </Ripple>
-              <Ripple col="1" rippleColor="white">
+
+              <Ripple @tap="gotoPage({ path: '/view-group-skm' })" col="1" rippleColor="white">
                   <StackLayout backgroundColor="#28BAAA" width="100%" class="button-last-item-middle" horizontalAlignment="right" padding="10 15">
                       <Label fontWeight="" color="white" width="auto" height="auto" textAlignment="center">
                           <FormattedString>
@@ -106,6 +66,7 @@
                       <Label textAlignment="center" color="white" text="SKM" fontSize="14" />
                   </StackLayout>
               </Ripple>
+
               <Ripple col="2" rippleColor="white" @tap="onEventBus(item)">
                   <StackLayout backgroundColor="#28BAAA" width="100%" class="button-last-item-middle" horizontalAlignment="right" padding="10 15">
                       <Label fontWeight="" color="white" width="auto" height="auto" textAlignment="center">
@@ -116,7 +77,13 @@
                       <Label textAlignment="center" color="white" text="Ubah" fontSize="14" />
                   </StackLayout>
               </Ripple>
-              <Ripple col="3" rippleColor="white">
+
+              <Ripple  @tap="onDialog({
+                title: 'Arsipkan Kelompok',
+                message: 'silahkan arsipkan kelompok jika diperlukan',
+                okButtonText: 'Setuju',
+                neutralButtonText: 'Batalkan'
+              }, 'Kelompok berhasil diarsipkan...')" col="3" rippleColor="white">
                   <StackLayout backgroundColor="#28BAAA" width="100%" class="button-last-item-right" horizontalAlignment="right" padding="10 15">
                       <Label fontWeight="" color="white" width="auto" height="auto" textAlignment="center">
                           <FormattedString>
@@ -130,7 +97,12 @@
 
             <GridLayout v-else columns="*,*">
 
-              <Ripple col="0" rippleColor="white">
+              <Ripple @tap="onDialog({
+                title: 'Aktifkan Kelompok',
+                message: 'silahkan aktifkan kelompok jika diperlukan',
+                okButtonText: 'Setuju',
+                neutralButtonText: 'Batalkan'
+              }, 'Kelompok berhasil diaktifkan...')" col="0" rippleColor="white">
                   <StackLayout backgroundColor="#28BAAA" width="100%" class="button-last-item-left" horizontalAlignment="right" padding="10 15">
                       <Label fontWeight="" color="white" width="auto" height="auto" textAlignment="center">
                           <FormattedString>
@@ -140,7 +112,12 @@
                       <Label textAlignment="center" color="white" text="Aktifkan Kembali" fontSize="14" />
                   </StackLayout>
               </Ripple>
-              <Ripple col="1" rippleColor="white">
+              <Ripple @tap="onDialog({
+                title: 'Hapus Kelompok',
+                message: 'silahkan hapus kelompok jika diperlukan',
+                okButtonText: 'Setuju',
+                neutralButtonText: 'Batalkan'
+              }, 'Kelompok berhasil dihapus...')" col="1" rippleColor="white">
                   <StackLayout backgroundColor="#28BAAA" width="100%" class="button-last-item-middle" horizontalAlignment="right" padding="10 15">
                       <Label fontWeight="" color="white" width="auto" height="auto" textAlignment="center">
                           <FormattedString>
@@ -185,6 +162,31 @@ export default {
           console.log(item)
           const { EventBus } = require('@/event-bus.js');
           EventBus.$emit('ViewGroup', item);
+
+          this.$store.commit("setBottomDrawer", true)
+        },
+        onDialog(options, snackbar){
+          const vm = this
+          var dialogs = require("tns-core-modules/ui/dialogs");
+          dialogs.confirm(options).then(function (result) {
+    					// result argument is boolean
+              if(result) {
+                vm.showLoadingIndicator();
+                setTimeout(() => {
+                  vm.hideLoadingIndicator();
+                  vm.showActionSnackbar('👍 Sukses! '+snackbar);
+                }, 500);
+                return
+              }
+
+    					console.log("Dialog result: " + result);
+    					if(result == undefined) {
+    							// TETAP DITUTUP
+                  vm.showToast("batal...")
+                  return
+    					}
+
+    			});
         },
         onRendering(args) {
                 console.log(this.renderingTime)

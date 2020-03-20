@@ -4,8 +4,21 @@ require('@/pages')
 require("@/store/maps");
 require('@/mixins')
 require('@/filters')
+require('@/directives')
 require('@/layouts')
 // require('@/routers')
+
+// import * as application from 'tns-core-modules/application'
+const application = require('tns-core-modules/application');
+// application.android.on('activityBackPressed', args => {
+// 	console.log(args)
+// 	args.cancel = true // no backward
+// 	return
+// 	args.cancel = false
+// })
+
+import sideDrawer from "~/components/sideDrawer.vue";
+import drawerContent from "~/components/drawerContent.vue";
 
 import Vue from 'nativescript-vue'
 import VueDevtools from 'nativescript-vue-devtools'
@@ -57,15 +70,40 @@ import { habit } from '@/routers/habit'
 import { profile } from '@/routers/profile'
 import { group } from '@/routers/group'
 import { jurnal } from '@/routers/jurnal'
+import { main } from '@/routers/main'
+import { timeline } from '@/routers/timeline'
+import { auth } from '@/routers/auth'
+import { onboarding } from '@/routers/onboarding'
+import { dashboard } from '@/routers/dashboard'
+import { masukkan } from '@/routers/masukkan'
+import { syarat } from '@/routers/syarat'
+import { kebijakan } from '@/routers/kebijakan'
+import { tentang } from '@/routers/tentang'
+import { news } from '@/routers/news'
+import { jejak } from '@/routers/jejak'
 
 const routes = {
 	...habit,
 	...profile,
 	...group,
 	...jurnal,
+	...main,
+	...timeline,
+	...auth,
+	...onboarding,
+	...dashboard,
+	...masukkan,
+	...syarat,
+	...kebijakan,
+	...tentang,
+	...news,
+	...jejak
 }
 
 Vue.use(Navigator, { routes })
+
+import _ from "lodash";
+Vue.prototype._ = _;
 
 import views from "./view";
 Vue.prototype.$views = views;
@@ -73,6 +111,7 @@ Vue.prototype.$views = views;
 // import Main from '@/views/view';
 
 import App from '@/views/app';
+import Main from '@/views/onboarding/view-onboarding';
 /*
 import RadAutoComplete from 'nativescript-ui-autocomplete/vue';
 Vue.use(RadAutoComplete);
@@ -93,7 +132,7 @@ if(TNS_ENV !== 'production') {
   //Vue.use(VueDevtools)
 }
 // Prints Vue logs when --env.production is *NOT* set while building
-Vue.config.silent = (TNS_ENV === 'production')
+// Vue.config.silent = (TNS_ENV === 'production')
 
 Vue.registerElement("DropDown", () => require("nativescript-drop-down/drop-down").DropDown);
 Vue.registerElement('RadSideDrawer', () => require('nativescript-ui-sidedrawer').RadSideDrawer);
@@ -111,6 +150,13 @@ Vue.registerElement("Ripple",() => require("nativescript-ripple").Ripple);
 Vue.registerElement('Fab',() => require('@nstudio/nativescript-floatingactionbutton').Fab);
 Vue.registerElement('ImageZoom', () => require('nativescript-image-zoom').ImageZoom);
 Vue.registerElement('CardView',() => require('@nstudio/nativescript-cardview').CardView);
+Vue.registerElement('Carousel', () => require('nativescript-carousel').Carousel)
+Vue.registerElement('CarouselItem', () => require('nativescript-carousel').CarouselItem)
+Vue.registerElement("ParallaxView", () => require("nativescript-parallax").ParallaxView)
+Vue.registerElement("Header", () => require("nativescript-parallax").Header)
+Vue.registerElement("Anchored", () => require("nativescript-parallax").Anchored)
+Vue.registerElement("Content", () => require("nativescript-parallax").Content)
+
 
 // Vue.registerElement("NestedScrollView", () => require("nativescript-nested-scrollview").NestedScrollView);
 
@@ -125,51 +171,51 @@ TNSFontIcon.paths = {
 TNSFontIcon.loadCss("./assets/app.css");
 Vue.filter("fonticon", fonticon);
 
-import * as application from 'tns-core-modules/application'
 
 // router.push('/home');
 const app = new Vue({
-  name:"THIRD COMMIT 3 246531855912",
+  name:"THIRD COMMIT 111111567",
   store,
-  data(){
-    return {
-    }
-  },
-  mounted(){
-    this.statusbar.setNavigationBarColor("white");
-    this.statusbar.setStatusBarColor("#28ADAA");
 
-    // console.log(this.$route.path, this.$router.history.stack.length);
+  mounted(){
+		// this.gotoPage({ path: "/view-group"})
+
+    // this.statusbar.setNavigationBarColor("white");
+    // this.statusbar.setStatusBarColor("#28ADAA");
+
+		// this.statusbar.hideNavigationBar();
+		// this.statusbar.enableFullScreen.stickyImmersive();
+		// this.statusbar.enableFullScreen.leanBack();
+
 		const { EventBus } = require('@/event-bus.js');
 
     application.android.on('activityBackPressed', args => {
 
-			EventBus.$off();
+			// EventBus.$off();
+			this.$store.dispatch("setCurrentPath", "")
 
-			// alert(123);
-      // if(this.$store.getters.waitingUI){
-      //   args.cancel = true //
-      //   return
-      // }
-      //
-      // args.cancel = false //
-			args.cancel = true //
+			if(this.$store.getters.bottomDrawer) {
+				args.cancel = true //
+				return
+			}
+
+      args.cancel = false //
+			// args.cancel = true //
     })
   },
-  // watch: {
-  //   "$route.path":function(val) {
-  //     console.log(val)
-  //     // console.log(router.history)
-  //   }
-  // },
-
-  // store,
-  // router,
 
   // render: h => h(Main)
   // template: `<Frame><router-view/></Frame>`,
   // render: h => h('frame', [h(Main)]) // without nativescript-vue-navigator
-  render: h => h(App),// nativescript-vue-navigator
+
+	// render: h => h(Main)
+  // render: h => h(App),// nativescript-vue-navigator as main component
+	render(h) {
+    return h(sideDrawer, [
+      h(drawerContent, { slot: "drawerContent" }),
+      h(this.$views.ViewOnboarding, { slot: "mainContent" })
+    ]);
+  }
 }).$start()
 
 

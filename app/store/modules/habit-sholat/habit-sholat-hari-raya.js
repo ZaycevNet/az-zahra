@@ -51,7 +51,7 @@ const getters = {
 };
 
 const mutations = {
-	[set_habit_sholat_hari_raya_payload]:(state) => {
+	[set_habit_sholat_hari_raya_payload]:(state, data) => {
 		state.payload = data
 	},
   [set_habit_sholat_hari_raya_payload_checked]:(state, data) => {

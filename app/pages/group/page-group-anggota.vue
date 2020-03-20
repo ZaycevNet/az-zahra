@@ -24,14 +24,14 @@
 }
 
 .person-name {
-    color: #28BAAA;
+    /* color: #28BAAA; */
     font-family: 'Halcom', 'Halcom_Bold';
     font-weight: bold;
-    font-size: 15;
+    font-size: 16;
 }
 
 .person-title {
-    color: #a3a7ad;
+    /* color: #a3a7ad; */
     font-family: 'Halcom', 'Halcom_Regular';
     font-size: 13;
     /* text-transform: uppercase; */
@@ -70,16 +70,16 @@ TextField {
         </Ripple>
     </GridLayout>
 
-<StackLayout padding="5 5 5 0" >
+<StackLayout padding="5 5 0 0" >
     <RadListView  ref="listView" layout="staggered" :gridSpanCount="2" for="item in people" @itemTap="" :itemInsertAnimation="itemInsertAnimation" :itemDeleteAnimation="itemDeleteAnimation">
 
         <!-- Wajib ada 1 v-template tanpa yang if -->
         <v-template>
+          <Ripple @tap="goTo({ path:'/view-profile-siswa' })" rippleColor="#fff">
             <StackLayout marginLeft="5">
+                <Image borderWidth="0" borderColor='#28BAAA' :src="item.foto" stretch="aspectFill" height="200" />
 
-                <Image borderWidth="1" borderColor='#28BAAA' :src="item.foto" stretch="aspectFill" height="200" />
-
-                <StackLayout padding="5" marginBottom="5" backgroundColor="White" borderWidth="1" borderColor='#28BAAA' borderTopWidth="0">
+                <StackLayout padding="5" marginBottom="5" backgroundColor="White" borderWidth="0" borderColor='#28BAAA' borderTopWidth="0">
                   <Label>
                     <FormattedString>
                       <Span class="person-name" :text="item.nama_depan+' '" />
@@ -89,7 +89,10 @@ TextField {
                   <Label :text="'NIS: '+ item.nis" class="person-title" />
                 </StackLayout>
 
+                <StackLayout height="1" backgroundColor="#28BAAA" marginBottom="10" />
+
             </StackLayout>
+          </Ripple>
         </v-template>
 
     </RadListView>
@@ -155,7 +158,9 @@ export default {
         this.people = this.items
     },
     methods: {
-
+      goTo({path}){
+        this.$navigator.navigate(path, { transition: 'slideLeft' })
+      },
         _refilter() {
             let people = []
 

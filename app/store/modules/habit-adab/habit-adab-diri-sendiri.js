@@ -51,7 +51,7 @@ const getters = {
 };
 
 const mutations = {
-	[set_habit_adab_diri_sendiri_payload]:(state) => {
+	[set_habit_adab_diri_sendiri_payload]:(state, data) => {
 		state.payload = data
 	},
   [set_habit_adab_diri_sendiri_payload_checked]:(state, data) => {

@@ -2,87 +2,97 @@ import Vue from 'nativescript-vue';
 
 const JurnalItemHabit = resolve => {
     require.ensure(
-        ['./group-item-habit'],
+        ['./jurnal-item-habit'],
         () => {
-            resolve(require('./group-item-habit'))
-        }, 'group-item-habit'
+            resolve(require('./jurnal-item-habit'))
+        }, 'jurnal-item-habit'
     )
 };
 
-const JurnalHeadline = resolve => {
+const JurnalMiniProfile = resolve => {
     require.ensure(
-        ['./group-headline'],
+        ['./jurnal-mini-profile'],
         () => {
-            resolve(require('./group-headline'))
-        }, 'group-headline'
+            resolve(require('./jurnal-mini-profile'))
+        }, 'jurnal-mini-profile'
     )
 }
 
 const JurnalPopupCalender = resolve => {
     require.ensure(
-        ['./group-popup-calendar'],
+        ['./jurnal-popup-calendar'],
         () => {
-            resolve(require('./group-popup-calendar'))
-        }, 'group-popup-calendar'
+            resolve(require('./jurnal-popup-calendar'))
+        }, 'jurnal-popup-calendar'
     )
 };
 
 const JurnalPopupRanking = resolve => {
     require.ensure(
-        ['./group-popup-ranking'],
+        ['./jurnal-popup-ranking'],
         () => {
-            resolve(require('./group-popup-ranking'))
-        }, 'group-popup-ranking'
+            resolve(require('./jurnal-popup-ranking'))
+        }, 'jurnal-popup-ranking'
     )
 };
 
 const JurnalPopupFilter = resolve => {
     require.ensure(
-        ['./group-popup-filter'],
+        ['./jurnal-popup-filter'],
         () => {
-            resolve(require('./group-popup-filter'))
-        }, 'group-popup-filter'
+            resolve(require('./jurnal-popup-filter'))
+        }, 'jurnal-popup-filter'
     )
 };
 
 const JurnalPopupCalenderSiswa = resolve => {
     require.ensure(
-        ['./group-popup-calendar-siswa'],
+        ['./jurnal-popup-calendar-siswa'],
         () => {
-            resolve(require('./group-popup-calendar-siswa'))
-        }, 'group-popup-calendar-siswa'
+            resolve(require('./jurnal-popup-calendar-siswa'))
+        }, 'jurnal-popup-calendar-siswa'
     )
 };
 
 const JurnalPopupRankingSiswa = resolve => {
     require.ensure(
-        ['./group-popup-ranking-siswa'],
+        ['./jurnal-popup-ranking-siswa'],
         () => {
-            resolve(require('./group-popup-ranking-siswa'))
-        }, 'group-popup-ranking-siswa'
+            resolve(require('./jurnal-popup-ranking-siswa'))
+        }, 'jurnal-popup-ranking-siswa'
     )
 };
 
 const JurnalPopupFilterSiswa = resolve => {
     require.ensure(
-        ['./group-popup-filter-siswa'],
+        ['./jurnal-popup-filter-siswa'],
         () => {
-            resolve(require('./group-popup-filter-siswa'))
-        }, 'group-popup-filter-siswa'
+            resolve(require('./jurnal-popup-filter-siswa'))
+        }, 'jurnal-popup-filter-siswa'
     )
 };
 
 const JurnalSegmentedCalendar = resolve => {
     require.ensure(
-        ['./group-segmented-calendar'],
+        ['./jurnal-segmented-calendar'],
         () => {
-            resolve(require('./group-segmented-calendar'))
-        }, 'group-segmented-calendar'
+            resolve(require('./jurnal-segmented-calendar'))
+        }, 'jurnal-segmented-calendar'
+    )
+};
+
+const JurnalSubtitleCalendar = resolve => {
+    require.ensure(
+        ['./jurnal-subtitle-calendar'],
+        () => {
+            resolve(require('./jurnal-subtitle-calendar'))
+        }, 'jurnal-subtitle-calendar'
     )
 };
 
 Vue.component('JurnalSegmentedCalendar', JurnalSegmentedCalendar);
-Vue.component('JurnalHeadline', JurnalHeadline);
+Vue.component('JurnalMiniProfile', JurnalMiniProfile);
+Vue.component('JurnalSubtitleCalendar', JurnalSubtitleCalendar);
 
 Vue.component('JurnalItemHabit', JurnalItemHabit);
 Vue.component('JurnalPopupCalender', JurnalPopupCalender);

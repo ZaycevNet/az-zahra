@@ -77,7 +77,7 @@
                   <Label text="Sulit" fontWeight="bold" fontSize="12" verticalAlignment="middle" textAlignment="right" />
                 </DockLayout>
 
-                <Slider color="#28BAAA" value="80" @valueChange="onValueChanged" />
+                <Slider color="#28BAAA" value="80" @valueChange="" />
 
                 <GridLayout columns="*,*,*,*" padding="0 16 10 16">
                   <Label padding="5 0" col="0" text="D" backgroundColor="rgba(255,0,51,0.3)" fontWeight="bold" color="white" fontSize="13" verticalAlignment="middle" textAlignment="center" />

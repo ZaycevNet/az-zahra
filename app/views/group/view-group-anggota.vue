@@ -43,10 +43,10 @@ ActionBar,
 <Page actionBarHidden="false">
     <ActionBar color="white">
         <GridLayout width="100%" columns="auto, *, 60%">
-          <Ripple rippleColor="#28ADAA">
+          <Ripple @tap="onBack" rippleColor="#28ADAA">
               <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
           </Ripple>
-            <Label @tap="onBack" class="action-bar-title" text="Kelompok" col="1" />
+            <Label @tap="onBack" class="action-bar-title" text="Anggota Kelompok" col="1" />
             <!-- <Label class="action-bar-right" text="1/2" col="2" /> -->
         </GridLayout>
     </ActionBar>
@@ -193,16 +193,16 @@ export default {
         },
 
 
-        onBack() {
-              new Promise(resolve => {
-                  this.rendering0 = true;
-                  this.rendering1 = true;
-                  resolve();
-              }).then(result => {
-                  this.$navigateBack();
-                  // this.$modal.close("Aku Pulang")
-              });
-            },
+        // onBack() {
+        //       new Promise(resolve => {
+        //           this.rendering0 = true;
+        //           this.rendering1 = true;
+        //           resolve();
+        //       }).then(result => {
+        //           this.$navigateBack();
+        //           // this.$modal.close("Aku Pulang")
+        //       });
+        //     },
             onItemTap({
                 item
             }) {
@@ -212,20 +212,20 @@ export default {
     mounted() {
       console.log("get_group_anggota_payload.payload_anggota", this.get_group_anggota_payload.payload_anggota)
 
-        const application = require('tns-core-modules/application');
-        application.android.on('activityBackPressed', args => {
-            new Promise(resolve => {
-                this.rendering0 = true;
-                this.rendering1 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
-
-        })
+        // const application = require('tns-core-modules/application');
+        // application.android.on('activityBackPressed', args => {
+        //     new Promise(resolve => {
+        //         this.rendering0 = true;
+        //         this.rendering1 = true;
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        //
+        //     args.cancel = true //
+        //
+        // })
 
         // this.statusbar.setStatusBarColor("#28ADAA");
     },

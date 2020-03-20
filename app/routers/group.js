@@ -6,6 +6,7 @@ import ViewGroupHasil from "@/views/group/view-group-hasil";
 import ViewGroupHasilDetail from "@/views/group/view-group-hasil-detail";
 
 export const group = {
+
 	'/view-group': {
 		component: ViewGroup,
 		meta: { needsAuth: false }

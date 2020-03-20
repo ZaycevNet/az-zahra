@@ -44,7 +44,7 @@ const getters = {
 };
 
 const mutations = {
-	[set_group_master_payload]:(state) => {
+	[set_group_master_payload]:(state, data) => {
 		state.payload = data
 	},
   [set_group_master_payload_aktif]:(state, data) => {

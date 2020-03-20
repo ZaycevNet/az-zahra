@@ -56,12 +56,20 @@ import habit_sholat_fardhu from "./habit-sholat/habit-sholat-fardhu";
 
 import profile_siswa from "./profile/profile-siswa";
 import profile_guru from "./profile/profile-guru";
+import profile_siswa_daftar from "./profile/profile-siswa-daftar";
+import profile_guru_daftar from "./profile/profile-guru-daftar";
+
 
 import group_master from "./group/group-master";
 import group_skm from "./group/group-skm";
 import group_anggota from "./group/group-anggota";
 import group_hasil from "./group/group-hasil";
 import group_hasil_siswa from "./group/group-hasil-siswa";
+
+import syarat_ketentuan from "./syarat-ketentuan";
+import kebijakan_privasi from "./kebijakan-privasi";
+
+import onboarding from "./onboarding";
 
 // const map_habit_adab_diri_sendiri = require('./habit-adab-diri-sendiri')
 // Vue.mixin(auth)
@@ -120,9 +128,16 @@ Vue.mixin(habit_membaca_umum);
 
 Vue.mixin(profile_siswa);
 Vue.mixin(profile_guru);
+Vue.mixin(profile_siswa_daftar);
+Vue.mixin(profile_guru_daftar);
 
 Vue.mixin(group_master);
 Vue.mixin(group_skm);
 Vue.mixin(group_anggota);
 Vue.mixin(group_hasil);
 Vue.mixin(group_hasil_siswa);
+
+Vue.mixin(onboarding);
+
+Vue.mixin(syarat_ketentuan);
+Vue.mixin(kebijakan_privasi);

@@ -28,9 +28,9 @@ ActionBar,
     width: 30;
 }
 
-.tabviewitem-container {
+/* .tabviewitem-container {
     padding-bottom: 10;
-}
+} */
 
 TabView > * {
     text-transform: none;
@@ -69,14 +69,14 @@ TabView {
     </ActionBar>
 
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 300)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
 
         <TadarusHeadline habit="Tadarus" />
 
-        <GridLayout ref="container" rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)" >
+        <GridLayout ref="container" rows="*,auto" v-if="!rendering0">
         <!-- <StackLayout v-if="!rendering0"> -->
 
             <TabView ref="tabview" id="tabview" :selectedIndex="selectedIndex" @selectedIndexChange="onSelectedIndexChanged" @loaded="onTabViewLoaded" @unloaded="onTabViewUnloaded" height="100%" tabTextFontSize="15" selectedTabTextColor="white" androidSelectedTabHighlightColor="white"
@@ -87,7 +87,7 @@ TabView {
               :key="index"
               :title="item.title" bageValue="" wrapContent="false">
               <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                  <PageHabitAdab :items="item.payload_subtitle" class="tabviewitem-container"/>
+                  <PageHabitAdab :items="item.payload_subtitle" />
               </ScrollView>
             </TabViewItem> -->
 
@@ -98,7 +98,7 @@ TabView {
                       <StackLayout id="stackList0" ref="stackList0" paddingBottom="30" >
                         <ContentPreloader v-if="!tab0" />
 
-                        <PageHabitTadarusAlquran v-if="tab0" :items="get_habit_tadarus_alquran_payload" class="tabviewitem-container" />
+                        <PageHabitTadarusAlquran v-if="tab0" :items="get_habit_tadarus_alquran_payload"  />
 
                         <ActivityIndicator ref="indicator0" color="#28ADAA" :busy="busy0" @busyChange="onBusyChange($event, 0)" />
                       </StackLayout>
@@ -109,7 +109,7 @@ TabView {
                     <StackLayout id="stackList1" ref="stackList1" paddingBottom="30" >
                         <ContentPreloader v-if="!tab1" />
 
-                      <PageHabitTadarusIqra v-if="tab1" :items="get_habit_tadarus_iqra_payload" class="tabviewitem-container" />
+                      <PageHabitTadarusIqra v-if="tab1" :items="get_habit_tadarus_iqra_payload"  />
 
                         <ActivityIndicator ref="indicator1" color="#28ADAA" :busy="busy1" @busyChange="onBusyChange($event, 1)" />
                     </StackLayout>
@@ -117,7 +117,7 @@ TabView {
                 </TabViewItem>
             </TabView>
 
-            <Fab @tap="" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
+            <Fab @tap="gotoPage({ path:'/view-habit-tadarus-new' })" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
 
         <!-- </StackLayout> -->
         </GridLayout>
@@ -172,19 +172,19 @@ export default {
 
         // this.itemList = this.get_habit_tadarus_payload;
 
-        const application = require('tns-core-modules/application');
-        application.android.on('activityBackPressed', args => {
-
-            new Promise(resolve => {
-                this.rendering0 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
-        })
+        // const application = require('tns-core-modules/application');
+        // application.android.on('activityBackPressed', args => {
+        //
+        //     new Promise(resolve => {
+        //         // this.rendering0 = true;
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        //
+        //     args.cancel = true //
+        // })
 
         // setTimeout(() => {
         //   this.rendering = false;
@@ -215,17 +215,17 @@ export default {
                 }, 1000);
             }
         },
-        onBack() {
-                // alert(this.routeProps.origin);
-                // this.$router.replace('/');
-                new Promise(resolve => {
-                    this.rendering0 = true;
-                    resolve();
-                }).then(result => {
-                    this.$navigateBack();
-                    // this.$modal.close("Aku Pulang")
-                });
-            },
+        // onBack() {
+        //         // alert(this.routeProps.origin);
+        //         // this.$router.replace('/');
+        //         new Promise(resolve => {
+        //             this.rendering0 = true;
+        //             resolve();
+        //         }).then(result => {
+        //             this.$navigateBack();
+        //             // this.$modal.close("Aku Pulang")
+        //         });
+        //     },
             // TABVIEW
             onSelectedIndexChanged: function(args) {
 

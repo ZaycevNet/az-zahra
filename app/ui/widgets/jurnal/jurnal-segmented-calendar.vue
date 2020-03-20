@@ -21,14 +21,14 @@ Label {
 						<StackLayout col="0" class="segment-left" horizontalAlignment="left" >
 							<Ripple @tap="onTap(0)" width="100%" rippleColor="#28BAAA">
 								<StackLayout ref="segment0" backgroundColor="red" >
-									<Label padding="10 0" horizontalAlignment="center" text="Rentang" />
+									<Label padding="10 0" height="100%" horizontalAlignment="center" text="Rentang" />
 								</StackLayout>
 							</Ripple>
 						</StackLayout>
 						<StackLayout col="1" horizontalAlignment="right" >
 							<Ripple @tap="onTap(1)" width="100%" rippleColor="#28BAAA">
 								<StackLayout ref="segment1" backgroundColor="red">
-									<Label padding="10 0" horizontalAlignment="center" text="Acak" />
+									<Label padding="10 0" height="100%" horizontalAlignment="center" text="Acak" />
 								</StackLayout>
 							</Ripple>
 						</StackLayout>
@@ -48,7 +48,7 @@ export default {
 		return {
 		  segmentedOptions: [
 				{
-					selected: false
+					selected: true
 				},
 				{
 					selected: false

@@ -23,6 +23,30 @@
     font-family: 'icomoon';
 }
 
+.FB {
+  // ekstensi file .ttf nya tidak boleh .TTF
+  // 'Californian_FB' nama file fonts .ttf dibutuhkan oleh iOS
+  // 'Californian FB' nama fonts (TrueType) dibutuhkan oleh Android
+  font-family: 'Californian_FB','Californian FB';
+}
+
+.CG {
+  // ekstensi file .ttf nya tidak boleh .TTF
+  // 'Century_Gothic' nama file fonts .ttf dibutuhkan oleh iOS
+  // 'Century Gothic' nama fonts (TrueType) dibutuhkan oleh Android
+  font-family: 'Century_Gothic','Century Gothic';
+}
+
+// -------------------------
+// menyesuaikan dari effek: this.statusbar.enableFullScreen.leanBack();
+// ActionBar {
+//   margin-top: 28;
+// }
+// Page {
+//   margin-bottom: 25;
+// }
+// -------------------------
+
 // BADGE UNTUK TABVIE
 // hanya bisa dipasang css di global
 .badge {

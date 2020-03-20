@@ -63,7 +63,7 @@ module.exports = {
 			"initial": "PROFILE-GURU",
 
 			"jenis":"group",
-			"judul":"Kelompok",
+			"judul":"Kelompok X",
 
 			"nama":"Rumah",
 			"anggota":"123",

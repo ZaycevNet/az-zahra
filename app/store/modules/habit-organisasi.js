@@ -46,7 +46,7 @@ const getters = {
 };
 
 const mutations = {
-	[set_habit_organisasi_payload]:(state) => {
+	[set_habit_organisasi_payload]:(state, data) => {
 		state.payload = data
 	},
   [set_habit_organisasi_payload_checked]:(state, data) => {

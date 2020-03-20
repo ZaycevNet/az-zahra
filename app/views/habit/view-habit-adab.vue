@@ -28,9 +28,9 @@ ActionBar,
     width: 30;
 }
 
-.tabviewitem-container {
+/* .tabviewitem-container {
     padding-bottom: 10;
-}
+} */
 
 TabView > * {
     text-transform: none;
@@ -60,12 +60,13 @@ TabView {
     </ActionBar>
 
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 300)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
 
         <AdabHeadline habit="Adab Islami" />
+
         <StackLayout v-if="!rendering0" @loaded="onLoad">
 
             <TabView ref="tabview" id="tabview" :selectedIndex="selectedIndex" @selectedIndexChange="onSelectedIndexChanged" @loaded="onTabViewLoaded" @unloaded="onTabViewUnloaded" height="100%" tabTextFontSize="15" selectedTabTextColor="white" androidSelectedTabHighlightColor="white"
@@ -76,7 +77,7 @@ TabView {
               :key="index"
               :title="item.title" bageValue="" wrapContent="false">
               <ScrollView height="100%" scrollBarIndicatorVisible="false">
-                  <PageHabitAdab :items="item.payload_subtitle" class="tabviewitem-container"/>
+                  <PageHabitAdab :items="item.payload_subtitle" />
               </ScrollView>
             </TabViewItem> -->
 
@@ -85,7 +86,7 @@ TabView {
                 <TabViewItem title="Diri Sendiri" bageValue="" wrapContent="false">
                     <ScrollView height="100%" scrollBarIndicatorVisible="false">
                       <StackLayout>
-                        <PageHabitAdab v-if="tab0" :items="get_habit_adab_diri_sendiri_payload" vuex="adab_diri_sendiri" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab0" :items="get_habit_adab_diri_sendiri_payload" vuex="adab_diri_sendiri"  />
 
                         <ActivityIndicator v-if="busy" ref="indicator" color="#28ADAA" :busy="busy" @busyChange="onBusyChange" />
                       </StackLayout>
@@ -96,7 +97,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab1" />
 
-                        <PageHabitAdab v-if="tab1" :items="get_habit_adab_orangtua_payload" vuex="adab_orangtua" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab1" :items="get_habit_adab_orangtua_payload" vuex="adab_orangtua"  />
                       </StackLayout>
                     </ScrollView>
                 </TabViewItem>
@@ -105,7 +106,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab2" />
 
-                        <PageHabitAdab v-if="tab2" :items="get_habit_adab_saudara_payload" vuex="adab_saudara" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab2" :items="get_habit_adab_saudara_payload" vuex="adab_saudara"  />
                       </StackLayout>
                     </ScrollView>
                 </TabViewItem>
@@ -114,7 +115,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab3" />
 
-                        <PageHabitAdab v-if="tab3" :items="get_habit_adab_kerabat_payload" vuex="adab_kerabat" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab3" :items="get_habit_adab_kerabat_payload" vuex="adab_kerabat"  />
                       </StackLayout>
                     </ScrollView>
                 </TabViewItem>
@@ -123,7 +124,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab4" />
 
-                        <PageHabitAdab v-if="tab4" :items="get_habit_adab_guru_payload" vuex="adab_guru" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab4" :items="get_habit_adab_guru_payload" vuex="adab_guru"  />
                       </StackLayout>
                     </ScrollView>
                 </TabViewItem>
@@ -132,7 +133,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab5" />
 
-                        <PageHabitAdab v-if="tab5" :items="get_habit_adab_oranglain_payload" vuex="adab_oranglain" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab5" :items="get_habit_adab_oranglain_payload" vuex="adab_oranglain"  />
                       </StackLayout>
                     </ScrollView>
                 </TabViewItem>
@@ -141,7 +142,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab6" />
 
-                        <PageHabitAdab v-if="tab6" :items="get_habit_adab_alat_tempat_payload" vuex="adab_alat_tempat" class="tabviewitem-container" />
+                        <PageHabitAdab v-if="tab6" :items="get_habit_adab_alat_tempat_payload" vuex="adab_alat_tempat"  />
                       </StackLayout>
                     </ScrollView>
                 </TabViewItem>
@@ -199,19 +200,19 @@ export default {
         }
     },
     mounted() {
-        const application = require('tns-core-modules/application');
-        application.android.on('activityBackPressed', args => {
-
-            new Promise(resolve => {
-                this.rendering0 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
-        })
+        // const application = require('tns-core-modules/application');
+        // application.android.on('activityBackPressed', args => {
+        //
+        //     new Promise(resolve => {
+        //         // this.rendering0 = true;
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        //
+        //     args.cancel = true //
+        // })
 
         // setTimeout(() => {
         //   this.rendering = false;
@@ -231,17 +232,17 @@ export default {
         onBusyChange(event) {
           console.log(event.value)
         },
-        onBack() {
-                // alert(this.routeProps.origin);
-                // this.$router.replace('/');
-                new Promise(resolve => {
-                    this.rendering0 = true;
-                    resolve();
-                }).then(result => {
-                    this.$navigateBack();
-                    // this.$modal.close("Aku Pulang")
-                });
-            },
+        // onBack() {
+        //         // alert(this.routeProps.origin);
+        //         // this.$router.replace('/');
+        //         new Promise(resolve => {
+        //             this.rendering0 = true;
+        //             resolve();
+        //         }).then(result => {
+        //             this.$navigateBack();
+        //             // this.$modal.close("Aku Pulang")
+        //         });
+        //     },
             // TABVIEW
             onSelectedIndexChanged: function(args) {
 

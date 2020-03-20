@@ -9,4 +9,15 @@ const PageJurnal = resolve => {
     )
 }
 
+const PageJurnalDetail = resolve => {
+    require.ensure(
+        ['./page-jurnal-detail'],
+        () => {
+            resolve(require('./page-jurnal-detail'))
+        }, 'page-jurnal-detail'
+    )
+}
+
+
 Vue.component('PageJurnal', PageJurnal);
+Vue.component('PageJurnalDetail', PageJurnalDetail);

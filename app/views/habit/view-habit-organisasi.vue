@@ -51,25 +51,26 @@ ActionBar,
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 300)">
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
 
 
-        <HabitHeadlineNonTab habit="Dakwah & Berorganisasi" v-shadow="5" />
-        <GridLayout rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)">
+        <HabitHeadlineNonTab v-if="!rendering0" habit="Dakwah & Berorganisasi" v-shadow="5" />
 
-            <ScrollView ref="scroll" @scroll="onScroll" height="100%" v-if="!rendering1">
+        <GridLayout rows="*,auto" v-if="!rendering0">
+
+            <ScrollView ref="scroll" @scroll="onScroll" height="100%">
                 <StackLayout id="stackList" ref="stackList" paddingBottom="30">
 
-                    <PageHabitOrganisasi :items="get_habit_organisasi_payload" class="tabviewitem-container" />
+                    <PageHabitOrganisasi :items="get_habit_organisasi_payload" />
 
-                    <!-- <PageHabitOrganisasi v-for="(i, index) in itemList" :key="index" :index="index" :renderingTime="index*renderingChild" class="tabviewitem-container" /> -->
+                    <!-- <PageHabitOrganisasi v-for="(i, index) in itemList" :key="index" :index="index" :renderingTime="index*renderingChild"  /> -->
 
                     <ActivityIndicator ref="indicator" color="#28ADAA" :busy="busy" @busyChange="onBusyChange" />
                 </StackLayout>
             </ScrollView>
-            <Fab @tap="" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
+            <Fab @tap="gotoPage({ path:'/view-habit-organisasi-new' })" rowSpan="2" icon="~/assets/icons/baseline_add_white.png" rippleColor="#f1f1f1" class="fab-button"></Fab>
         </GridLayout>
 
         <ContentPreloader v-if="rendering0 && initContentPreloader" />
@@ -127,16 +128,16 @@ export default {
                 }, 1000);
             }
         },
-        onBack() {
-            new Promise(resolve => {
-                this.rendering0 = true;
-                this.rendering1 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-        },
+        // onBack() {
+        //     new Promise(resolve => {
+        //         this.rendering0 = true;
+        //         this.rendering1 = true;
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        // },
         onItemTap({
             item
         }) {
@@ -144,19 +145,19 @@ export default {
         },
     },
     mounted() {
-        const application = require('tns-core-modules/application');
-        application.android.on('activityBackPressed', args => {
-            new Promise(resolve => {
-                this.rendering0 = true;
-                this.rendering1 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
-        })
+        // const application = require('tns-core-modules/application');
+        // application.android.on('activityBackPressed', args => {
+        //     new Promise(resolve => {
+        //         // this.rendering0 = true;
+        //         // this.rendering1 = true;
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        //
+        //     args.cancel = true //
+        // })
 
         // this.statusbar.setStatusBarColor("#28ADAA");
     },

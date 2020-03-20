@@ -31,44 +31,36 @@ ActionBar,
 </style>
 
 <template>
-
 <Page actionBarHidden="false">
+
     <ActionBar color="white">
         <GridLayout width="100%" columns="auto, *, 60%">
-            <Ripple rippleColor="#28ADAA">
+            <Ripple rippleColor="#28ADAA" @tap="onBack">
                 <Label :text="'ion-ios-arrow-back' | fonticon" class="action-bar-icon ion" />
             </Ripple>
-            <Label @tap="onBack" class="action-bar-title" text="Kelompok" col="1" />
+            <Label @tap="onBack" class="action-bar-title" text="Jurnal" col="1" />
             <!-- <Label class="action-bar-right" text="1/2" col="2" /> -->
         </GridLayout>
     </ActionBar>
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
-        <!-- jika menggunakan showModal, ini pengganti ActionBar -->
-        <!-- <ModalActionbar @onBack="onBack" /> -->
+    <GridLayout rows="*" @loaded="onLoaded_Rendering(0, 300)">
 
-        <JurnalHeadline GroupHeadlineHasilDetail habit="Hasil Kelompok" />
+      <Gradient verticalAlignment="top" direction="top down" colors="#28ADAA, #28BAAA, #CDF6CE" color="white" height="25%" />
 
-        <GridLayout ref="container" rows="*,auto" v-if="!rendering0" @loaded="onLoaded_Rendering(1, 250)">
-            <StackLayout id="stackList" ref="stackList" paddingBottom="0">
+      <CardView row="0" v-if="!rendering0" elevation="15" radius="15" margin="10">
 
-                <PageJurnal :items="get_group_hasil_payload.payload_anggota" />
+          <PageJurnal :items="get_group_hasil_payload.payload_anggota" />
 
-            </StackLayout>
-        </GridLayout>
-        <ContentPreloader v-if="rendering0 && initContentPreloader" />
-    </StackLayout>
+      </CardView>
+
+    </GridLayout>
+
 </Page>
-
 </template>
 
 <script>
 
 const delayrendering = require("@/mixins/delayrendering");
-import {
-    Color
-}
-from 'tns-core-modules/color';
 
 export default {
     mixins: [delayrendering],
@@ -78,34 +70,30 @@ export default {
         }
     },
     methods: {
-        onBack() {
-                new Promise(resolve => {
-                    this.rendering0 = true;
-                    this.rendering1 = true;
-                    resolve();
-                }).then(result => {
-                    this.$navigateBack();
-                    // this.$modal.close("Aku Pulang")
-                });
-            },
+        // onBack() {
+        //         new Promise(resolve => {
+        //             resolve();
+        //         }).then(result => {
+        //             this.$navigateBack();
+        //             // this.$modal.close("Aku Pulang")
+        //         });
+        //     },
 
     },
     mounted() {
 
-        const application = require('tns-core-modules/application');
-        application.android.on('activityBackPressed', args => {
-            new Promise(resolve => {
-                this.rendering0 = true;
-                this.rendering1 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
-
-        })
+        // const application = require('tns-core-modules/application');
+        // application.android.on('activityBackPressed', args => {
+        //     new Promise(resolve => {
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        //
+        //     args.cancel = true //
+        //
+        // })
     },
 }
 

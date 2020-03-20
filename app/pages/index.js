@@ -2,3 +2,8 @@ require("./habit");
 require("./profile");
 require("./group");
 require("./jurnal");
+require("./dashboard");
+require("./timeline");
+require("./auth");
+require("./syarat");
+require("./kebijakan");

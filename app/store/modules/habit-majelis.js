@@ -46,7 +46,7 @@ const getters = {
 };
 
 const mutations = {
-	[set_habit_majelis_payload]:(state) => {
+	[set_habit_majelis_payload]:(state, data) => {
 		state.payload = data
 	},
   [set_habit_majelis_payload_checked]:(state, data) => {

@@ -7,11 +7,6 @@
     border-top-right-radius: 5;
 }
 
-/* .off-top-border {
-    border-width: 1;
-    border-color: #28BAAA;
-    border-top-width: 0;
-} */
 
 .full-border-radius {
     border-width: 0;
@@ -19,12 +14,6 @@
     border-radius: 5;
 }
 
-/* .off-top-bottom-border {
-    border-width: 1;
-    border-color: #28BAAA;
-    border-top-width: 0;
-    border-bottom-width: 0;
-} */
 
 .btn-circle {
   font-size: 20;

@@ -18,25 +18,32 @@
 </style>
 
 <template>
-	<StackLayout>
-		<JurnalSegmentedCalendar @onBubbleEvent="onBubbleEvent" height="40" />
-		<RadCalendar ref="calendar" height="80%" @dateSelected="onDateSelected"
+	<GridLayout rows="auto,auto,*,50">
+
+    <JurnalSubtitleCalendar row="0" />
+
+    <StackLayout row="1" margin="5">
+  		<JurnalSegmentedCalendar @onBubbleEvent="onBubbleEvent" height="40" />
+    </StackLayout>
+
+		<RadCalendar row="2" ref="calendar" height="100%" @dateSelected="onDateSelected"
 			:selectionMode="selectionMode">
 		</RadCalendar>
-		<GridLayout height="auto" columns="*,*">
+
+		<GridLayout row="3" height="auto" columns="*,*">
 			<StackLayout col="0" padding="5 2.5 5 5">
 				<Ripple  @tap="onNoneTap" rippleColor="white">
 					<Button backgroundColor="#ff4081" :text="'Bersihkan  '+String.fromCharCode('0xf12d')" class="btn-next fa" />
 				</Ripple>
 			</StackLayout>
 			<StackLayout col="1" padding="5 5 5 2.5">
-				<Ripple @tap="" rippleColor="white">
+				<Ripple @tap="onSubmit" rippleColor="white">
 					<Button :text="'Proses  '+String.fromCharCode('0xf1d9')" class="btn-next fa" />
 				</Ripple>
 			</StackLayout>
 		</GridLayout>
 
-	</StackLayout>
+	</GridLayout>
 </template>
 
 
@@ -57,6 +64,11 @@ export default {
 				this.onMultipleTap()
 			}
 		},
+    onSubmit(){
+      this.$emit("onBubbleEvent")
+        // this.$showModal()
+        // this.$navigator.navigate("/view-jurnal-detail");
+    },
 		onDateSelected(eventData) {
       // const myItems = this.$refs.calendar.nativeView.getEventsForDate(eventData.date);
 			console.log(this.$refs.calendar.nativeView.displayedDate);
@@ -67,7 +79,7 @@ export default {
     },
     onNoneTap() {
       this.$refs.calendar.nativeView.clearSelection();
-      this.onSingleTap()
+      // this.onSingleTap()
     },
     onSingleTap() {
       this.selectionMode = CalendarSelectionMode.Single;

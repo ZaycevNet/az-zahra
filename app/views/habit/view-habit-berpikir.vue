@@ -28,9 +28,9 @@ ActionBar,
     width: 30;
 }
 
-.tabviewitem-container {
+/* .tabviewitem-container {
     padding-bottom: 10;
-}
+} */
 
 TabView > * {
     text-transform: none;
@@ -60,12 +60,13 @@ TabView {
     </ActionBar>
 
 
-    <StackLayout @loaded="onLoaded_Rendering(0, 400)">
+    <StackLayout @loaded="onLoaded_Rendering(0, 300)">
 
         <!-- jika menggunakan showModal, ini pengganti ActionBar -->
         <!-- <ModalActionbar @onBack="onBack" /> -->
 
         <BerpikirHeadline habit="Berpikir Positif" />
+
         <StackLayout v-if="!rendering0" @loaded="onLoad">
 
             <TabView ref="tabview" id="tabview" :selectedIndex="selectedIndex" @selectedIndexChange="onSelectedIndexChanged" @loaded="onTabViewLoaded" @unloaded="onTabViewUnloaded" height="100%" tabTextFontSize="15" selectedTabTextColor="white" androidSelectedTabHighlightColor="white"
@@ -76,7 +77,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab0" />
 
-                        <PageHabitBerpikir v-if="tab0" :items="get_habit_berpikir_pertama_payload" vuex="berpikir_pertama" class="tabviewitem-container" />
+                        <PageHabitBerpikir v-if="tab0" :items="get_habit_berpikir_pertama_payload" vuex="berpikir_pertama"  />
 
                         <ActivityIndicator v-if="busy" ref="indicator" color="#28ADAA" :busy="busy" @busyChange="onBusyChange" />
                       </StackLayout>
@@ -88,7 +89,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab1" />
 
-                        <PageHabitBerpikir v-if="tab1" :items="get_habit_berpikir_kedua_payload" vuex="berpikir_kedua" class="tabviewitem-container" />
+                        <PageHabitBerpikir v-if="tab1" :items="get_habit_berpikir_kedua_payload" vuex="berpikir_kedua"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -98,7 +99,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab2" />
 
-                        <PageHabitBerpikir v-if="tab2" :items="get_habit_berpikir_ketiga_payload" vuex="berpikir_ketiga" class="tabviewitem-container" />
+                        <PageHabitBerpikir v-if="tab2" :items="get_habit_berpikir_ketiga_payload" vuex="berpikir_ketiga"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -109,7 +110,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab3" />
 
-                        <PageHabitBerpikir v-if="tab3" :items="get_habit_berpikir_keempat_payload" vuex="berpikir_keempat" class="tabviewitem-container" />
+                        <PageHabitBerpikir v-if="tab3" :items="get_habit_berpikir_keempat_payload" vuex="berpikir_keempat"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -120,7 +121,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab4" />
 
-                        <PageHabitBerpikir v-if="tab4" :items="get_habit_berpikir_kelima_payload" vuex="berpikir_kelima" class="tabviewitem-container" />
+                        <PageHabitBerpikir v-if="tab4" :items="get_habit_berpikir_kelima_payload" vuex="berpikir_kelima"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -131,7 +132,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab5" />
 
-                        <PageHabitBerpikir v-if="tab5" :items="get_habit_berpikir_keenam_payload" vuex="berpikir_keenam" class="tabviewitem-container" />
+                        <PageHabitBerpikir v-if="tab5" :items="get_habit_berpikir_keenam_payload" vuex="berpikir_keenam"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -142,7 +143,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab6" />
 
-                        <PageHabitBerpikir v-if="tab6" :items="get_habit_berpikir_ketujuh_payload" vuex="berpikir_ketujuh" class="tabviewitem-container" />
+                        <PageHabitBerpikir v-if="tab6" :items="get_habit_berpikir_ketujuh_payload" vuex="berpikir_ketujuh"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -153,7 +154,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab7" />
 
-                        <PageHabitBerpikir v-if="tab7" :items="get_habit_berpikir_kedelapan_payload" vuex="berpikir_kedelapan" class="tabviewitem-container" />
+                        <PageHabitBerpikir v-if="tab7" :items="get_habit_berpikir_kedelapan_payload" vuex="berpikir_kedelapan"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -164,7 +165,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab8" />
 
-                        <PageHabitBerpikir v-if="tab8" :items="get_habit_berpikir_kesembilan_payload" vuex="berpikir_kesembilan" class="tabviewitem-container" />
+                        <PageHabitBerpikir v-if="tab8" :items="get_habit_berpikir_kesembilan_payload" vuex="berpikir_kesembilan"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -175,7 +176,7 @@ TabView {
                       <StackLayout>
                         <ContentPreloader v-if="!tab9" />
 
-                        <PageHabitBerpikir v-if="tab9" :items="get_habit_berpikir_kesepuluh_payload" vuex="berpikir_kesepuluh" class="tabviewitem-container" />
+                        <PageHabitBerpikir v-if="tab9" :items="get_habit_berpikir_kesepuluh_payload" vuex="berpikir_kesepuluh"  />
 
                       </StackLayout>
                     </ScrollView>
@@ -230,19 +231,19 @@ export default {
         }
     },
     mounted() {
-        const application = require('tns-core-modules/application');
-        application.android.on('activityBackPressed', args => {
-
-            new Promise(resolve => {
-                // this.rendering0 = true;
-                resolve();
-            }).then(result => {
-                this.$navigateBack();
-                // this.$modal.close("Aku Pulang")
-            });
-
-            args.cancel = true //
-        })
+        // const application = require('tns-core-modules/application');
+        // application.android.on('activityBackPressed', args => {
+        //
+        //     new Promise(resolve => {
+        //         // this.rendering0 = true;
+        //         resolve();
+        //     }).then(result => {
+        //         this.$navigateBack();
+        //         // this.$modal.close("Aku Pulang")
+        //     });
+        //
+        //     args.cancel = true //
+        // })
 
     },
     methods: {
@@ -254,17 +255,17 @@ export default {
         onBusyChange(event) {
           console.log(event.value)
         },
-        onBack() {
-                // alert(this.routeProps.origin);
-                // this.$router.replace('/');
-                new Promise(resolve => {
-                    // this.rendering0 = true;
-                    resolve();
-                }).then(result => {
-                    this.$navigateBack();
-                    // this.$modal.close("Aku Pulang")
-                });
-            },
+        // onBack() {
+        //         // alert(this.routeProps.origin);
+        //         // this.$router.replace('/');
+        //         new Promise(resolve => {
+        //             // this.rendering0 = true;
+        //             resolve();
+        //         }).then(result => {
+        //             this.$navigateBack();
+        //             // this.$modal.close("Aku Pulang")
+        //         });
+        //     },
             // TABVIEW
             onSelectedIndexChanged: function(args) {
 

@@ -1,0 +1,5 @@
+https://discourse.nativescript.org/t/remove-tabs-from-tabview/1609/2
+
+https://github.com/NathanaelA
+
+https://github.com/JoshDSommer/nativescript-slides

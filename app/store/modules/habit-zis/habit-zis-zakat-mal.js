@@ -30,10 +30,10 @@ const getters = {
 };
 
 const mutations = {
-	[set_habit_zis_zakat_mal_payload]:(state) => {
+	[set_habit_zis_zakat_mal_payload]:(state, data) => {
 		state.payload = data
 	},
-  [set_habit_zis_zakat_mal_payload_add]:(state) => {
+  [set_habit_zis_zakat_mal_payload_add]:(state, data) => {
 		state.payload.push(data)
 	},
   [set_habit_zis_zakat_mal_payload_remove]: (state, data) => {
