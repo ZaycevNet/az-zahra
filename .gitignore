@@ -11,8 +11,8 @@ platforms
 
 app__
 App_ResourcesXX
-app0
-app1
+/app0
+/app1
 
 
 BUILD COMMAND.txt
