@@ -24,7 +24,7 @@ module.exports = {
 		"anggota":"5",
 		"aktif":"true",
 
-		"payload_anggota":[
+		"payload_anggota":[ // table group_hasil
 			{
 				"id":"1",
 				"parent_id":"1",

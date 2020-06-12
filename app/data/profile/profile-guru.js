@@ -4,10 +4,10 @@ module.exports = {
 	"initial": "PROFILE-GURU",
 
 	"jenis":"siswa",
-	"username":"ukik",
-	"password":"123",
+	"username":"ukik", // table users
+	"password":"123", // table users
 
-	"payload_biodata":{
+	"payload_biodata":{ // table profile_guru
 		"id":"1",
 		"parent_id":"1",
 		"code":Math.random()*99999999999,
@@ -27,7 +27,7 @@ module.exports = {
 		"gender":"1",
 		"alamat":"Guru/Ustad",
 	},
-	'payload_kelas': [
+	'payload_kelas': [ // table profile_guru_kelas
 		{
 			"id":"1",
 			"parent_id":"1",

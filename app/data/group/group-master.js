@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = [ // table group
 	{
 		"id":"1",
 		"code":Math.random()*99999999999,
@@ -6,7 +6,7 @@ module.exports = [
 		// "subtitle":"Alat",
 
 		"jenis":"group",
-		"judul": "Jenius",
+		"judul": "Jenius", // diganti nama
 		"anggota":"5",
 
 		"aktif":true,

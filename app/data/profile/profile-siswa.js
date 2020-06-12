@@ -3,11 +3,11 @@ module.exports = {
 	"code":Math.random()*99999999999,
 	"initial": "PROFILE-SISWA",
 
-	"jenis":"siswa",
-	"username":"ukik",
-	"password":"123",
+	"jenis":"siswa", 
+	"username":"ukik", // table users
+	"password":"123", // table users
 
-	"payload_biodata":{
+	"payload_biodata":{ // table profile_siswa
 		"id":"1",
 		"parent_id":"1",
 		"code":Math.random()*99999999999,
@@ -27,7 +27,7 @@ module.exports = {
 		"gender":"1",
 		"alamat":"Guru/Ustad",
 	},
-	"payload_orangtua":[
+	"payload_orangtua":[ // table profile_siswa
 		{
 			"id":"1",
 			"parent_id":"1",
@@ -46,7 +46,7 @@ module.exports = {
 			"whatsapp": "Rangkuman/Keterangan",
 			"email":"Guru/Ustad",
 			"pekerjaan":"Pengetahuan",
-			"jabatan":"Pengetahuan",
+			"c":"Pengetahuan",
 			"alamat":"Guru/Ustad",
 		},
 		{
